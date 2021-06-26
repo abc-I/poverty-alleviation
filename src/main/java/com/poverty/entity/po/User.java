@@ -47,7 +47,7 @@ public class User implements Serializable {
      * 是否封号
      */
     @TableField(value = "is_locked")
-    private Integer isLocked;
+    private Boolean isLocked;
 
     /**
      * 创建时间

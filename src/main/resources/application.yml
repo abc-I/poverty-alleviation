@@ -1,0 +1,54 @@
+server:
+  port: 80
+  ssl:
+    key-store: classpath:www.lizhanfeng.xyz.jks
+    key-store-password: z2znaly6i43
+    key-store-type: JKS
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://1.15.28.100:3306/poverty_alleviation?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: LiZhanFeng,341.
+
+      # \u8BBE\u7F6E\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 100
+      max-active: 20
+      # \u8BBE\u7F6E\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 8
+      min-idle: 5
+      # \u8BBE\u7F6E\u521D\u59CB\u5316\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 8
+      initial-size: 10
+      # \u8BBE\u7F6E\u8BBF\u95EE\u6570\u636E\u5E93\u65F6\uFF0C\u6700\u957F\u7B49\u5F85\u65F6\u95F4\uFF0C\u5355\u4F4D\uFF1A\u6BEB\u79D2\uFF0C\u9ED8\u8BA4 30000
+      max-wait: 10000
+
+  redis:
+    host: 1.15.28.100
+    port: 6379
+    password: LiZhanFeng,341.
+    jedis:
+      pool:
+        # \u8BBE\u7F6E\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 8
+        max-active: 32
+        # \u8BBE\u7F6E\u6700\u5927\u7A7A\u95F2\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA48
+        max-idle: 16
+        # \u8BBE\u7F6E\u6700\u957F\u7B49\u5F85\u65F6\u95F4\uFF0C\u9ED8\u8BA4 -1\uFF0C\u8868\u793A\u6C38\u4E0D\u8D85\u65F6\uFF0C\u65F6\u95F4\u592A\u957F\u4F1A\u62A5\u8FDE\u63A5\u5F02\u5E38
+        max-wait: 300
+        # \u8BBE\u7F6E\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570
+        min-idle: 8
+        time-between-eviction-runs: 5
+    timeout: 5000
+    database: 0
+
+  web:
+    resources:
+      static-locations: file:D:/00img
+  mvc:
+    static-path-pattern: /static/**
+
+logging:
+  file:
+    name: log/warn.log
+  level:
+    com.inet: warn

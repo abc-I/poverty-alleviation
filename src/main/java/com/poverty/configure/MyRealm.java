@@ -3,6 +3,7 @@ package com.poverty.configure;
 import com.poverty.entity.po.User;
 import com.poverty.mapper.RoleMapper;
 import com.poverty.mapper.UserMapper;
+import lombok.SneakyThrows;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -37,15 +38,16 @@ public class MyRealm extends AuthorizingRealm {
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
-        User user = (User) principalCollection.getPrimaryPrincipal();
+        String id = (String) principalCollection.getPrimaryPrincipal();
 
-        Set<String> roles = roleMapper.selectRolesByUserId(user.getId());
+        Set<String> roles = roleMapper.selectRolesByUserId(id);
 
         info.setRoles(roles);
 
         return info;
     }
 
+    @SneakyThrows
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
             throws AuthenticationException {
@@ -64,6 +66,6 @@ public class MyRealm extends AuthorizingRealm {
 
         ByteSource byteSource = ByteSource.Util.bytes(user.getSalt());
 
-        return new SimpleAuthenticationInfo(user, user.getPassword(), byteSource, "myRealm");
+        return new SimpleAuthenticationInfo(id, user.getPassword(), byteSource, "myRealm");
     }
 }

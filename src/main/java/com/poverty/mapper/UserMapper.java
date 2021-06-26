@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.po.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,4 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper {
+    String selectIdByAccount(String account);
+
+    User selectOne(String id);
 }

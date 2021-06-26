@@ -61,9 +61,6 @@ public class ShiroConfig extends ShiroConfiguration {
         urls.put("/swagger-ui/**", "anon");
         urls.put("/swagger-resources/**", "anon");
         urls.put("/v2/**", "anon");
-        urls.put("/home/**", "anon");
-        urls.put("/search/**", "anon");
-        urls.put("/dynamic/getDynamic/**", "anon");
 
         urls.put("/logout", "logout");
         urls.put("/**", "jwtFilter,authc");
@@ -81,7 +78,7 @@ public class ShiroConfig extends ShiroConfiguration {
 
     public Realm myRealm() {
         HashedCredentialsMatcher matcher = new MyHashedCredentialsMatcher("MD5");
-        matcher.setHashIterations(1);
+        matcher.setHashIterations(10);
         myRealm.setCredentialsMatcher(matcher);
         return myRealm;
     }

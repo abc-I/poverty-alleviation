@@ -18,10 +18,8 @@ public class MyHashedCredentialsMatcher extends HashedCredentialsMatcher  {
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         Object tokenHashedCredentials = this.hashProvidedCredentials(token, info);
-        if ("".equals(tokenHashedCredentials)) {
-            return true;
-        }
         Object accountCredentials = this.getCredentials(info);
+
         return this.equals(tokenHashedCredentials, accountCredentials);
     }
 }

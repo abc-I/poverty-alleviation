@@ -9,8 +9,8 @@ import org.apache.shiro.crypto.hash.Md5Hash;
  */
 public class MD5Util {
 
-    public static String parse(String password, String salt) {
-        Md5Hash hash = new Md5Hash(password, salt);
+    public static String parse(String password, String salt, int size) {
+        Md5Hash hash = new Md5Hash(password, salt, 10);
         return hash.toHex();
     }
 }

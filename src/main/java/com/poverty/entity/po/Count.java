@@ -34,7 +34,7 @@ public class Count implements Serializable {
      * 是否审核
      */
     @TableField(value = "is_examined")
-    private String isExamined;
+    private Boolean isExamined;
 
     /**
      * 被点赞数

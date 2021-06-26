@@ -2,6 +2,8 @@ package com.poverty.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Set;
+
 /**
  * @author Li
  * @version 1.0
@@ -9,4 +11,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface RoleMapper {
+    Set<String> selectRolesByUserId(String id);
 }

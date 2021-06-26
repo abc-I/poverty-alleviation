@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poverty.mapper.RoleMapper">
+
+    <select id="selectRolesByUserId" resultType="java.lang.String">
+        select `role`
+        from `t_role` as `r`
+                 inner join `t_user_role` as `ur`
+                            on `r`.`id` = `ur`.`role_id`
+                 inner join `t_user` as `u`
+                            on `u`.`id` = `ur`.`user_id`
+        where `u`.`id` = #{id};
+    </select>
+</mapper>
