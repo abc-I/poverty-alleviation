@@ -82,7 +82,6 @@ public class SwaggerConfig {
                 .globalResponses(HttpMethod.DELETE, responses)
                 .globalResponses(HttpMethod.PUT, responses)
                 .globalResponses(HttpMethod.OPTIONS, responses)
-                .enableUrlTemplating(true)
-                .tags(new Tag("Pet Service", "All apis relating to pets"));
+                .enableUrlTemplating(true);
     }
 }
