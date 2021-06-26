@@ -13,4 +13,6 @@ public interface UserMapper {
     String selectIdByAccount(String account);
 
     User selectOne(String id);
+
+    int insertOne(User user);
 }

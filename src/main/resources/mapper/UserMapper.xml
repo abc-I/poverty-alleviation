@@ -3,6 +3,13 @@
 
 <mapper namespace="com.poverty.mapper.UserMapper">
 
+    <insert id="insertOne">
+        insert into `t_user`
+            (`id`, `account`, `password`, `salt`)
+        values
+            (#{id}, #{account}, #{password}, #{salt});
+    </insert>
+
     <select id="selectIdByAccount" resultType="java.lang.String">
         select `id`
         from `t_user`

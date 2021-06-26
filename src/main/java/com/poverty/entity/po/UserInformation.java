@@ -19,9 +19,9 @@ public class UserInformation implements Serializable {
     private static final long serialVersionUID = -1797296917778034449L;
 
     /**
-     * 主键(UUID)
+     * 主键(用户id)
      */
-    @TableId(value = "id", type = IdType.ASSIGN_UUID)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private String id;
 
     /**
@@ -73,4 +73,15 @@ public class UserInformation implements Serializable {
     @TableField(value = "modify_time", fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date modifyTime;
+
+    public UserInformation(String id,String username,String realName,String phone,
+                           String email,String idCard,String address) {
+        this.id = id;
+        this.username = username;
+        this.realName = realName;
+        this.phone = phone;
+        this.email = email;
+        this.idCard = idCard;
+        this.address = address;
+    }
 }

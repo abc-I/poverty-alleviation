@@ -62,4 +62,11 @@ public class User implements Serializable {
     @TableField(value = "modify_time", fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date modifyTime;
+
+    public User(String id, String account, String password, String salt) {
+        this.id = id;
+        this.account = account;
+        this.password = password;
+        this.salt = salt;
+    }
 }

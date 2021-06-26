@@ -57,12 +57,14 @@ public class ShiroConfig extends ShiroConfiguration {
         factoryBean.setFilters(filterMap);
 
         Map<String, String> urls = new LinkedHashMap<>();
-        urls.put("/login/**", "anon");
+        urls.put("/login", "anon");
         urls.put("/swagger-ui/**", "anon");
         urls.put("/swagger-resources/**", "anon");
         urls.put("/v2/**", "anon");
+        urls.put("/signUpUser", "anon");
+        urls.put("/signUpAdmin", "anon");
 
-        urls.put("/logout", "logout");
+        urls.put("/logout", "jwtFilter");
         urls.put("/**", "jwtFilter,authc");
 //        urls.put("/**","anon");
         factoryBean.setFilterChainDefinitionMap(urls);

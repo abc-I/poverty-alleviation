@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.po.UserInformation;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,4 +10,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserInformationMapper {
+    int insertOne(UserInformation userInformation);
 }

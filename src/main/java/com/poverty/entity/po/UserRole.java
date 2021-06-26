@@ -43,4 +43,15 @@ public class UserRole implements Serializable {
     @TableField(value = "modify_time", fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date modifyTime;
+
+    public void setUser(String userId) {
+        this.userId = userId;
+        this.roleId="cb5f11d5c13e47c38d211e0e3b8806fb";
+    }
+
+    public void setAdmin(String userId) {
+        this.userId = userId;
+        this.roleId = "79d689bcdda4422981b29b8e3cc8ec46";
+    }
+
 }

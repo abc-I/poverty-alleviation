@@ -3,4 +3,10 @@
 
 <mapper namespace="com.poverty.mapper.UserRoleMapper">
 
+    <insert id="insertOne">
+        insert into `t_user_role`
+            (`user_id`, `role_id`)
+        values
+            (#{userId}, #{roleId});
+    </insert>
 </mapper>

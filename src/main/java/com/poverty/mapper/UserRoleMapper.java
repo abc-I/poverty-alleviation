@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.po.UserRole;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,4 +10,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserRoleMapper {
+    int insertOne(UserRole userRole);
 }
