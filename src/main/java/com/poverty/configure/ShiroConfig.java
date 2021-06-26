@@ -64,7 +64,6 @@ public class ShiroConfig extends ShiroConfiguration {
         urls.put("/swagger-resources/**", "anon");
         urls.put("/v2/**", "anon");
         urls.put("/signUpUser", "anon");
-        urls.put("/signUpAdmin", "anon");
 
         urls.put("/logout", "jwtFilter");
         urls.put("/**", "jwtFilter,authc");

@@ -49,10 +49,8 @@ public class LoginServiceImpl implements LoginService {
         String account = login.getAccount();
         String password = login.getPassword();
 
-        // 通过账号获取用户id
-        String id = userMapper.selectIdByAccount(account);
         // 封装登录认证token
-        UsernamePasswordToken token = new UsernamePasswordToken(id, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(account, password);
 
         Subject subject = SecurityUtils.getSubject();
         try {
@@ -69,9 +67,9 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // 获取jwtToken
-        String jwtToken = JwtUtil.createJwtToken(id);
+        String jwtToken = JwtUtil.createJwtToken(account);
         // 保存token
-        boolean bool = JedisUtil.set(id, jwtToken, 1000 * 60 * 60 * 24);
+        boolean bool = JedisUtil.set(account, jwtToken, 1000 * 60 * 60 * 24);
         // 判读是否登录成功
         if (bool) {
             return Result.result200(new JwtToken(jwtToken));

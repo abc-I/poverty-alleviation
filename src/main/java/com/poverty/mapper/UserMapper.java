@@ -10,21 +10,14 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper {
-    /**
-     * 通过账号获取id
-     *
-     * @param account 账号
-     * @return String
-     */
-    String selectIdByAccount(String account);
 
     /**
-     * 通过id获取用户信息
+     * 通过账号获取用户信息
      *
-     * @param id 用户id
+     * @param account 用户账号
      * @return com.poverty.entity.po.User
      */
-    User selectOne(String id);
+    User selectOne(String account);
 
     /**
      * 保存用户信息
@@ -33,4 +26,12 @@ public interface UserMapper {
      * @return int
      */
     int insertOne(User user);
+
+    /**
+     * 通过账号查询id
+     *
+     * @param account 账号
+     * @return boolean
+     */
+    String selectIdByAccount(String account);
 }

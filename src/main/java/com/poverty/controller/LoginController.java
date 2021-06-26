@@ -7,6 +7,8 @@ import com.poverty.entity.dto.SignUp;
 import com.poverty.service.LoginService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -39,6 +41,7 @@ public class LoginController {
      * @param id JSON{"id":"用户id"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      */
+    @RequiresRoles(value = {"administrator", "admin", "user"}, logical = Logical.OR)
     @DeleteMapping("/logout")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
@@ -71,6 +74,11 @@ public class LoginController {
      *               "idCard":"身份证号","address":"地址","password":"密码"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      */
+    @RequiresRoles(value = {"administrator"}, logical = Logical.OR)
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                    required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+    })
     @PostMapping("/signUpAdmin")
     public Result signUpAdmin(@RequestBody SignUp signUp) {
         try {

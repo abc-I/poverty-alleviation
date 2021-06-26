@@ -50,9 +50,9 @@ public class MyRealm extends AuthorizingRealm {
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         // 获取用户id
-        String id = (String) principalCollection.getPrimaryPrincipal();
+        String account = (String) principalCollection.getPrimaryPrincipal();
         // 获取权限信息
-        Set<String> roles = roleMapper.selectRolesByUserId(id);
+        Set<String> roles = roleMapper.selectRolesByUserAccount(account);
         // 封装权限信息
         info.setRoles(roles);
 
@@ -71,9 +71,9 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
             throws AuthenticationException {
         // 获取用户id
-        String id = (String) authenticationToken.getPrincipal();
+        String account = (String) authenticationToken.getPrincipal();
         // 获取用户信息
-        User user = userMapper.selectOne(id);
+        User user = userMapper.selectOne(account);
         // 判读是否成功获取用户信息
         if (user == null) {
             throw new UnknownAccountException("用户不存在！");
@@ -86,6 +86,6 @@ public class MyRealm extends AuthorizingRealm {
         ByteSource byteSource = ByteSource.Util.bytes(user.getSalt());
 
         // 封装信息
-        return new SimpleAuthenticationInfo(id, user.getPassword(), byteSource, "myRealm");
+        return new SimpleAuthenticationInfo(account, user.getPassword(), byteSource, "myRealm");
     }
 }

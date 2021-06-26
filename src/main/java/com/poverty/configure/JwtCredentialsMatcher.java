@@ -24,12 +24,12 @@ public class JwtCredentialsMatcher implements CredentialsMatcher {
         String clientToken = (String) authenticationToken.getCredentials();
         String redisToken = (String) authenticationInfo.getCredentials();
         // 获取用户id
-        String id = (String) authenticationToken.getPrincipal();
+        String account = (String) authenticationToken.getPrincipal();
 
         // 匹配token
         if (clientToken.equals(redisToken)) {
             // 刷新token过期时间
-            return JedisUtil.refresh(id, 1000 * 60 * 60 * 24);
+            return JedisUtil.refresh(account, 1000 * 60 * 60 * 24);
         } else {
             return false;
         }

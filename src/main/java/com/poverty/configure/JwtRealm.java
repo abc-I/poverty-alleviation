@@ -52,9 +52,9 @@ public class JwtRealm extends AuthorizingRealm {
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         // 获取用户id
-        String id = (String) principalCollection.getPrimaryPrincipal();
+        String account = (String) principalCollection.getPrimaryPrincipal();
         // 获取权限信息
-        Set<String> roles = rolesMapper.selectRolesByUserId(id);
+        Set<String> roles = rolesMapper.selectRolesByUserAccount(account);
         // 封装权限信息
         info.setRoles(roles);
 
@@ -73,13 +73,13 @@ public class JwtRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
             throws AuthenticationException {
         // 获取用户id
-        String id = (String) authenticationToken.getPrincipal();
+        String account = (String) authenticationToken.getPrincipal();
         // 判断JwtToken是否存在用户id
-        if (id == null) {
+        if (account == null) {
             throw new AccountException("JWT Token参数异常！");
         }
         // 获取用户信息
-        User user = userMapper.selectOne(id);
+        User user = userMapper.selectOne(account);
         // 判读是否成功获取用户信息
         if (user == null) {
             throw new UnknownAccountException("用户不存在！");
@@ -89,6 +89,6 @@ public class JwtRealm extends AuthorizingRealm {
             throw new LockedAccountException("账户被锁定！");
         }
         // 封装信息
-        return new SimpleAuthenticationInfo(id, JedisUtil.get(id), "jwtRealm");
+        return new SimpleAuthenticationInfo(account, JedisUtil.get(account), "jwtRealm");
     }
 }

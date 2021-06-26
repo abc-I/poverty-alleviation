@@ -10,15 +10,15 @@
             (#{id}, #{account}, #{password}, #{salt});
     </insert>
 
-    <select id="selectIdByAccount" resultType="java.lang.String">
-        select `id`
+    <select id="selectOne" resultType="com.poverty.entity.po.User">
+        select *
         from `t_user`
         where `account` = #{account};
     </select>
 
-    <select id="selectOne" resultType="com.poverty.entity.po.User">
-        select *
+    <select id="selectIdByAccount" resultType="java.lang.String">
+        select `id`
         from `t_user`
-        where `id` = #{id};
+        where `account` = #{account};
     </select>
 </mapper>
