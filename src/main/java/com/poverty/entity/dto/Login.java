@@ -14,6 +14,13 @@ public class Login implements Serializable {
 
     private static final long serialVersionUID = 8392978941417375310L;
 
+    /**
+     * 账号
+     */
     private String account;
+
+    /**
+     * 密码
+     */
     private String password;
 }

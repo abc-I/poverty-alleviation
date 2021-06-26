@@ -37,7 +37,7 @@ public class UserInformation implements Serializable {
     private String realName;
 
     /**
-     * 电话
+     * 电话号
      */
     @TableField(value = "phone")
     private String phone;

@@ -10,5 +10,11 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserRoleMapper {
+    /**
+     * 保存权限信息
+     *
+     * @param userRole JSON{"userId":"用户id","roleId":"权限id"}
+     * @return int
+     */
     int insertOne(UserRole userRole);
 }

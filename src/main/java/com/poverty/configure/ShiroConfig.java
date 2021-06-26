@@ -49,6 +49,7 @@ public class ShiroConfig extends ShiroConfiguration {
 
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean() {
+        // 添加拦截器
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
         factoryBean.setSecurityManager(mySecurityManager());
 
@@ -56,6 +57,7 @@ public class ShiroConfig extends ShiroConfiguration {
         filterMap.put("jwtFilter", new JwtFilter());
         factoryBean.setFilters(filterMap);
 
+        // 配置路径对应的拦截器
         Map<String, String> urls = new LinkedHashMap<>();
         urls.put("/login", "anon");
         urls.put("/swagger-ui/**", "anon");
@@ -79,7 +81,7 @@ public class ShiroConfig extends ShiroConfiguration {
     }
 
     public Realm myRealm() {
-        HashedCredentialsMatcher matcher = new MyHashedCredentialsMatcher("MD5");
+        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher("MD5");
         matcher.setHashIterations(10);
         myRealm.setCredentialsMatcher(matcher);
         return myRealm;

@@ -12,7 +12,14 @@ public class JwtToken implements AuthenticationToken {
 
     private static final long serialVersionUID = -8176448743649432242L;
 
+    /**
+     * jwtToken
+     */
     private final String token;
+
+    /**
+     * 用户id
+     */
     private final String id;
 
     public JwtToken(String token) {

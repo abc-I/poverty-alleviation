@@ -37,23 +37,23 @@ public class RedisConfig extends JedisPoolConfig {
     @Value("${spring.redis.jedis.pool.min-idle}")
     private int minIdle;
 
-    @Value("${spring.redis.jedis.pool.time-between-eviction-runs}")
-    private int timeBetweenEvictionRuns;
-
     @Value("${spring.redis.database}")
     private int database;
 
     @Bean
     public JedisPool jedisPool() {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        // 最大活跃连接
         jedisPoolConfig.setMaxTotal(maxActive);
+        // 最大空闲连接
         jedisPoolConfig.setMaxIdle(maxIdle);
-        jedisPoolConfig.setMaxWaitMillis(maxWait);
+        // 最小空闲连接
         jedisPoolConfig.setMinIdle(minIdle);
-        jedisPoolConfig.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRuns);
+        // 最长等待时间
+        jedisPoolConfig.setMaxWaitMillis(maxWait);
+        // 测试连接
         jedisPoolConfig.setTestOnBorrow(true);
         jedisPoolConfig.setTestOnReturn(true);
-        jedisPoolConfig.setMinEvictableIdleTimeMillis(timeBetweenEvictionRuns + 1);
 
         return new JedisPool(jedisPoolConfig, host, port, timeout, password, database);
     }
@@ -124,13 +124,5 @@ public class RedisConfig extends JedisPoolConfig {
     @Override
     public void setMinIdle(int minIdle) {
         this.minIdle = minIdle;
-    }
-
-    public int getTimeBetweenEvictionRuns() {
-        return timeBetweenEvictionRuns;
-    }
-
-    public void setTimeBetweenEvictionRuns(int timeBetweenEvictionRuns) {
-        this.timeBetweenEvictionRuns = timeBetweenEvictionRuns;
     }
 }

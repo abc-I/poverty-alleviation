@@ -22,11 +22,23 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
+    /**
+     * 登录
+     *
+     * @param login JSON{"account":"账号","password":"密码"}
+     * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
+     */
     @PostMapping("/login")
     public Result login(@RequestBody Login login) {
         return loginService.login(login);
     }
 
+    /**
+     * 登出
+     *
+     * @param id JSON{"id":"用户id"}
+     * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
+     */
     @DeleteMapping("/logout")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
@@ -36,6 +48,13 @@ public class LoginController {
         return loginService.logout(id);
     }
 
+    /**
+     * 注册用户
+     *
+     * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
+     *               "idCard":"身份证号","address":"地址","password":"密码"}
+     * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
+     */
     @PostMapping("/signUpUser")
     public Result signUpUser(@RequestBody SignUp signUp) {
         try {
@@ -45,6 +64,13 @@ public class LoginController {
         }
     }
 
+    /**
+     * 注册管理员
+     *
+     * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
+     *               "idCard":"身份证号","address":"地址","password":"密码"}
+     * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
+     */
     @PostMapping("/signUpAdmin")
     public Result signUpAdmin(@RequestBody SignUp signUp) {
         try {

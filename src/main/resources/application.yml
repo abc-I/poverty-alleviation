@@ -37,7 +37,6 @@ spring:
         max-wait: 300
         # \u8BBE\u7F6E\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570
         min-idle: 8
-        time-between-eviction-runs: 5
     timeout: 5000
     database: 0
 

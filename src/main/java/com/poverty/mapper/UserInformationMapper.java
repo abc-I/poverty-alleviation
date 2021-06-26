@@ -10,5 +10,13 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserInformationMapper {
+
+    /**
+     * 保存用户信息
+     *
+     * @param userInformation JSON{"id":"用户id","username":"用户昵称","realName":"用户真名","phone":"电话号",
+     *                        "email":"邮箱","idCard":"身份证号","address":"地址"}
+     * @return int
+     */
     int insertOne(UserInformation userInformation);
 }
