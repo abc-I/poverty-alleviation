@@ -1,8 +1,8 @@
 server:
-  port: 80
+  port: 81
   ssl:
     key-store: classpath:www.lizhanfeng.xyz.jks
-    key-store-password:
+    key-store-password: z2znaly6i43
     key-store-type: JKS
 
 spring:
@@ -11,8 +11,8 @@ spring:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://1.15.28.100:3306/poverty_alleviation?useUnicode=true&characterEncoding=utf-8
-      username:
-      password:
+      username: root
+      password: LiZhanFeng,341.
 
       # \u8BBE\u7F6E\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 100
       max-active: 20
@@ -26,7 +26,7 @@ spring:
   redis:
     host: 1.15.28.100
     port: 6379
-    password:
+    password: LiZhanFeng,341.
     jedis:
       pool:
         # \u8BBE\u7F6E\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 8
@@ -40,13 +40,33 @@ spring:
     timeout: 5000
     database: 0
 
+  mail:
+    # 邮件服务器地址
+    host: smtp.qq.com
+    # 发送者邮箱
+    username: 1773530070@qq.com
+    # 发送者密钥
+    password: ykrwbvvzqgrwddbf
+    # 发送端口
+    port: 25
+    # 字符编码
+    default-encoding: UTF-8
+    # ssl加密工厂
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+          debug: true
   web:
     resources:
       # \u9759\u6001\u8D44\u6E90\u6587\u4EF6\u5939
-      static-locations: file:D:/00img
+      static-locations: file:/home/static/
   mvc:
     # \u8BBF\u95EE\u9759\u6001\u8D44\u6E90\u6587\u4EF6\u5939\u7684\u8DEF\u5F84
     static-path-pattern: /static/**
+
+  thymeleaf:
+    prefix: /home/static/html/
 
 logging:
   file:
@@ -54,19 +74,8 @@ logging:
   level:
     com.inet: warn
 
-email:
-  transportProtocol: smtp
-  smtpHost: smtp.qq.com
-  smtpAuth: true
-  smtpPort: 465
-  smtpSocketFactoryClass: javax.net.ssl.SSLSocketFactory
-  smtpSocketFactoryFallback: false
-  smtpSocketFactoryPort: 465
-  fromAddress: 1773530070@qq.com
-  password:
-  username: 你说啥
-
 path:
-  htmlPath: D:\00img\static\html\
-  imagePath: D:\00img\static\image\
-  videoPath: D:\00img\static\video\
+  html-path: /home/static/html/
+  image-path: /home/static/image/
+  video-path: /home/static/video/
+  docx-path: /home/static/video/
