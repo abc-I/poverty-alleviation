@@ -2,7 +2,7 @@ server:
   port: 81
   ssl:
     key-store: classpath:www.lizhanfeng.xyz.jks
-    key-store-password: z2znaly6i43
+    key-store-password:
     key-store-type: JKS
 
 spring:
@@ -12,7 +12,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://1.15.28.100:3306/poverty_alleviation?useUnicode=true&characterEncoding=utf-8
       username: root
-      password: LiZhanFeng,341.
+      password:
 
       # \u8BBE\u7F6E\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 100
       max-active: 20
@@ -26,7 +26,7 @@ spring:
   redis:
     host: 1.15.28.100
     port: 6379
-    password: LiZhanFeng,341.
+    password:
     jedis:
       pool:
         # \u8BBE\u7F6E\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 8
@@ -46,7 +46,7 @@ spring:
     # 发送者邮箱
     username: 1773530070@qq.com
     # 发送者密钥
-    password: ykrwbvvzqgrwddbf
+    password:
     # 发送端口
     port: 25
     # 字符编码
