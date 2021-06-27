@@ -143,7 +143,7 @@ public class LoginServiceImpl implements LoginService {
         String[] to = new String[1];
         to[0] = email;
 
-        mailUtil.sendFileAndImgMail("测试邮件", to, null, null,
+        mailUtil.sendFileAndImgMail("注册验证码", to, null, null,
                 new Date(), message.replace("code", code), null, null);
 
         long time = 60;
