@@ -14,13 +14,13 @@ spring:
       username: root
       password:
 
-      # \u8BBE\u7F6E\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 100
+      # 设置最大连接数，默认 100
       max-active: 20
-      # \u8BBE\u7F6E\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 8
+      # 设置最小空闲连接数，默认 8
       min-idle: 5
-      # \u8BBE\u7F6E\u521D\u59CB\u5316\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 8
+      # 设置初始化连接数，默认 8
       initial-size: 10
-      # \u8BBE\u7F6E\u8BBF\u95EE\u6570\u636E\u5E93\u65F6\uFF0C\u6700\u957F\u7B49\u5F85\u65F6\u95F4\uFF0C\u5355\u4F4D\uFF1A\u6BEB\u79D2\uFF0C\u9ED8\u8BA4 30000
+      # 设置访问数据库时，最长等待时间，单位：毫秒，默认 30000
       max-wait: 10000
 
   redis:
@@ -29,13 +29,13 @@ spring:
     password:
     jedis:
       pool:
-        # \u8BBE\u7F6E\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4 8
+        # 设置最大连接数，默认 8
         max-active: 32
-        # \u8BBE\u7F6E\u6700\u5927\u7A7A\u95F2\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA48
+        # 设置最大空闲连接数，默认8
         max-idle: 16
-        # \u8BBE\u7F6E\u6700\u957F\u7B49\u5F85\u65F6\u95F4\uFF0C\u9ED8\u8BA4 -1\uFF0C\u8868\u793A\u6C38\u4E0D\u8D85\u65F6\uFF0C\u65F6\u95F4\u592A\u957F\u4F1A\u62A5\u8FDE\u63A5\u5F02\u5E38
+        # 设置最长等待时间，默认 -1，表示永不超时，时间太长会报连接异常
         max-wait: 300
-        # \u8BBE\u7F6E\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570
+        # 设置最小空闲连接数
         min-idle: 8
     timeout: 5000
     database: 0
@@ -59,10 +59,10 @@ spring:
           debug: true
   web:
     resources:
-      # \u9759\u6001\u8D44\u6E90\u6587\u4EF6\u5939
+      # 静态资源文件夹
       static-locations: file:/home/static/
   mvc:
-    # \u8BBF\u95EE\u9759\u6001\u8D44\u6E90\u6587\u4EF6\u5939\u7684\u8DEF\u5F84
+    # 访问静态资源文件夹的路径
     static-path-pattern: /static/**
 
   thymeleaf:
