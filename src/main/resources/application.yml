@@ -53,3 +53,20 @@ logging:
     name: log/warn.log
   level:
     com.inet: warn
+
+email:
+  transportProtocol: smtp
+  smtpHost: smtp.qq.com
+  smtpAuth: true
+  smtpPort: 465
+  smtpSocketFactoryClass: javax.net.ssl.SSLSocketFactory
+  smtpSocketFactoryFallback: false
+  smtpSocketFactoryPort: 465
+  fromAddress: 1773530070@qq.com
+  password: ykrwbvvzqgrwddbf
+  username: 你说啥
+
+path:
+  htmlPath: D:\00img\static\html\
+  imagePath: D:\00img\static\image\
+  videoPath: D:\00img\static\video\

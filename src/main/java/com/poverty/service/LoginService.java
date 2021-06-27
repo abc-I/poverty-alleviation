@@ -5,6 +5,9 @@ import com.poverty.entity.dto.Login;
 import com.poverty.entity.dto.PostId;
 import com.poverty.entity.dto.SignUp;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
+
 /**
  * @author  LI
  */
@@ -30,7 +33,7 @@ public interface LoginService {
      * 注册用户
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws  Exception 注册异常
      */
@@ -40,9 +43,19 @@ public interface LoginService {
      * 注册管理员
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws Exception 注册异常
      */
     Result signUpAdmin(SignUp signUp) throws Exception;
+
+    /**
+     * 获取验证码
+     *
+     * @param email 邮件地址
+     * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
+     * @throws IOException 异常
+     * @throws MessagingException 异常
+     */
+    Result getCode(String email) throws IOException, MessagingException;
 }

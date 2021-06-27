@@ -1,5 +1,6 @@
 package com.poverty.service.impl;
 
+import com.poverty.configure.PathUtil;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.Login;
 import com.poverty.entity.dto.PostId;
@@ -15,6 +16,7 @@ import com.poverty.service.LoginService;
 import com.poverty.util.JedisUtil;
 import com.poverty.util.JwtUtil;
 import com.poverty.util.MD5Util;
+import com.poverty.util.MailUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -22,6 +24,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.UUID;
 
 /**
@@ -37,6 +41,10 @@ public class LoginServiceImpl implements LoginService {
     private UserRoleMapper userRoleMapper;
     @Resource
     private UserInformationMapper userInformationMapper;
+    @Resource
+    private MailUtil mailUtil;
+    @Resource
+    private PathUtil pathUtil;
 
     /**
      * 登录
@@ -69,7 +77,7 @@ public class LoginServiceImpl implements LoginService {
         // 获取jwtToken
         String jwtToken = JwtUtil.createJwtToken(account);
         // 保存token
-        boolean bool = JedisUtil.set(account, jwtToken, 1000 * 60 * 60 * 24);
+        boolean bool = JedisUtil.set(account, jwtToken, 60 * 60 * 24);
         // 判读是否登录成功
         if (bool) {
             return Result.result200(new JwtToken(jwtToken));
@@ -97,7 +105,7 @@ public class LoginServiceImpl implements LoginService {
      * 注册用户
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws Exception 注册异常
      */
@@ -110,7 +118,7 @@ public class LoginServiceImpl implements LoginService {
      * 注册管理员
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws Exception 注册异常
      */
@@ -120,15 +128,45 @@ public class LoginServiceImpl implements LoginService {
     }
 
     /**
+     * 获取验证码
+     *
+     * @param email 邮件地址
+     * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
+     * @throws IOException IO异常
+     * @throws MessagingException 消息异常
+     */
+    @Override
+    public Result getCode(String email) throws IOException, MessagingException {
+        String message = mailUtil.readerHtml(pathUtil.getHtmlPath() + "code.html");
+        String code = UUID.randomUUID().toString().substring(0, 9);
+        System.out.println(message.replace("code", code));
+
+        mailUtil.sendMail(message.replace("code", code), email);
+
+        long time = 60;
+        if (JedisUtil.set(email, code, time)) {
+            return Result.result200("获取成功！");
+        } else {
+            return Result.result500("获取验证码失败！");
+        }
+    }
+
+    /**
      * 保存用户信息
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
      * @param s 权限名
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws Exception 保存信息异常
      */
     private Result setInformation(SignUp signUp,String s) throws Exception {
+        String email = signUp.getEmail();
+        String code = signUp.getCode();
+        if (email == null || code == null || !code.equals(JedisUtil.get(email))) {
+            return Result.result500("注册失败！请检查邮箱或验证码是否正确！");
+        }
+
         // 随机参数用户id
         String userId = UUID.randomUUID().toString().replace("-", "");
 
@@ -154,7 +192,7 @@ public class LoginServiceImpl implements LoginService {
             // 封装用户信息
             UserInformation userInformation =
                     new UserInformation(userId, signUp.getUsername(), signUp.getRealName(), signUp.getPhone(),
-                            signUp.getEmail(), signUp.getIdCard(), signUp.getAddress());
+                            email, signUp.getIdCard(), signUp.getAddress());
 
             // 保存用户信息
             int len = userInformationMapper.insertOne(userInformation);
@@ -164,7 +202,6 @@ public class LoginServiceImpl implements LoginService {
             UserRole userRole;
             if (len > 0) {
                 userRole = role.equals(s) ? setRoleUser(userId) : setRoleAdmin(userId);
-
                 int ur = userRoleMapper.insertOne(userRole);
                 if (ur > 0) {
                     return Result.result200(account);
