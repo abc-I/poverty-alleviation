@@ -1,6 +1,9 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.dto.CarouselDTO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author Li
@@ -9,4 +12,15 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CarouselMapper {
+
+
+ 
+
+    int insertCarousel(CarouselDTO carouselDTO);
+
+    int deleteCarousel(String carouselID);
+
+    int updateCarousel(CarouselDTO carouselDTO);
+
+    List<CarouselDTO> selectCarousel();
 }

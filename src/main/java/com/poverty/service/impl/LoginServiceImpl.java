@@ -82,7 +82,7 @@ public class LoginServiceImpl implements LoginService {
         if (bool) {
             return Result.result200(new JwtToken(jwtToken));
         } else {
-            return Result.result401("Fail：登录失败！");
+            return Result.result401("Fail：登录k失败！");
         }
     }
 
