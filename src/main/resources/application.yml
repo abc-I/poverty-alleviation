@@ -11,7 +11,7 @@ spring:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://1.15.28.100:3306/poverty_alleviation?useUnicode=true&characterEncoding=utf-8
-      username: root
+      username:
       password:
 
       # 设置最大连接数，默认 100
@@ -60,13 +60,13 @@ spring:
   web:
     resources:
       # 静态资源文件夹
-      static-locations: file:/home/static/
+      static-locations: file:D:/00img/static/
   mvc:
     # 访问静态资源文件夹的路径
     static-path-pattern: /static/**
 
   thymeleaf:
-    prefix: /home/static/html/
+    prefix: D:/00img/static/html/
 
 logging:
   file:
@@ -75,7 +75,8 @@ logging:
     com.inet: warn
 
 path:
-  html-path: /home/static/html/
-  image-path: /home/static/image/
-  video-path: /home/static/video/
-  docx-path: /home/static/video/
+  html-path: D:/00img/static/html/
+  image-path: D:/00img/static/image/
+  video-path: D:/00img/static/video/
+  docx-path: D:/00img/static/docx/
+  baseUrl: https://localhost:81/

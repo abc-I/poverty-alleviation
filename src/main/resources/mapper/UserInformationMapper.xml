@@ -5,8 +5,8 @@
 
     <insert id="insertOne">
         insert into `t_user_information`
-            (`id`, `username`, `real_name`, `phone`, `email`, `id_card`, `address`)
+            (`id`, `username`, `real_name`, `phone`, `email`, `id_card`, `address`,`birthday`)
         values
-            (#{id}, #{username}, #{realName}, #{phone}, #{email}, #{idCard}, #{address});
+            (#{id}, #{username}, #{realName}, #{phone}, #{email}, #{idCard}, #{address},#{birthday});
     </insert>
 </mapper>

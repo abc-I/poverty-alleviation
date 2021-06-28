@@ -59,16 +59,17 @@ public class ShiroConfig extends ShiroConfiguration {
 
         // 配置路径对应的拦截器
         Map<String, String> urls = new LinkedHashMap<>();
-        urls.put("/login", "anon");
-        urls.put("/swagger-ui/**", "anon");
-        urls.put("/swagger-resources/**", "anon");
-        urls.put("/v2/**", "anon");
-        urls.put("/signUpUser", "anon");
-        urls.put("/getCode/**", "anon");
-
-        urls.put("/logout", "jwtFilter");
-        urls.put("/**", "jwtFilter,authc");
-//        urls.put("/**","anon");
+//        urls.put("/login", "anon");
+//        urls.put("/swagger-ui/**", "anon");
+//        urls.put("/swagger-resources/**", "anon");
+//        urls.put("/v2/**", "anon");
+//        urls.put("/signUpUser", "anon");
+//        urls.put("/getCode/**", "anon");
+//        urls.put("/static/**", "anon");
+//
+//        urls.put("/logout", "jwtFilter");
+//        urls.put("/**", "jwtFilter,authc");
+        urls.put("/**","anon");
         factoryBean.setFilterChainDefinitionMap(urls);
         return factoryBean;
     }
