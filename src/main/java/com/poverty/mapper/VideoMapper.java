@@ -14,5 +14,5 @@ public interface VideoMapper {
 
     int deleteVideo(String id);
 
-    int selectVideo(Video video);
+    int selectVideo();
 }

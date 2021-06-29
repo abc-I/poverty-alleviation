@@ -9,4 +9,6 @@ public interface VideoService {
     Result deleteVideo(String id);
 
     Result selectVideo(Video video);
+
+    Result selectVideo();
 }

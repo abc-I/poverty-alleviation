@@ -1,5 +1,6 @@
 package com.poverty.service.impl;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.poverty.entity.Result;
 import com.poverty.entity.po.Video;
 import com.poverty.mapper.VideoMapper;
@@ -31,11 +32,9 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public Result selectVideo(Video video){
-        int selectVideo = videoMapper.selectVideo(video);
-        if (selectVideo>0){
-            return Result.result200("修改成功");
-        }else
-            return Result.result500("修改失败");
+    public Result selectVideo(){
+        videoMapper.selectVideo();
+
     }
+
 }

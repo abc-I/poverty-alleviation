@@ -25,5 +25,5 @@ public interface CarouselService {
     /**
      * 查询轮播图
      */
-    List<CarouselDTO> selectCarousel();
+    Result selectCarousel();
 }

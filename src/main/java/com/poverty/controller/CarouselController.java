@@ -40,9 +40,9 @@ public class CarouselController {
         return carouselService.updateCarousel(carouselDTO);
     }
 
-    @ApiOperation("查询轮播图")
+    @ApiOperation("查询所有轮播图")
     @GetMapping("/Carousel/selectCarousel")
-    public List<CarouselDTO> selectCarousel(){
+    public Result selectCarousel(){
         return  carouselService.selectCarousel();
     }
 }

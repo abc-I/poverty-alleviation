@@ -2,6 +2,7 @@ package com.poverty.service.impl;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.CarouselDTO;
+import com.poverty.entity.vo.CarouselVO;
 import com.poverty.mapper.CarouselMapper;
 import com.poverty.service.CarouselService;
 import org.springframework.stereotype.Service;
@@ -41,12 +42,12 @@ public class CarouselServiceImpl implements CarouselService {
         if(updateCarousel>0){
             return Result.result200("修改成功");
         }else
-            return Result.result500("修改成功");
+            return Result.result500("修改失败");
     }
 
     @Override
-    public List<CarouselDTO> selectCarousel() {
-        List<CarouselDTO> carouselDTOS = carouselMapper.selectCarousel();
-        return carouselDTOS;
+    public Result selectCarousel() {
+        List<CarouselVO> carouselVOS = carouselMapper.selectCarousel();
+        return Result.result200(carouselVOS);
 }
 }
