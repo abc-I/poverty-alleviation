@@ -1,7 +1,13 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.dto.VideoDTO;
 import com.poverty.entity.po.Video;
+import com.poverty.entity.vo.CarouselVO;
+import com.poverty.entity.vo.VideoVO;
+import com.poverty.entity.vo.VideosVO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author Li
@@ -10,9 +16,11 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface VideoMapper {
-    int insertVideo(Video video);
+    int insertVideo(VideoDTO videoDTO);
 
     int deleteVideo(String id);
 
-    int selectVideo();
+    List<VideosVO> selectAllVideo();
+
+    VideoVO seleteVideoById(String id);
 }

@@ -3,4 +3,20 @@
 
 <mapper namespace="com.poverty.mapper.CarouselMapper">
 
+    <insert id="insertCarousel" parameterType="com.poverty.entity.dto.CarouselDTO">
+        insert into t_carousel (id,carousel_url,create_time)values (#{carouselId},#{carouselUrl},now())
+    </insert>
+
+    <update id="updateCarousel" parameterType="com.poverty.entity.dto.CarouselDTO">
+        update  t_carousel set carousel_url=#{carouselUrl},modify_time=now()  where  id =#{carouselId}
+    </update>
+
+    <delete id="deleteCarousel" parameterType="java.lang.String">
+        delete  from t_carousel where carousel_id = #{carouselId}
+    </delete>
+
+    <select id="selectCarousel" resultType="com.poverty.entity.vo.CarouselVO">
+        select * from t_carousel
+    </select>
+
 </mapper>

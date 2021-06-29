@@ -2,5 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.poverty.mapper.VideoMapper">
+    <insert id="insertVideo" parameterType="com.poverty.entity.dto.VideoDTO">
+        insert into t_video (id,title,video_url,picture_url,author_id,create_time) values (#{id},#{title},#{videoUrl},#{pictureUrl},#{authorId},now())
+    </insert>
+
+    <delete id="deleteVideo" parameterType="java.lang.String">
+        delete  from t_video where id = #{Id}
+    </delete>
+
+    <select id="selectAllVideo" resultType="com.poverty.entity.vo.VideosVO">
+        select * from t_video
+    </select>
+
+    <select id="seleteVideoById" resultType="com.poverty.entity.vo.VideoVO" parameterType="java.lang.String">
+        select * from t_video where id=#{id}
+    </select>
 
 </mapper>

@@ -10,12 +10,14 @@ import java.io.Serializable;
  */
 @Data
 public class CarouselDTO implements Serializable {
+
+    private static final long serialVersionUID = 6109327220467456719L;
     /**
      * 轮播图id
      */
-    private String CarouselId;
+    private String carouselId;
     /**
      * 轮播图url
      */
-    private String CarouselUrl;
+    private String carouselUrl;
 }

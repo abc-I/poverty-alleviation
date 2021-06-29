@@ -20,11 +20,15 @@ public class CarouselServiceImpl implements CarouselService {
 
     @Override
     public Result insertCarousel(CarouselDTO carouselDTO) {
+        String carouselId= UUID.randomUUID().toString().replace("-","");
+        carouselDTO.setCarouselId(carouselId);
         int insertCarousel = carouselMapper.insertCarousel(carouselDTO);
         if(insertCarousel>0){
             return Result.result200("添加成功");
-        }else 
+        }else {
             return Result.result500("添加失败");
+        }
+
     }
 
     @Override
@@ -32,8 +36,10 @@ public class CarouselServiceImpl implements CarouselService {
         int deleteCarousel = carouselMapper.deleteCarousel(carouselID);
         if (deleteCarousel>0){
             return Result.result200("删除成功");
-        }else
+        }else{
             return Result.result500("删除失败");
+        }
+
     }
 
     @Override
@@ -41,8 +47,10 @@ public class CarouselServiceImpl implements CarouselService {
         int updateCarousel = carouselMapper.updateCarousel(carouselDTO);
         if(updateCarousel>0){
             return Result.result200("修改成功");
-        }else
+        }else{
             return Result.result500("修改失败");
+        }
+
     }
 
     @Override

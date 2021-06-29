@@ -21,25 +21,47 @@ import java.util.List;
 public class CarouselController {
     @Resource
     private CarouselService carouselService;
-
+    /**
+     * 添加轮播图
+     *
+     * @param carouselDTO
+     * @return Result
+     */
     @ApiOperation("添加轮播图")
     @PostMapping("/Carousel/insertCarousel")
     public Result insertCarousel(CarouselDTO carouselDTO) {
         return carouselService.insertCarousel(carouselDTO);
     }
 
+    /**
+     * 删除轮播图
+     *
+     * @param  carouselID
+     * @return Result
+     */
     @ApiOperation("删除轮播图")
     @DeleteMapping("/Carousel/deleteCarousel")
     public Result deleteCarousel(String carouselID) {
         return carouselService.deleteCarousel(carouselID);
     }
 
+    /**
+     * 修改轮播图
+     *
+     * @param carouselDTO
+     * @return Result
+     */
     @ApiOperation("修改轮播图")
     @PostMapping("/Carousel/updateCarousel")
     public Result updateCarousel(CarouselDTO carouselDTO) {
         return carouselService.updateCarousel(carouselDTO);
     }
 
+    /**
+     * 查询轮播图
+     *
+     * @return Result
+     */
     @ApiOperation("查询所有轮播图")
     @GetMapping("/Carousel/selectCarousel")
     public Result selectCarousel(){

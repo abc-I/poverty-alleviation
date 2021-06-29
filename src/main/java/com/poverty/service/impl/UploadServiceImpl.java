@@ -2,8 +2,8 @@ package com.poverty.service.impl;
 
 import com.poverty.util.PathUtil;
 import com.poverty.service.UploadService;
-import com.spire.doc.Document;
-import com.spire.doc.FileFormat;
+//import com.spire.doc.Document;
+//import com.spire.doc.FileFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -81,7 +81,7 @@ public class UploadServiceImpl implements UploadService {
             return null;
         }
         // 加载文件到document
-        Document document = new Document(docxBase + fileName);
+//        Document document = new Document(docxBase + fileName);
 
         // 获取保存的docx文件的文件名
         String prefix = fileName.substring(0, fileName.indexOf("."));
@@ -89,7 +89,7 @@ public class UploadServiceImpl implements UploadService {
         String txtPath = htmlBase + prefix + ".txt";
 
         // 将docx转换成html，以txt文件形式储存
-        document.saveToFile(txtPath, FileFormat.Html);
+//        document.saveToFile(txtPath, FileFormat.Html);
 
         try (
                 // 读取txt文件

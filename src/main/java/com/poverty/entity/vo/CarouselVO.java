@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 @Data
 public class CarouselVO implements Serializable {
-    private String CarouselId;
-    private String CarouselUrl;
+
+    private static final long serialVersionUID = 8024920499240438994L;
+    private String carouselId;
+    private String carouselUrl;
 }
