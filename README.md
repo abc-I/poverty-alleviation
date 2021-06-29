@@ -9,3 +9,4 @@
 - 6.28 21:15 abc-I Add Administrator's operation on articles,Upload file api
 - 6.29 11:10 abc-I Update AdminArticle
 - 6.29 14:05 chocolili Add CarouselController;CarouselService;CarouselMapper;VideoController;VideoMapper;VideoService
+- 6.29 14:00 abc-I Add AdminVideo,CountController

@@ -51,26 +51,11 @@ public interface AdminArticleService {
      * @return Result
      */
     Result getNoArticleList(int current, int size);
-    /**
-     * 审核未通过
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    Result noExaminedArticle(PostId id);
-
-    /**
-     * 审核通过
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    Result isExaminedArticle(PostId id);
 
     /**
      * 删除所有未通过审核的文章
      *
      * @return Result
      */
-    Result deleteNoExamined();
+    Result deleteNoExaminedArticle();
 }

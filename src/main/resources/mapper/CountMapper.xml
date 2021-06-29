@@ -25,25 +25,55 @@
         </where>
     </delete>
 
-    <select id="countNotExamined" resultType="java.lang.Integer">
+    <select id="countNotExaminedArticle" resultType="java.lang.Integer">
         select count(*)
-        from `t_count`
+        from `t_count` as `c`
+                 inner join `t_article` as `art`
+                            on `art`.`id` = `c`.`id`
         where `is_examined` = -1;
     </select>
 
-    <select id="countIsExamined" resultType="java.lang.Integer">
+    <select id="countIsExaminedArticle" resultType="java.lang.Integer">
         select count(*)
-        from `t_count`
+        from `t_count` as `c`
+                 inner join `t_article` as `art`
+                            on `art`.`id` = `c`.`id`
         where `is_examined` = 1;
     </select>
 
-    <select id="selectIdsByNoExamined" resultType="java.lang.String">
+    <select id="selectArticleIdsByNoExamined" resultType="java.lang.String">
         select `id`
-        from `t_count`
+        from `t_count` as `c`
+                 inner join `t_article` as `art`
+                            on `c`.`id` = `art`.`id`
         where `is_examined` = 0;
     </select>
 
-    <select id="countNoExamined" resultType="java.lang.Integer">
-        select count(*) from `t_count` where `is_examined`=0
+    <select id="countNoExaminedArticle" resultType="java.lang.Integer">
+        select count(*)
+        from `t_count` as `c`
+            inner join `t_article` as `art`
+                on `art`.`id` = `c`.`id`
+        where `is_examined` = 0;
+    </select>
+
+    <select id="countNotExaminedVideo" resultType="java.lang.Integer">
+        select count(*)
+        from `t_count` as `c`
+                 inner join `t_video` as `video`
+                            on `video`.`id` = `c`.`id`
+        where `is_examined` = -1;
+    </select>
+
+    <select id="countIsExaminedVideo" resultType="java.lang.Integer">
+        select count(*)
+        from `t_count` as `c`
+                 inner join `t_video` as `video`
+                            on `video`.`id` = `c`.`id`
+        where `is_examined` = 1;
+    </select>
+
+    <select id="countNoExaminedVideo" resultType="java.lang.Integer">
+        select count(*) from `t_count`
     </select>
 </mapper>

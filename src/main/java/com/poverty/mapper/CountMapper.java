@@ -14,9 +14,9 @@ import java.util.List;
 @Mapper
 public interface CountMapper {
     /**
-     * 通过文章id删除信息
+     * 通过id删除信息
      *
-     * @param ids 文章id
+     * @param ids id
      * @return boolean
      */
     boolean deleteByIds(List<String> ids);
@@ -42,26 +42,47 @@ public interface CountMapper {
      *
      * @return int
      */
-    int countNotExamined();
+    int countNotExaminedArticle();
 
     /**
      * 统计所有通过审核的文章数
      *
      * @return int
      */
-    int countIsExamined();
+    int countIsExaminedArticle();
 
     /**
      * 统计所有未通过审核的文章数
      *
      * @return int
      */
-    int countNoExamined();
+    int countNoExaminedArticle();
 
     /**
      * 获取所有未通过审核的的文章id
      *
      * @return List<String>
      */
-    List<String> selectIdsByNoExamined();
+    List<String> selectArticleIdsByNoExamined();
+
+    /**
+     * 统计所有未审核的视频数
+     *
+     * @return int
+     */
+    int countNotExaminedVideo();
+
+    /**
+     * 统计所有通过审核的视频数
+     *
+     * @return int
+     */
+    int countIsExaminedVideo();
+
+    /**
+     * 统计未通过审核的视频数
+     *
+     * @return int
+     */
+    int countNoExaminedVideo();
 }

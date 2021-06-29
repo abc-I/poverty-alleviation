@@ -58,7 +58,7 @@
         where `art`.`id` = #{id} and `c`.`is_examined` = -1;
     </select>
 
-    <select id="selectArticleById" resultType="com.poverty.entity.vo.ArticleVO">
+    <select id="selectIsExaminedArticleById" resultType="com.poverty.entity.vo.ArticleVO">
         <include refid="selectArticle"/>
         where `art`.`id` = #{id} and `c`.`is_examined` = 1;
     </select>
