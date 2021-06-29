@@ -13,9 +13,6 @@ import java.util.List;
 @Mapper
 public interface CarouselMapper {
 
-
- 
-
     int insertCarousel(CarouselDTO carouselDTO);
 
     int deleteCarousel(String carouselID);

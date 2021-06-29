@@ -28,7 +28,7 @@ public class VideoController {
         return videoService.deleteVideo(id);
     }
 
-    @PatchMapping(/"selectVideo")
+    @PatchMapping("/selectVideo")
     @ApiOperation("修改轮播图")
     public Result selectVideo(Video video){
         return videoService.selectVideo(video);

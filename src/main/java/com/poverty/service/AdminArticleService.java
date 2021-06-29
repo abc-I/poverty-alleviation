@@ -19,6 +19,14 @@ public interface AdminArticleService {
     Result getNotArticleList(int current, int size);
 
     /**
+     * 获取未审核的文章
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    Result getNotArticle(String id);
+
+    /**
      * 获取通过审核的文章列表
      *
      * @param current 当前页
@@ -27,6 +35,22 @@ public interface AdminArticleService {
      */
     Result getIsArticleList(int current, int size);
 
+    /**
+     * 获取通过审核的文章
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    Result getIsArticle(String id);
+
+    /**
+     * 获取未通过审核的文章
+     *
+     * @param current 当前页
+     * @param size 每页数据数
+     * @return Result
+     */
+    Result getNoArticleList(int current, int size);
     /**
      * 审核未通过
      *
@@ -42,14 +66,6 @@ public interface AdminArticleService {
      * @return Result
      */
     Result isExaminedArticle(PostId id);
-
-    /**
-     * 获取审核未通过的文章
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    Result getNoArticle(String id);
 
     /**
      * 删除所有未通过审核的文章

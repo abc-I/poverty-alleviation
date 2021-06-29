@@ -3,6 +3,10 @@ package com.poverty.controller;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.AdminArticleService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -13,7 +17,12 @@ import javax.annotation.Resource;
  * @date Created in 2021/6/28 9:07
  */
 @RestController
+@RequiresRoles(value = {"administrator", "admin"}, logical = Logical.OR)
 @RequestMapping("/admin")
+@ApiImplicitParams(value = {
+        @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+})
 public class AdminArticleController {
 
     @Resource
@@ -32,6 +41,17 @@ public class AdminArticleController {
     }
 
     /**
+     * 获取未审核的文章
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    @GetMapping("/getNotArticle/{id}")
+    public Result getNotArticle(@PathVariable String id) {
+        return administratorService.getNotArticle(id);
+    }
+
+    /**
      * 获取所有已通过审核的文章
      *
      * @param current 当前页
@@ -41,6 +61,29 @@ public class AdminArticleController {
     @GetMapping("/getIsArticleList/{current}/{size}")
     public Result getIsArticleList(@PathVariable int current,@PathVariable int size) {
         return administratorService.getIsArticleList(current, size);
+    }
+
+    /**
+     * 获取审核通过的文章
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    @GetMapping("/getIsArticle/{id}")
+    public Result getIsArticle(@PathVariable String id) {
+        return administratorService.getIsArticle(id);
+    }
+
+    /**
+     * 获取所有未通过审核的文章
+     *
+     * @param current 当前页
+     * @param size 每页总数
+     * @return Result
+     */
+    @GetMapping("/getNoArticleList/{current}/{size}")
+    public Result getNoArticleList(@PathVariable int current, @PathVariable int size) {
+        return administratorService.getNoArticleList(current, size);
     }
 
     /**
@@ -66,17 +109,6 @@ public class AdminArticleController {
     }
 
     /**
-     * 获取未通过审核的文章
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @GetMapping("/getNoArticle/{id}")
-    public Result getNoArticle(@PathVariable String id) {
-        return administratorService.getNoArticle(id);
-    }
-
-    /**
      * 删除所有未通过审核的文章
      *
      * @return Result
@@ -85,5 +117,4 @@ public class AdminArticleController {
     public Result deleteNoExamined() {
         return administratorService.deleteNoExamined();
     }
-
 }

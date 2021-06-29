@@ -27,17 +27,23 @@
 
     <select id="countNotExamined" resultType="java.lang.Integer">
         select count(*)
-        from `t_count`.`is_examined` = 0;
+        from `t_count`
+        where `is_examined` = -1;
     </select>
 
     <select id="countIsExamined" resultType="java.lang.Integer">
         select count(*)
-        from `t_count`.`is_examined`=1;
+        from `t_count`
+        where `is_examined` = 1;
     </select>
 
     <select id="selectIdsByNoExamined" resultType="java.lang.String">
         select `id`
         from `t_count`
-        where `is_examined` = -1;
+        where `is_examined` = 0;
+    </select>
+
+    <select id="countNoExamined" resultType="java.lang.Integer">
+        select count(*) from `t_count` where `is_examined`=0
     </select>
 </mapper>

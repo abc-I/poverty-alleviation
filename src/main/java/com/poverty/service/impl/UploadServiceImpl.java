@@ -4,16 +4,11 @@ import com.poverty.util.PathUtil;
 import com.poverty.service.UploadService;
 import com.spire.doc.Document;
 import com.spire.doc.FileFormat;
-import com.spire.doc.Section;
-import com.spire.doc.collections.SectionCollection;
-import com.spire.doc.documents.Paragraph;
-import com.spire.doc.fields.DocPicture;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.*;
-import java.nio.file.Files;
 import java.util.UUID;
 
 /**
@@ -74,6 +69,10 @@ public class UploadServiceImpl implements UploadService {
         // docx保存位置
         String docxBase = pathUtil.getDocxPath();
         String htmlBase = pathUtil.getHtmlPath();
+        File html = new File(htmlBase);
+        if (!html.exists()) {
+            html.mkdirs();
+        }
 
         // 保存docx文件，获取文件名
         String fileName = upload(file, docxBase);

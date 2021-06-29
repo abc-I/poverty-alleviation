@@ -23,5 +23,7 @@ public interface CountMapper {
 
     int countIsExamined();
 
+    int countNoExamined();
+
     List<String> selectIdsByNoExamined();
 }

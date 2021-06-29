@@ -21,4 +21,8 @@ public interface ArticleMapper {
     boolean deleteArticleByIds(List<String> ids);
 
     ArticleVO selectNotExaminedArticleById(String id);
+
+    ArticleVO selectArticleById(String id);
+
+    List<ArticlesVO> selectNoExaminedArticleList(int start, int end);
 }

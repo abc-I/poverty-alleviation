@@ -1,6 +1,5 @@
 package com.poverty.service.impl;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.entity.vo.ArticleVO;
@@ -49,6 +48,18 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     }
 
     /**
+     * 获取未审核的文章
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    @Override
+    public Result getNotArticle(String id) {
+        ArticleVO articleVO = articleMapper.selectNotExaminedArticleById(id);
+        return Result.result200(articleVO);
+    }
+
+    /**
      * 获取通过审核的文章列表
      *
      * @param current 当前页
@@ -63,6 +74,35 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         List<ArticlesVO> articles = articleMapper.selectIsExaminedArticleList(start,end);
         int total = countMapper.countIsExamined();
 
+        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
+    }
+
+    /**
+     * 获取通过审核的文章
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    @Override
+    public Result getIsArticle(String id) {
+        ArticleVO articleVO = articleMapper.selectArticleById(id);
+        return Result.result200(articleVO);
+    }
+
+    /**
+     * 获取所有审核未通过的文章
+     *
+     * @param current 当前页
+     * @param size 每页数据数
+     * @return Result
+     */
+    @Override
+    public Result getNoArticleList(int current, int size) {
+        int start = PageUtil.getStart(current, size);
+        int end = PageUtil.getEnd(current, size);
+
+        List<ArticlesVO> articles = articleMapper.selectNoExaminedArticleList(start, end);
+        int total = countMapper.countNoExamined();
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
     }
 
@@ -97,18 +137,6 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     }
 
     /**
-     * 获取审核未通过的文章
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @Override
-    public Result getNoArticle(String id) {
-        ArticleVO articleVO = articleMapper.selectNotExaminedArticleById(id);
-        return Result.result200(articleVO);
-    }
-
-    /**
      * 删除所有审核未通过的文章
      *
      * @return Result
@@ -117,6 +145,9 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     public Result deleteNoExamined() {
         try {
             List<String> ids = countMapper.selectIdsByNoExamined();
+            if (ids.size() <= 0) {
+                return Result.result200("删除完成！");
+            }
             if (articleMapper.deleteArticleByIds(ids) && countMapper.deleteByIds(ids)) {
                 return Result.result200("删除成功！");
             }
