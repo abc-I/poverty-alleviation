@@ -6,9 +6,7 @@ import com.poverty.entity.po.Carousel;
 import com.poverty.service.CarouselService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,7 +18,6 @@ import java.util.List;
  */
 @RestController("/Carousel")
 @Api(tags = "轮播图接口")
-@CrossOrigin
 public class CarouselController {
     @Resource
     private CarouselService carouselService;
@@ -32,7 +29,7 @@ public class CarouselController {
     }
 
     @ApiOperation("删除轮播图")
-    @PostMapping("/Carousel/deleteCarousel")
+    @DeleteMapping("/Carousel/deleteCarousel")
     public Result deleteCarousel(String carouselID) {
         return carouselService.deleteCarousel(carouselID);
     }
@@ -44,8 +41,8 @@ public class CarouselController {
     }
 
     @ApiOperation("查询轮播图")
-    @PostMapping("/Carousel/selectCarousel")
-    public List<CarouselDTO>selectCarousel(){
+    @GetMapping("/Carousel/selectCarousel")
+    public List<CarouselDTO> selectCarousel(){
         return  carouselService.selectCarousel();
     }
 }

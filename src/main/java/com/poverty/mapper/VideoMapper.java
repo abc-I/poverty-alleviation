@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.po.Video;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,4 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface VideoMapper {
+    int insertVideo(Video video);
+
+    int deleteVideo(String id);
+
+    int selectVideo(Video video);
 }
