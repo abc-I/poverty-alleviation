@@ -14,15 +14,54 @@ import java.util.List;
  */
 @Mapper
 public interface ArticleMapper {
+    /**
+     * 获取未审核的文章列表
+     *
+     * @param start 第一个index
+     * @param end 最后一个index
+     * @return List<ArticlesVO>
+     */
     List<ArticlesVO> selectNotExaminedArticleList(int start, int end);
 
+    /**
+     * 获取审核通过的文章列表
+     *
+     * @param start 第一个index
+     * @param end 最后一个index
+     * @return List<ArticlesVO>
+     */
     List<ArticlesVO> selectIsExaminedArticleList(int start, int end);
 
+    /**
+     * 通过文章id删除文章
+     *
+     * @param ids id列表
+     * @return boolean
+     */
     boolean deleteArticleByIds(List<String> ids);
 
+    /**
+     * 获取未审核的文章
+     *
+     * @param id 文章id
+     * @return ArticleVO
+     */
     ArticleVO selectNotExaminedArticleById(String id);
 
+    /**
+     * 通过文章id获取审核通过的文章文章
+     *
+     * @param id 文章id
+     * @return ArticleVO
+     */
     ArticleVO selectArticleById(String id);
 
+    /**
+     * 获取审核未通过的文章列表
+     *
+     * @param start 第一个index
+     * @param end 最后一个index
+     * @return List<ArticleVO>
+     */
     List<ArticlesVO> selectNoExaminedArticleList(int start, int end);
 }
