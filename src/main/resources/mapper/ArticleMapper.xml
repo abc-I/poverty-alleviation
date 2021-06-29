@@ -9,20 +9,6 @@
                  inner join `t_count` as `c`
                             on `c`.`id` = `art`.`id`
     </sql>
-    <sql id="selectArticle">
-        select `art`.`id`,
-               `art`.`title`,
-               `art`.`article_url`,
-               `art`.`create_time`,
-               `info`.`username`,
-               `c`.`recommend`,
-               `c`.`be_liked`
-        from `t_article` as `art`
-                 inner join `t_user_information` as `info`
-                            on `art`.`author_id` = `info`.`id`
-                 inner join `t_count` as `c`
-                            on `c`.`id` = `art`.`id`
-    </sql>
 
     <delete id="deleteArticleByIds" parameterType="list">
         delete
@@ -53,13 +39,19 @@
         LIMIT #{start},#{end};
     </select>
 
-    <select id="selectNotExaminedArticleById" resultType="com.poverty.entity.vo.ArticleVO">
-        <include refid="selectArticle"/>
-        where `art`.`id` = #{id} and `c`.`is_examined` = -1;
-    </select>
-
-    <select id="selectIsExaminedArticleById" resultType="com.poverty.entity.vo.ArticleVO">
-        <include refid="selectArticle"/>
-        where `art`.`id` = #{id} and `c`.`is_examined` = 1;
+    <select id="getArticleById" resultType="com.poverty.entity.vo.ArticleVO">
+        select `art`.`id`,
+               `art`.`title`,
+               `art`.`article_url`,
+               `art`.`create_time`,
+               `info`.`username`,
+               `c`.`recommend`,
+               `c`.`be_liked`
+        from `t_article` as `art`
+                 inner join `t_user_information` as `info`
+                            on `art`.`author_id` = `info`.`id`
+                 inner join `t_count` as `c`
+                            on `c`.`id` = `art`.`id`
+        where `art`.`id` = #{id};
     </select>
 </mapper>

@@ -40,22 +40,6 @@ public interface ArticleMapper {
     boolean deleteArticleByIds(List<String> ids);
 
     /**
-     * 获取未审核的文章
-     *
-     * @param id 文章id
-     * @return ArticleVO
-     */
-    ArticleVO selectNotExaminedArticleById(String id);
-
-    /**
-     * 通过文章id获取审核通过的文章文章
-     *
-     * @param id 文章id
-     * @return ArticleVO
-     */
-    ArticleVO selectIsExaminedArticleById(String id);
-
-    /**
      * 获取审核未通过的文章列表
      *
      * @param start 第一个index
@@ -63,4 +47,12 @@ public interface ArticleMapper {
      * @return List<ArticleVO>
      */
     List<ArticlesVO> selectNoExaminedArticleList(int start, int end);
+
+    /**
+     * 通过id获取文章
+     *
+     * @param id 文章id
+     * @return ArticleVO
+     */
+    ArticleVO getArticleById(String id);
 }

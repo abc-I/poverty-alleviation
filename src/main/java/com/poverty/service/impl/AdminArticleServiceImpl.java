@@ -47,18 +47,6 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     }
 
     /**
-     * 获取未审核的文章
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @Override
-    public Result getNotArticle(String id) {
-        ArticleVO articleVO = articleMapper.selectNotExaminedArticleById(id);
-        return Result.result200(articleVO);
-    }
-
-    /**
      * 获取通过审核的文章列表
      *
      * @param current 当前页
@@ -74,18 +62,6 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         int total = countMapper.countIsExaminedArticle();
 
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
-    }
-
-    /**
-     * 获取通过审核的文章
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @Override
-    public Result getIsArticle(String id) {
-        ArticleVO articleVO = articleMapper.selectIsExaminedArticleById(id);
-        return Result.result200(articleVO);
     }
 
     /**
@@ -125,5 +101,17 @@ public class AdminArticleServiceImpl implements AdminArticleService {
             e.printStackTrace();
             return Result.result500("删除失败！");
         }
+    }
+
+    /**
+     * 通过文章id获取文章
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    @Override
+    public Result getArticleById(String id) {
+        ArticleVO articleVO = articleMapper.getArticleById(id);
+        return Result.result200(articleVO);
     }
 }

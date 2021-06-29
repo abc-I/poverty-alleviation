@@ -46,18 +46,6 @@ public class AdminVideoServiceImpl implements AdminVideoService {
     }
 
     /**
-     * 获取未审核的视频
-     *
-     * @param id 视频id
-     * @return Result
-     */
-    @Override
-    public Result getNotVideo(String id) {
-        VideoVO videoVO = videoMapper.selectNotExaminedVideoById(id);
-        return Result.result200(videoVO);
-    }
-
-    /**
      * 获取审核通过的视频列表
      *
      * @param current 当前页数
@@ -76,18 +64,6 @@ public class AdminVideoServiceImpl implements AdminVideoService {
     }
 
     /**
-     * 获取通过审核的视频
-     *
-     * @param id 视频id
-     * @return Result
-     */
-    @Override
-    public Result getIsVideo(String id) {
-        VideoVO videoVO = videoMapper.selectIsExaminedVideoById(id);
-        return Result.result200(videoVO);
-    }
-
-    /**
      * 获取未通过审核的视频列表
      *
      * @param current 当前页
@@ -103,5 +79,17 @@ public class AdminVideoServiceImpl implements AdminVideoService {
         int total = countMapper.countNoExaminedVideo();
 
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
+    }
+
+    /**
+     * 通过id获取视频
+     *
+     * @param id 视频id
+     * @return Result
+     */
+    @Override
+    public Result getVideoById(String id) {
+        VideoVO videoVO = videoMapper.selectVideoById(id);
+        return Result.result200(videoVO);
     }
 }

@@ -11,8 +11,10 @@ import javax.annotation.Resource;
 
 @Service
 public class VideoServiceImpl implements VideoService {
+
     @Resource
     private VideoMapper videoMapper;
+
     @Override
     public Result insertVideo(Video video) {
        int insertVideo = videoMapper.insertVideo(video);
