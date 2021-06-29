@@ -34,6 +34,11 @@ public class SignUp implements Serializable {
     private String email;
 
     /**
+     * 生日
+     */
+    private String birthday;
+
+    /**
      * 身份证号
      */
     private String idCard;

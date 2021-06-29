@@ -1,4 +1,4 @@
-package com.poverty.configure;
+package com.poverty.util;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -17,4 +17,5 @@ public class PathUtil {
     private String imagePath;
     private String videoPath;
     private String docxPath;
+    private String baseUrl;
 }

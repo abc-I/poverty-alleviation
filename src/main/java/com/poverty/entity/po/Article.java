@@ -37,6 +37,17 @@ public class Article implements Serializable {
     private String articleUrl;
 
     /**
+     * 文字部分内容
+     */
+    @TableField(value = "text")
+    private String text;
+
+    /**
+     * 图片url
+     */
+    private String pictureUrl;
+
+    /**
      * 作者id
      */
     @TableField(value = "author_id")

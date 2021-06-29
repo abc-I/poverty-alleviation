@@ -49,6 +49,12 @@ public class UserInformation implements Serializable {
     private String email;
 
     /**
+     * 生日
+     */
+    @TableField(value = "birthday")
+    private String birthday;
+
+    /**
      * 身份证号
      */
     @TableField(value = "idCard")
@@ -75,7 +81,7 @@ public class UserInformation implements Serializable {
     private Date modifyTime;
 
     public UserInformation(String id,String username,String realName,String phone,
-                           String email,String idCard,String address) {
+                           String email,String idCard,String address,String birthday) {
         this.id = id;
         this.username = username;
         this.realName = realName;
@@ -83,5 +89,6 @@ public class UserInformation implements Serializable {
         this.email = email;
         this.idCard = idCard;
         this.address = address;
+        this.birthday = birthday;
     }
 }

@@ -2,5 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.poverty.mapper.CountMapper">
+    <update id="updateIsExaminedById">
+        update `t_count`
+        set `is_examined` = 1
+        where `id` = #{id};
+    </update>
 
+    <update id="updateNoExaminedById">
+        update `t_count`
+        set `is_examined` = 0
+        where `id` = #{id};
+    </update>
+
+    <delete id="deleteByIds">
+        delete
+        from `t_count`
+        <where>
+            `id` in
+            <foreach collection="ids" item="id" open="(" close=")" separator="," index="">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+
+    <select id="countNotExamined" resultType="java.lang.Integer">
+        select count(*)
+        from `t_count`.`is_examined` = 0;
+    </select>
+
+    <select id="countIsExamined" resultType="java.lang.Integer">
+        select count(*)
+        from `t_count`.`is_examined`=1;
+    </select>
+
+    <select id="selectIdsByNoExamined" resultType="java.lang.String">
+        select `id`
+        from `t_count`
+        where `is_examined` = -1;
+    </select>
 </mapper>

@@ -3,4 +3,49 @@
 
 <mapper namespace="com.poverty.mapper.ArticleMapper">
 
+    <sql id="selectArticle">
+        select `art`.`id`, `art`.`title`, `art`.`text`, `art`.`pictureUrl`, `c`.`recommend`, `c`.`be_liked`
+        from `t_article` as `art`
+                 inner join `t_count` as `c`
+                            on `c`.`id` = `art`.`id`
+    </sql>
+
+    <delete id="deleteArticleByIds">
+        delete
+        from `t_article`
+        <where>
+            `id` in
+            <foreach collection="ids" item="id" open="(" close=")" separator="," index="">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+
+    <select id="selectNotExaminedArticleList" resultType="com.poverty.entity.vo.ArticlesVO">
+        <include refid="selectArticle"/>
+        where `c`.`is_examined` = -1
+        LIMIT #{start},#{end};
+    </select>
+
+    <select id="selectIsExaminedArticleList" resultType="com.poverty.entity.vo.ArticlesVO">
+        <include refid="selectArticle"/>
+        where `c`.`is_examined` = 1
+        LIMIT #{start},#{end};
+    </select>
+
+    <select id="selectNotExaminedArticleById" resultType="com.poverty.entity.vo.ArticleVO">
+        select `art`.`id`,
+               `art`.`title`,
+               `art`.`articleUrl`,
+               `art`.`create_time`,
+               `info`.`username`,
+               `c`.`recommend`,
+               `c`.`be_licked`
+        from `t_article` as `art`
+                 inner join `t_user_information` as `info`
+                            on `art`.`author_id` = `info`.`id`
+                 inner join `t_count` as `c`
+                            on `c`.`id` = `art`.`id`
+        where `art`.`id` = #{id} and `c`.`is_examined` = 0;
+    </select>
 </mapper>

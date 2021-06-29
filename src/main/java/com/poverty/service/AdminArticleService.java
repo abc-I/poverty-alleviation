@@ -1,0 +1,60 @@
+package com.poverty.service;
+
+import com.poverty.entity.Result;
+import com.poverty.entity.dto.PostId;
+
+/**
+ * @author Li
+ * @version 1.0
+ * @date Created in 2021/6/28 9:10
+ */
+public interface AdminArticleService {
+    /**
+     * 获取未审核的文章列表
+     *
+     * @param current 当前页
+     * @param size 每页数据数
+     * @return Result
+     */
+    Result getNotArticleList(int current, int size);
+
+    /**
+     * 获取通过审核的文章列表
+     *
+     * @param current 当前页
+     * @param size 每页数据数
+     * @return Result
+     */
+    Result getIsArticleList(int current, int size);
+
+    /**
+     * 审核未通过
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    Result noExaminedArticle(PostId id);
+
+    /**
+     * 审核通过
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    Result isExaminedArticle(PostId id);
+
+    /**
+     * 获取审核未通过的文章
+     *
+     * @param id 文章id
+     * @return Result
+     */
+    Result getNoArticle(String id);
+
+    /**
+     * 删除所有未通过审核的文章
+     *
+     * @return Result
+     */
+    Result deleteNoExamined();
+}

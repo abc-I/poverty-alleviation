@@ -14,7 +14,7 @@ public class PostId implements Serializable {
     private static final long serialVersionUID = 7699205756645688693L;
 
     /**
-     * 用户id
+     * id
      */
     private String id;
 }

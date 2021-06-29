@@ -33,7 +33,7 @@ public interface LoginService {
      * 注册用户
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码","birthday":"生日"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws  Exception 注册异常
      */
@@ -43,7 +43,7 @@ public interface LoginService {
      * 注册管理员
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码","birthday":"生日"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws Exception 注册异常
      */

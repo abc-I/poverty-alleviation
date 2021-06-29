@@ -1,6 +1,6 @@
 package com.poverty.service.impl;
 
-import com.poverty.configure.PathUtil;
+import com.poverty.util.PathUtil;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.Login;
 import com.poverty.entity.dto.PostId;
@@ -105,7 +105,7 @@ public class LoginServiceImpl implements LoginService {
      * 注册用户
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码","birthday":"生日"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws Exception 注册异常
      */
@@ -118,7 +118,7 @@ public class LoginServiceImpl implements LoginService {
      * 注册管理员
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码","birthday":"生日"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws Exception 注册异常
      */
@@ -158,7 +158,7 @@ public class LoginServiceImpl implements LoginService {
      * 保存用户信息
      *
      * @param signUp JSON{"username":"用户名","realName":"真名","phone":"电话号","email":"邮箱",
-     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码"}
+     *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码","birthday":"生日"}
      * @param s 权限名
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      * @throws Exception 保存信息异常
@@ -195,7 +195,7 @@ public class LoginServiceImpl implements LoginService {
             // 封装用户信息
             UserInformation userInformation =
                     new UserInformation(userId, signUp.getUsername(), signUp.getRealName(), signUp.getPhone(),
-                            email, signUp.getIdCard(), signUp.getAddress());
+                            email, signUp.getIdCard(), signUp.getAddress(), signUp.getBirthday());
 
             // 保存用户信息
             int len = userInformationMapper.insertOne(userInformation);

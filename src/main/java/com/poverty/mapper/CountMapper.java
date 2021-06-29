@@ -1,6 +1,10 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.Result;
+import com.poverty.entity.dto.PostId;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author Li
@@ -9,4 +13,15 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CountMapper {
+    boolean deleteByIds(List<String> ids);
+
+    boolean updateIsExaminedById(PostId id);
+
+    boolean updateNoExaminedById(PostId id);
+
+    int countNotExamined();
+
+    int countIsExamined();
+
+    List<String> selectIdsByNoExamined();
 }
