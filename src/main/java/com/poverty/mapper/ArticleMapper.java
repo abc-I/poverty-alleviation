@@ -1,6 +1,5 @@
 package com.poverty.mapper;
 
-import com.poverty.entity.dto.PostId;
 import com.poverty.entity.vo.ArticleVO;
 import com.poverty.entity.vo.ArticlesVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -54,7 +53,7 @@ public interface ArticleMapper {
      * @param id 文章id
      * @return ArticleVO
      */
-    ArticleVO selectArticleById(String id);
+    ArticleVO selectIsExaminedArticleById(String id);
 
     /**
      * 获取审核未通过的文章列表

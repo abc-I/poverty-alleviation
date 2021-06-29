@@ -1,7 +1,6 @@
 package com.poverty.service.impl;
 
 import com.poverty.entity.Result;
-import com.poverty.entity.dto.PostId;
 import com.poverty.entity.vo.ArticleVO;
 import com.poverty.entity.vo.ArticlesVO;
 import com.poverty.mapper.ArticleMapper;
@@ -42,7 +41,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         int end = PageUtil.getEnd(current, size);
 
         List<ArticlesVO> articles = articleMapper.selectNotExaminedArticleList(start, end);
-        int total = countMapper.countNotExamined();
+        int total = countMapper.countNotExaminedArticle();
 
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
     }
@@ -72,7 +71,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         int end = PageUtil.getEnd(current, size);
 
         List<ArticlesVO> articles = articleMapper.selectIsExaminedArticleList(start,end);
-        int total = countMapper.countIsExamined();
+        int total = countMapper.countIsExaminedArticle();
 
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
     }
@@ -85,7 +84,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
      */
     @Override
     public Result getIsArticle(String id) {
-        ArticleVO articleVO = articleMapper.selectArticleById(id);
+        ArticleVO articleVO = articleMapper.selectIsExaminedArticleById(id);
         return Result.result200(articleVO);
     }
 
@@ -102,38 +101,8 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         int end = PageUtil.getEnd(current, size);
 
         List<ArticlesVO> articles = articleMapper.selectNoExaminedArticleList(start, end);
-        int total = countMapper.countNoExamined();
+        int total = countMapper.countNoExaminedArticle();
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
-    }
-
-    /**
-     * 审核未通过
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @Override
-    public Result noExaminedArticle(PostId id) {
-        if (countMapper.updateNoExaminedById(id)) {
-            return Result.result200("驳回成功！");
-        } else {
-            return Result.result500("驳回失败！");
-        }
-    }
-
-    /**
-     * 审核通过
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @Override
-    public Result isExaminedArticle(PostId id) {
-        if (countMapper.updateIsExaminedById(id)) {
-            return Result.result200("审核通过！");
-        } else {
-            return Result.result500("审核出错！");
-        }
     }
 
     /**
@@ -142,9 +111,9 @@ public class AdminArticleServiceImpl implements AdminArticleService {
      * @return Result
      */
     @Override
-    public Result deleteNoExamined() {
+    public Result deleteNoExaminedArticle() {
         try {
-            List<String> ids = countMapper.selectIdsByNoExamined();
+            List<String> ids = countMapper.selectArticleIdsByNoExamined();
             if (ids.size() <= 0) {
                 return Result.result200("删除完成！");
             }

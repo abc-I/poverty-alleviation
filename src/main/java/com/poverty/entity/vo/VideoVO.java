@@ -7,31 +7,36 @@ import java.io.Serializable;
 /**
  * @author Li
  * @version 1.0
- * @date Created in 2021/6/28 9:15
+ * @date Created in 2021/6/29 13:03
  */
 @Data
-public class ArticlesVO implements Serializable {
-    private static final long serialVersionUID = -1010822801619179404L;
+public class VideoVO implements Serializable {
+    private static final long serialVersionUID = 7467192327123762225L;
 
     /**
-     * 文章id
+     * 视频id
      */
     private String id;
 
     /**
-     * 文章标题
+     * 视频标题
      */
     private String title;
 
     /**
-     * 文章部分内容
+     * 视频url
      */
-    private String text;
+    private String videoUrl;
 
     /**
-     * 图片url
+     * 用户名
      */
-    private String pictureUrl;
+    private String username;
+
+    /**
+     * 创建时间
+     */
+    private String createTime;
 
     /**
      * 收藏数

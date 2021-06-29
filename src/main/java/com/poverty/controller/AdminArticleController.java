@@ -3,6 +3,7 @@ package com.poverty.controller;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.AdminArticleService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.apache.shiro.authz.annotation.Logical;
@@ -87,34 +88,12 @@ public class AdminArticleController {
     }
 
     /**
-     * 设置文章审核未通过
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @PostMapping("/noExaminedArticle")
-    public Result noExamineArticle(@RequestBody PostId id) {
-        return administratorService.noExaminedArticle(id);
-    }
-
-    /**
-     * 设置文章审核通过
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @PostMapping("/isExaminedArticle")
-    public Result isExamineArticle(@RequestBody PostId id) {
-        return administratorService.isExaminedArticle(id);
-    }
-
-    /**
      * 删除所有未通过审核的文章
      *
      * @return Result
      */
     @DeleteMapping("/deleteNoExamined")
     public Result deleteNoExamined() {
-        return administratorService.deleteNoExamined();
+        return administratorService.deleteNoExaminedArticle();
     }
 }
