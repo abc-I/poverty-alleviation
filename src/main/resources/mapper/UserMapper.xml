@@ -3,12 +3,42 @@
 
 <mapper namespace="com.poverty.mapper.UserMapper">
 
+    <sql id="select">
+        select `user`.`id`, `user`.`account`, `user`.`is_locked`, `info`.`username`, `info`.`email`
+        from `t_user` as `user`
+                 inner join `t_user_information` as `info`
+                            on `user`.`id` = `info`.`id`
+                 inner join `t_user_role` as `ur`
+                            on `ur`.`user_id`=`info`.`id`
+                                   and `ur`.`role_id` = 'cb5f11d5c13e47c38d211e0e3b8806fb'
+    </sql>
+
+    <sql id="locked">
+        select count(*)
+        from `t_user` as `user`
+                 inner join `t_user_role` as `ur`
+                            on `ur`.`user_id`=`user`.`id`
+                                and `ur`.`role_id`='cb5f11d5c13e47c38d211e0e3b8806fb'
+    </sql>
+
     <insert id="insertOne">
         insert into `t_user`
             (`id`, `account`, `password`, `salt`)
         values
             (#{id}, #{account}, #{password}, #{salt});
     </insert>
+
+    <update id="updateNotLockedById">
+        update `t_user`
+        set `is_locked` = 0
+        where `id` = #{id};
+    </update>
+
+    <update id="updateLockedById">
+        update `t_user`
+        set `is_locked`=1
+        where `id` = #{id};
+    </update>
 
     <select id="selectOne" resultType="com.poverty.entity.po.User">
         select *
@@ -20,5 +50,51 @@
         select `id`
         from `t_user`
         where `account` = #{account};
+    </select>
+
+    <select id="selectNotLockedUserList" resultType="com.poverty.entity.vo.UsersVO">
+        <include refid="select"/>
+        where `user`.`is_locked` = 0 LIMIT #{start}, #{end};
+    </select>
+
+    <select id="countNotLockedUser" resultType="java.lang.Integer">
+        <include refid="locked"/>
+        where `is_locked` = 0;
+    </select>
+
+    <select id="selectIsLockedUserList" resultType="com.poverty.entity.vo.UsersVO">
+        <include refid="select"/>
+        where `user`.`is_locked` = 1 LIMIT #{start}, #{end};
+    </select>
+
+    <select id="countIsLockedUser" resultType="java.lang.Integer">
+        <include refid="locked"/>
+        where `is_locked` = 1;
+    </select>
+
+    <select id="selectById" resultType="com.poverty.entity.vo.UsersVO">
+        <include refid="select"/>
+        where `user`.`id` = #{id};
+    </select>
+
+    <select id="selectByUsername" resultType="com.poverty.entity.vo.UsersVO">
+        <include refid="select"/>
+        where `user`.`username` like "%"#{username}"%";
+    </select>
+
+    <select id="selectLockedById" resultType="java.lang.Boolean">
+        select `is_locked`
+        from `t_user`
+        where `id` = #{id};
+    </select>
+
+    <select id="selectAdminList" resultType="com.poverty.entity.vo.UsersVO">
+        select `user`.`id`, `user`.`account`, `user`.`is_locked`, `info`.`username`, `info`.`email`
+        from `t_user` as `user`
+                 inner join `t_user_information` as `info`
+                            on `user`.`id` = `info`.`id`
+                 inner join `t_user_role` as `ur`
+                            on `ur`.`user_id`=`info`.`id`
+                                and `ur`.`role_id` = '79d689bcdda4422981b29b8e3cc8ec46'
     </select>
 </mapper>

@@ -9,4 +9,22 @@
         values
             (#{userId}, #{roleId});
     </insert>
+
+    <update id="updateAdminRoleById">
+        update `t_user_role`
+        set `ur`.`role_id`='79d689bcdda4422981b29b8e3cc8ec46'
+        where `user_id` = #{id};
+    </update>
+
+    <update id="updateUserRoleById">
+        update `t_user_role`
+        set `ur`.`role_id`='cb5f11d5c13e47c38d211e0e3b8806fb'
+        where `user_id` = #{id};
+    </update>
+
+    <select id="countAdmin" resultType="java.lang.Integer">
+        select count(*)
+        from `t_user_role`
+        where `user_id` = '79d689bcdda4422981b29b8e3cc8ec46';
+    </select>
 </mapper>
