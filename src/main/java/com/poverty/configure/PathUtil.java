@@ -16,4 +16,5 @@ public class PathUtil {
     private String htmlPath;
     private String imagePath;
     private String videoPath;
+    private String docxPath;
 }

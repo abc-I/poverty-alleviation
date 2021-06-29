@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
-import java.io.IOException;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -132,16 +132,19 @@ public class LoginServiceImpl implements LoginService {
      *
      * @param email 邮件地址
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
-     * @throws IOException IO异常
-     * @throws MessagingException 消息异常
      */
     @Override
-    public Result getCode(String email) throws IOException, MessagingException {
+    public Result getCode(String email) throws MessagingException {
         String message = mailUtil.readerHtml(pathUtil.getHtmlPath() + "code.html");
-        String code = UUID.randomUUID().toString().substring(0, 9);
-        System.out.println(message.replace("code", code));
 
-        mailUtil.sendMail(message.replace("code", code), email);
+        String code = UUID.randomUUID().toString()
+                .replace("-", "").substring(0, 9);
+
+        String[] to = new String[1];
+        to[0] = email;
+
+        mailUtil.sendFileAndImgMail("注册验证码", to, null, null,
+                new Date(), message.replace("code", code), null, null);
 
         long time = 60;
         if (JedisUtil.set(email, code, time)) {
