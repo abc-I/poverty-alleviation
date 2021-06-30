@@ -92,7 +92,7 @@ public class AdminUserController {
      * @return Result
      */
     @PostMapping("/locked")
-    public Result locked(PostId id) {
+    public Result locked(@RequestBody PostId id) {
         return adminUserService.locked(id);
     }
 }
