@@ -3,4 +3,13 @@
 
 <mapper namespace="com.poverty.mapper.CollectionMapper">
 
+    <insert id="insertCollection" parameterType="com.poverty.entity.dto.CollectionDTO">
+        insert into t_collection (user_id,article_id,video_id)
+        values (#{userId},#{articleId},#{userId})
+    </insert>
+    <delete id="deleteCollection" parameterType="com.poverty.entity.dto.CollectionDTO">
+        delete user_id,article_id,video_id from t_collection
+        where user_id=#{userId},acticle_id=#{acticleId},video_id=#{videoId}
+    </delete>
+
 </mapper>

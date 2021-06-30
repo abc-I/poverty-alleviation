@@ -35,7 +35,7 @@ public class Collection implements Serializable {
     /**
      * 视频id
      */
-    @TableField(value = "video_url")
+    @TableField(value = "video_id")
     private String videoUrl;
 
     /**

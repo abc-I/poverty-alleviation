@@ -39,7 +39,7 @@ public class VideoVO implements Serializable {
     private String createTime;
 
     /**
-     * 收藏数
+     * 被点击数
      */
     private Integer recommend;
 

@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.dto.PostId;
 import com.poverty.entity.dto.VideoDTO;
 import com.poverty.entity.po.Video;
 import com.poverty.entity.vo.CarouselVO;
@@ -16,11 +17,15 @@ import java.util.List;
  */
 @Mapper
 public interface VideoMapper {
-    int insertVideo(VideoDTO videoDTO);
+    int insertVideo(Video videoDTO);
 
-    int deleteVideo(String id);
+    int deleteVideo(PostId id);
 
-    List<VideosVO> selectAllVideo();
+    VideoVO selectVideoById(String id);
 
-    VideoVO seleteVideoById(String id);
+    List<VideosVO> selectIsExaminedVideoList(int start, int end);
+
+    List<VideosVO> selectNoExaminedVideoList(int start, int end);
+
+    List<VideosVO> selectNotExaminedVideoList(int start, int end);
 }

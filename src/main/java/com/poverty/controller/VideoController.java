@@ -1,6 +1,7 @@
 package com.poverty.controller;
 
 import com.poverty.entity.Result;
+import com.poverty.entity.dto.PostId;
 import com.poverty.entity.dto.VideoDTO;
 import com.poverty.entity.po.Video;
 import com.poverty.entity.vo.VideoVO;
@@ -29,7 +30,7 @@ public class VideoController {
      */
     @PostMapping("/insetVideo")
     @ApiOperation("添加视频")
-    public Result insertVideo(VideoDTO videoDTO){
+    public Result insertVideo(@RequestPart VideoDTO videoDTO){
         return videoService.insertVideo(videoDTO);
     }
     /**
@@ -40,7 +41,7 @@ public class VideoController {
      */
     @DeleteMapping("/deleteVideo")
     @ApiOperation("删除视频")
-    public Result deleteVideo(String id){
+    public Result deleteVideo(PostId id){
         return videoService.deleteVideo(id);
     }
     /**
@@ -48,10 +49,10 @@ public class VideoController {
      *
      * @return Result
      */
-    @GetMapping("/selectAllVideo")
+    @GetMapping("/selectAllVideo/{current}/{size}")
     @ApiOperation("查询所有视频")
-    public Result selectAllVideo(){
-        return videoService.selectAllVideo();
+    public Result selectAllVideo(@PathVariable int current,@PathVariable int size){
+        return videoService.selectAllVideo(current, size);
     }
     /**
      * 查询轮播图
@@ -59,10 +60,10 @@ public class VideoController {
      * @param id 轮播图id
      * @return Result
      */
-    @GetMapping("/selectVideoById")
+    @GetMapping("/selectVideoById/{id}/{userId}")
     @ApiOperation("查询视频")
-    public Result selectVideoById(String id){
-       return videoService.selectVideoById(id);
+    public Result selectVideoById(@PathVariable String id,@PathVariable String userId){
+       return videoService.selectVideoById(id,userId);
     }
 
 

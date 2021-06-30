@@ -12,11 +12,6 @@ public class VideoDTO implements Serializable {
 
     private static final long serialVersionUID = 1492063000742158669L;
 
-    /**
-     * 主键(UUID)
-     */
-    @TableId(value = "id", type = IdType.ASSIGN_UUID)
-    private String id;
 
     /**
      * 标题
@@ -37,8 +32,8 @@ public class VideoDTO implements Serializable {
     private String pictureUrl;
 
     /**
-     * 作者id
+     *
      */
-    @TableField(value = "author_id")
-    private String authorId;
+    @TableField(value = "account")
+    private String account;
 }
