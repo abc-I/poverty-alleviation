@@ -7,7 +7,7 @@ import com.poverty.mapper.CountMapper;
 import com.poverty.mapper.VideoMapper;
 import com.poverty.service.AdminVideoService;
 import com.poverty.util.PageUtil;
-import org.bearer.entity.vo.Page;
+import com.poverty.entity.vo.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
