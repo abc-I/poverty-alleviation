@@ -7,7 +7,7 @@ import com.poverty.mapper.ArticleMapper;
 import com.poverty.mapper.CountMapper;
 import com.poverty.service.AdminArticleService;
 import com.poverty.util.PageUtil;
-import org.bearer.entity.vo.Page;
+import com.poverty.entity.vo.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
