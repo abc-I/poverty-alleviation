@@ -1,4 +1,4 @@
-package org.bearer.entity.vo;
+package com.poverty.entity.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
