@@ -119,4 +119,12 @@ public interface UserMapper {
      * @return List<UsersVO>
      */
     List<UsersVO> selectAdminList(int start, int end);
+
+    /**
+     * 通过账号查询用户
+     *
+     * @param account 账号
+     * @return UserVO
+     */
+    UsersVO selectByAccount(String account);
 }

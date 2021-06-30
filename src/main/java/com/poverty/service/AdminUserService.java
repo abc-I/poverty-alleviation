@@ -41,7 +41,7 @@ public interface AdminUserService {
      * @param username 用户名
      * @return Result
      */
-    Result searchUser(String username);
+    Result searchUserByName(String username);
 
     /**
      * 通过用户id封号
@@ -50,4 +50,12 @@ public interface AdminUserService {
      * @return Result
      */
     Result locked(PostId id);
+
+    /**
+     * 通过用户账号查询用户
+     *
+     * @param account 用户账号
+     * @return Result
+     */
+    Result searchUserByAccount(String account);
 }

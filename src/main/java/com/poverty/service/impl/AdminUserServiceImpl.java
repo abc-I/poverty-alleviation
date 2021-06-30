@@ -77,7 +77,7 @@ public class AdminUserServiceImpl implements AdminUserService {
      * @return Result
      */
     @Override
-    public Result searchUser(String username) {
+    public Result searchUserByName(String username) {
         List<UsersVO> usersVO = userMapper.selectByUsername(username);
 
         return Result.result200(usersVO);
@@ -99,5 +99,18 @@ public class AdminUserServiceImpl implements AdminUserService {
             // 封号
             return Result.result200(userMapper.updateLockedById(id));
         }
+    }
+
+    /**
+     * 通过用户账号查询用户
+     *
+     * @param account 用户账号
+     * @return Result
+     */
+    @Override
+    public Result searchUserByAccount(String account) {
+        UsersVO usersVO = userMapper.selectByAccount(account);
+
+        return Result.result200(usersVO);
     }
 }

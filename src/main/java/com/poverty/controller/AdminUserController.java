@@ -69,9 +69,20 @@ public class AdminUserController {
      * @param username 用户名
      * @return Result
      */
-    @GetMapping("/searchUser/{username}")
+    @GetMapping("/searchUserByName/{username}")
     public Result searchUser(@PathVariable String username) {
-        return adminUserService.searchUser(username);
+        return adminUserService.searchUserByName(username);
+    }
+
+    /**
+     * 通过用户账号查询用户
+     *
+     * @param account 账号
+     * @return Result
+     */
+    @GetMapping("/searchUserByAccount/{account}")
+    public Result searchUserByAccount(@PathVariable String account) {
+        return adminUserService.searchUserByAccount(account);
     }
 
     /**

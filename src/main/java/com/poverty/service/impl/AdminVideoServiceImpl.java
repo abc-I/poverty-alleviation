@@ -35,14 +35,13 @@ public class AdminVideoServiceImpl implements AdminVideoService {
      */
     @Override
     public Result getNotVideoList(int current, int size) {
-        return null;
-//        int start = PageUtil.getStart(current, size);
-//        int end = PageUtil.getEnd(current, size);
-//
-//        List<VideosVO> videos = videoMapper.selectNotExaminedVideoList(start, end);
-//        int total = countMapper.countNotExaminedVideo();
-//
-//        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
+        int start = PageUtil.getStart(current, size);
+        int end = PageUtil.getEnd(current, size);
+
+        List<VideosVO> videos = videoMapper.selectNotExaminedVideoList(start, end);
+        int total = countMapper.countNotExaminedVideo();
+
+        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
     }
 
     /**
@@ -54,14 +53,13 @@ public class AdminVideoServiceImpl implements AdminVideoService {
      */
     @Override
     public Result getIsVideoList(int current, int size) {
-        return null;
-//        int start = PageUtil.getStart(current, size);
-//        int end = PageUtil.getEnd(current, size);
-//
-//        List<VideosVO> videos = videoMapper.selectIsExaminedVideoList(start,end);
-//        int total = countMapper.countIsExaminedVideo();
-//
-//        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
+        int start = PageUtil.getStart(current, size);
+        int end = PageUtil.getEnd(current, size);
+
+        List<VideosVO> videos = videoMapper.selectIsExaminedVideoList(start,end);
+        int total = countMapper.countIsExaminedVideo();
+
+        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
     }
 
     /**
@@ -73,14 +71,13 @@ public class AdminVideoServiceImpl implements AdminVideoService {
      */
     @Override
     public Result getNoVideoList(int current, int size) {
-        return null;
-//        int start = PageUtil.getStart(current, size);
-//        int end = PageUtil.getEnd(current, size);
-//
-//        List<VideosVO> videos = videoMapper.selectNoExaminedVideoList(start, end);
-//        int total = countMapper.countNoExaminedVideo();
-//
-//        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
+        int start = PageUtil.getStart(current, size);
+        int end = PageUtil.getEnd(current, size);
+
+        List<VideosVO> videos = videoMapper.selectNoExaminedVideoList(start, end);
+        int total = countMapper.countNoExaminedVideo();
+
+        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
     }
 
     /**
@@ -91,8 +88,7 @@ public class AdminVideoServiceImpl implements AdminVideoService {
      */
     @Override
     public Result getVideoById(String id) {
-        return null;
-//        VideoVO videoVO = videoMapper.selectVideoById(id);
-//        return Result.result200(videoVO);
+        VideoVO videoVO = videoMapper.selectVideoById(id);
+        return Result.result200(videoVO);
     }
 }

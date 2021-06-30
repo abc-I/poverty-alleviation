@@ -11,9 +11,9 @@ import com.poverty.entity.dto.PostId;
 public interface AdministratorService {
 
     /**
-     * 通过用户id设置管理员
+     * 通过用户账号设置管理员
      *
-     * @param id JSON{"id":"用户id"}
+     * @param id JSON{"id":"用户账号"}
      * @return Result
      */
     Result setAdmin(PostId id);

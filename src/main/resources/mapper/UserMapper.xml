@@ -97,4 +97,9 @@
                             on `ur`.`user_id`=`info`.`id`
                                 and `ur`.`role_id` = '79d689bcdda4422981b29b8e3cc8ec46'
     </select>
+
+    <select id="selectByAccount" resultType="com.poverty.entity.vo.UsersVO">
+        <include refid="select"/>
+        where `user`.`account`=#{account};
+    </select>
 </mapper>
