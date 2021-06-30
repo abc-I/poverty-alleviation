@@ -12,3 +12,4 @@
 - 6.29 14:05 chocolili Add CarouselController;CarouselService;CarouselMapper;VideoController;VideoMapper;VideoService
 - 6.29 17:26 abc-I Add Administrator's controller,service and mapper
 - 6.29 22:44 chocolili Add VideoDTO;CarouselVO;CarouselDTO
+- 6.30 22.57 chocolili Add BrowsingHistoryMapper;CollectionController;CollectionService;CollectionMapping
