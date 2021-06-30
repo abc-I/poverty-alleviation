@@ -1,9 +1,7 @@
 package com.poverty.controller;
 
 import com.poverty.entity.Result;
-import com.poverty.entity.dto.PostId;
 import com.poverty.service.AdminArticleService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.apache.shiro.authz.annotation.Logical;

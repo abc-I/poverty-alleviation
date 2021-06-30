@@ -2,6 +2,7 @@ package com.poverty.mapper;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
+import com.poverty.entity.po.Count;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,6 +14,8 @@ import java.util.List;
  */
 @Mapper
 public interface CountMapper {
+
+    boolean insertCount(Count count);
     /**
      * 通过id删除信息
      *

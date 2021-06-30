@@ -2,6 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.poverty.mapper.CountMapper">
+
+    <insert id="insertCount">
+        insert into `t_count`
+            (id, recommend, is_examined, be_liked)
+        values
+            (#{id}, #{recommend}, #{isExamined}, #{beLiked});
+    </insert>
+
     <update id="updateIsExaminedById">
         update `t_count`
         set `is_examined` = 1

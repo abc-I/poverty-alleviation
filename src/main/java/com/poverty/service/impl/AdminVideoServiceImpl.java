@@ -7,7 +7,6 @@ import com.poverty.mapper.CountMapper;
 import com.poverty.mapper.VideoMapper;
 import com.poverty.service.AdminVideoService;
 import com.poverty.util.PageUtil;
-import org.apache.naming.factory.ResourceLinkFactory;
 import org.bearer.entity.vo.Page;
 import org.springframework.stereotype.Service;
 
@@ -36,13 +35,14 @@ public class AdminVideoServiceImpl implements AdminVideoService {
      */
     @Override
     public Result getNotVideoList(int current, int size) {
-        int start = PageUtil.getStart(current, size);
-        int end = PageUtil.getEnd(current, size);
-
-        List<VideosVO> videos = videoMapper.selectNotExaminedVideoList(start, end);
-        int total = countMapper.countNotExaminedVideo();
-
-        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
+        return null;
+//        int start = PageUtil.getStart(current, size);
+//        int end = PageUtil.getEnd(current, size);
+//
+//        List<VideosVO> videos = videoMapper.selectNotExaminedVideoList(start, end);
+//        int total = countMapper.countNotExaminedVideo();
+//
+//        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
     }
 
     /**
@@ -54,13 +54,14 @@ public class AdminVideoServiceImpl implements AdminVideoService {
      */
     @Override
     public Result getIsVideoList(int current, int size) {
-        int start = PageUtil.getStart(current, size);
-        int end = PageUtil.getEnd(current, size);
-
-        List<VideosVO> videos = videoMapper.selectIsExaminedVideoList(start,end);
-        int total = countMapper.countIsExaminedVideo();
-
-        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
+        return null;
+//        int start = PageUtil.getStart(current, size);
+//        int end = PageUtil.getEnd(current, size);
+//
+//        List<VideosVO> videos = videoMapper.selectIsExaminedVideoList(start,end);
+//        int total = countMapper.countIsExaminedVideo();
+//
+//        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
     }
 
     /**
@@ -72,13 +73,14 @@ public class AdminVideoServiceImpl implements AdminVideoService {
      */
     @Override
     public Result getNoVideoList(int current, int size) {
-        int start = PageUtil.getStart(current, size);
-        int end = PageUtil.getEnd(current, size);
-
-        List<VideosVO> videos = videoMapper.selectNoExaminedVideoList(start, end);
-        int total = countMapper.countNoExaminedVideo();
-
-        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
+        return null;
+//        int start = PageUtil.getStart(current, size);
+//        int end = PageUtil.getEnd(current, size);
+//
+//        List<VideosVO> videos = videoMapper.selectNoExaminedVideoList(start, end);
+//        int total = countMapper.countNoExaminedVideo();
+//
+//        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
     }
 
     /**
@@ -89,7 +91,8 @@ public class AdminVideoServiceImpl implements AdminVideoService {
      */
     @Override
     public Result getVideoById(String id) {
-        VideoVO videoVO = videoMapper.selectVideoById(id);
-        return Result.result200(videoVO);
+        return null;
+//        VideoVO videoVO = videoMapper.selectVideoById(id);
+//        return Result.result200(videoVO);
     }
 }
