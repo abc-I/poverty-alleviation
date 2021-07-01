@@ -8,7 +8,7 @@
         values (#{id}, #{userId});
     </insert>
 
-    <select id="selectOne" resultType="java.lang.Integer">
+    <select id="count" resultType="java.lang.Integer">
         select count(*)
         from `t_be_like`
         where `id` = #{id}

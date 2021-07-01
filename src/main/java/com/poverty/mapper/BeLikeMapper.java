@@ -25,5 +25,5 @@ public interface BeLikeMapper {
      * @param beLike JSON{"id":"文章或视频id","userId":"用户id"}
      * @return int
      */
-    int selectOne(BeLike beLike);
+    int count(BeLike beLike);
 }
