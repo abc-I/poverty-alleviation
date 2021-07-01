@@ -13,3 +13,4 @@
 - 6.29 17:26 abc-I Add Administrator's controller,service and mapper
 - 6.29 22:44 chocolili Add VideoDTO;CarouselVO;CarouselDTO
 - 6.30 22.57 chocolili Add BrowsingHistoryMapper;CollectionController;CollectionService;CollectionMapping
+- 6.30 22:40 abc-I Update uploadService

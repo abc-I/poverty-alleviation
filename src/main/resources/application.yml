@@ -67,6 +67,11 @@ spring:
 
   thymeleaf:
     prefix: D:/00img/static/html/
+    
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 1000MB
 
 logging:
   file:

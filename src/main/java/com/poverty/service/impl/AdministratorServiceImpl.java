@@ -8,7 +8,7 @@ import com.poverty.mapper.UserMapper;
 import com.poverty.mapper.UserRoleMapper;
 import com.poverty.service.AdministratorService;
 import com.poverty.util.PageUtil;
-import org.bearer.entity.vo.Page;
+import com.poverty.entity.vo.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

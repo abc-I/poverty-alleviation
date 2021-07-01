@@ -6,7 +6,7 @@ import com.poverty.entity.vo.UsersVO;
 import com.poverty.mapper.UserMapper;
 import com.poverty.service.AdminUserService;
 import com.poverty.util.PageUtil;
-import org.bearer.entity.vo.Page;
+import com.poverty.entity.vo.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
