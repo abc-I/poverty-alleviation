@@ -15,3 +15,4 @@
 - 6.30 22.57 chocolili Add BrowsingHistoryMapper;CollectionController;CollectionService;CollectionMapping
 - 6.30 22:40 abc-I Update uploadService
 - 7.01 09:20 abc-I Add Article's controller,service,Add BeLikeMapper;Update Article 
+- 7.01 15：07 abc-I Add authority control
