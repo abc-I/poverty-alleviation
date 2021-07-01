@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.po.Article;
 import com.poverty.entity.vo.ArticleVO;
 import com.poverty.entity.vo.ArticlesVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -55,4 +56,13 @@ public interface ArticleMapper {
      * @return ArticleVO
      */
     ArticleVO getArticleById(String id);
+
+    /**
+     * 保存文章信息
+     *
+     * @param article JSON{"id":"文章id","title":"文章标题","articleUrl":"文章url",
+     *                "text":"文章部分内容","pictureUrl":"图片url","authorId":"作者id"}
+     * @return
+     */
+    boolean insertOne(Article article);
 }

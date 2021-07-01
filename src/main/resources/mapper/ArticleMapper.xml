@@ -10,6 +10,13 @@
                             on `c`.`id` = `art`.`id`
     </sql>
 
+    <insert id="insertOne">
+        insert into `t_article`
+            (`id`, `title`, `article_url`, `text`, `picture_url`, `author_id`)
+        values
+            (#{id}, #{title}, #{articleUrl}, #{text}, #{pictureUrl}, #{authorId});
+    </insert>
+
     <delete id="deleteArticleByIds" parameterType="list">
         delete
         from `t_article`

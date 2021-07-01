@@ -61,11 +61,27 @@ public class ArticleController {
      */
     @PostMapping("/insertArticle")
     private Result insertArticle(@RequestBody ArticleDTO articleDTO) {
-        return articleService.insertArticle(articleDTO);
+        try {
+            return articleService.insertArticle(articleDTO);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.result500("上传失败！");
+        }
     }
 
+    /**
+     * 通过文章id删除文章
+     *
+     * @param id JSON{"id":"文章id"}
+     * @return Result
+     */
     @DeleteMapping("/deleteArticle")
     private Result deleteArticleById(PostId id) {
-        return articleService.deleteArticleById(id);
+        try {
+            return articleService.deleteArticleById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.result500("删除失败！");
+        }
     }
 }
