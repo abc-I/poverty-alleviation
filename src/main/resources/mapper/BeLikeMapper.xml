@@ -4,7 +4,15 @@
 <mapper namespace="com.poverty.mapper.BeLikeMapper">
 
     <insert id="insertOne">
-        insert into `t_be_like`(`id`, `userId`)
+        insert into `t_be_like`(`id`, `user_id`)
         values (#{id}, #{userId});
     </insert>
+
+    <select id="selectOne" resultType="java.lang.Integer">
+        select count(*)
+        from `t_be_like`
+        where `id` = #{id}
+          and `user_id` = #{userId};
+    </select>
+
 </mapper>
