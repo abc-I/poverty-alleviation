@@ -2,7 +2,6 @@ package com.poverty.service.impl;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
-import com.poverty.entity.po.UserRole;
 import com.poverty.entity.vo.UsersVO;
 import com.poverty.mapper.UserMapper;
 import com.poverty.mapper.UserRoleMapper;

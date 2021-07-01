@@ -22,6 +22,12 @@
         where `id` = #{id};
     </update>
 
+    <update id="updateRecommendById">
+        update `t_count`
+        set `recommend` = `recommend` + 1
+        where `id` = #{id};
+    </update>
+
     <delete id="deleteByIds">
         delete
         from `t_count`
@@ -82,6 +88,10 @@
     </select>
 
     <select id="countNoExaminedVideo" resultType="java.lang.Integer">
-        select count(*) from `t_count`
+        select count(*)
+        from `t_count` as `c`
+                 inner join `t_video` as `video`
+                            on `video`.`id` = `c`.`id`
+        where `is_examined` = 0;
     </select>
 </mapper>

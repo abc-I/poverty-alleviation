@@ -88,4 +88,11 @@ public interface CountMapper {
      * @return int
      */
     int countNoExaminedVideo();
+
+    /**
+     * 添加点击数
+     *
+     * @return boolean
+     */
+    boolean updateRecommendById(String id);
 }

@@ -24,7 +24,7 @@ public class CorsFilter implements Filter {
         request.setCharacterEncoding("UTF-8");
 
         // 设置响应编码，解决中文乱码
-        response.setContentType("test/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         //Filter过滤器跨域处理
         //设置请求方式为http 的rest 风格
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");

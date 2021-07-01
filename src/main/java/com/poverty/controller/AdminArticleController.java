@@ -40,18 +40,6 @@ public class AdminArticleController {
     }
 
     /**
-     * 获取所有已通过审核的文章
-     *
-     * @param current 当前页
-     * @param size 每页数据数
-     * @return Result
-     */
-    @GetMapping("/getIsArticleList/{current}/{size}")
-    public Result getIsArticleList(@PathVariable int current,@PathVariable int size) {
-        return administratorService.getIsArticleList(current, size);
-    }
-
-    /**
      * 获取所有未通过审核的文章
      *
      * @param current 当前页
@@ -61,17 +49,6 @@ public class AdminArticleController {
     @GetMapping("/getNoArticleList/{current}/{size}")
     public Result getNoArticleList(@PathVariable int current, @PathVariable int size) {
         return administratorService.getNoArticleList(current, size);
-    }
-
-    /**
-     * 通过用户id获取文章
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @GetMapping("/getArticleById/{id}")
-    public Result getArticleById(@PathVariable String id) {
-        return administratorService.getArticleById(id);
     }
 
     /**

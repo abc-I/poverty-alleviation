@@ -47,24 +47,6 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     }
 
     /**
-     * 获取通过审核的文章列表
-     *
-     * @param current 当前页
-     * @param size 每页数据数
-     * @return Result
-     */
-    @Override
-    public Result getIsArticleList(int current, int size) {
-        int start = PageUtil.getStart(current, size);
-        int end = PageUtil.getEnd(current, size);
-
-        List<ArticlesVO> articles = articleMapper.selectIsExaminedArticleList(start,end);
-        int total = countMapper.countIsExaminedArticle();
-
-        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
-    }
-
-    /**
      * 获取所有审核未通过的文章
      *
      * @param current 当前页
@@ -103,15 +85,4 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         }
     }
 
-    /**
-     * 通过文章id获取文章
-     *
-     * @param id 文章id
-     * @return Result
-     */
-    @Override
-    public Result getArticleById(String id) {
-        ArticleVO articleVO = articleMapper.getArticleById(id);
-        return Result.result200(articleVO);
-    }
 }
