@@ -41,28 +41,6 @@ public class AdminVideoController {
     }
 
     /**
-     * 获取通过审核的视频列表
-     *
-     * @param current 当前页数
-     * @param size    每页数据条数
-     * @return Result
-     */
-    @GetMapping("/getIsVideoList/{current}/{size}")
-    public Result getIsVideoList(@PathVariable int current, @PathVariable int size) {
-        return adminVideoService.getIsVideoList(current, size);
-    }
-
-    /**
-     * 通过id获取视频
-     *
-     * @param id 视频id
-     * @return Result
-     */
-    @GetMapping("/getVideoById/{id}")
-    public Result getVideoById(@PathVariable String id) {
-        return adminVideoService.getVideoById(id);
-    }
-    /**
      * 获取未通过审核的视频列表
      *
      * @param current 当前页
@@ -72,5 +50,15 @@ public class AdminVideoController {
     @GetMapping("/getNoVideoList/{current}/{size}")
     public Result getNoVideoList(@PathVariable int current, @PathVariable int size) {
         return adminVideoService.getNoVideoList(current, size);
+    }
+
+    /**
+     * 删除未通过审核的视频
+     *
+     * @return Result
+     */
+    @DeleteMapping("/deleteNoExaminedVideo")
+    public Result deleteNoExaminedVideo() {
+        return adminVideoService.deleteNoExaminedVideo();
     }
 }

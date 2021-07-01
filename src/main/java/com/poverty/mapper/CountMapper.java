@@ -15,6 +15,12 @@ import java.util.List;
 @Mapper
 public interface CountMapper {
 
+    /**
+     * 保存count信息
+     *
+     * @param count JSON{"id":"用户id","recommend":"浏览数","isExamined":"审核状态","beLiked":"点赞数"}
+     * @return boolean
+     */
     boolean insertCount(Count count);
     /**
      * 通过id删除信息
@@ -41,7 +47,7 @@ public interface CountMapper {
     boolean updateNoExaminedById(PostId id);
 
     /**
-     * 通过所有未审核的文章数
+     * 统计所有未审核的文章数
      *
      * @return int
      */
@@ -92,7 +98,23 @@ public interface CountMapper {
     /**
      * 添加点击数
      *
+     * @param id 文章或视频id
      * @return boolean
      */
     boolean updateRecommendById(String id);
+
+    /**
+     * 根据id添加点击数
+     *
+     * @param id id
+     * @return boolean
+     */
+    boolean updateBeLikedById(String id);
+
+    /**
+     * 获取未通过审核的视频
+     *
+     * @return List<String>
+     */
+    List<String> selectVideoIdByNoExamined();
 }

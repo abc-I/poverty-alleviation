@@ -1,7 +1,7 @@
 package com.poverty.service.impl;
 
 import com.poverty.entity.Result;
-import com.poverty.entity.vo.VideoVO;
+import com.poverty.entity.dto.PostId;
 import com.poverty.entity.vo.VideosVO;
 import com.poverty.mapper.CountMapper;
 import com.poverty.mapper.VideoMapper;
@@ -45,24 +45,6 @@ public class AdminVideoServiceImpl implements AdminVideoService {
     }
 
     /**
-     * 获取审核通过的视频列表
-     *
-     * @param current 当前页数
-     * @param size 每页数据数
-     * @return Result
-     */
-    @Override
-    public Result getIsVideoList(int current, int size) {
-        int start = PageUtil.getStart(current, size);
-        int end = PageUtil.getEnd(current, size);
-
-        List<VideosVO> videos = videoMapper.selectIsExaminedVideoList(start,end);
-        int total = countMapper.countIsExaminedVideo();
-
-        return Result.result200(new Page(total, PageUtil.getPageCount(total, size), videos));
-    }
-
-    /**
      * 获取未通过审核的视频列表
      *
      * @param current 当前页
@@ -81,14 +63,20 @@ public class AdminVideoServiceImpl implements AdminVideoService {
     }
 
     /**
-     * 通过id获取视频
+     * 删除未通过审核的视频
      *
-     * @param id 视频id
      * @return Result
      */
     @Override
-    public Result getVideoById(String id) {
-        VideoVO videoVO = videoMapper.selectVideoById(id);
-        return Result.result200(videoVO);
+    public Result deleteNoExaminedVideo() {
+        List<String> ids = countMapper.selectVideoIdByNoExamined();
+        PostId id = new PostId();
+
+        for (String s : ids) {
+            id.setId(s);
+            videoMapper.deleteVideo(id);
+        }
+        countMapper.deleteByIds(ids);
+        return Result.result200("删除成功！");
     }
 }

@@ -18,15 +18,6 @@ public interface AdminVideoService {
     Result getNotVideoList(int current, int size);
 
     /**
-     * 获取审核通过的视频列表
-     *
-     * @param current 当前页数
-     * @param size 每页数据数
-     * @return Result
-     */
-    Result getIsVideoList(int current, int size);
-
-    /**
      * 获取未通过审核的视频列表
      *
      * @param current 当前页
@@ -36,10 +27,9 @@ public interface AdminVideoService {
     Result getNoVideoList(int current, int size);
 
     /**
-     * 通过id获取视频
+     * 删除未通过审核的视频
      *
-     * @param id 视频id
      * @return Result
      */
-    Result getVideoById(String id);
+    Result deleteNoExaminedVideo();
 }

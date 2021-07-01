@@ -56,7 +56,7 @@ public class AdminArticleController {
      *
      * @return Result
      */
-    @DeleteMapping("/deleteNoExamined")
+    @DeleteMapping("/deleteNoExaminedArticle")
     public Result deleteNoExamined() {
         return administratorService.deleteNoExaminedArticle();
     }

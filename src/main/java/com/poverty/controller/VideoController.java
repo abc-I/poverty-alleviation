@@ -7,7 +7,11 @@ import com.poverty.entity.po.Video;
 import com.poverty.entity.vo.VideoVO;
 import com.poverty.service.VideoService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,6 +34,11 @@ public class VideoController {
      */
     @PostMapping("/insetVideo")
     @ApiOperation("添加视频")
+    @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                    required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+    })
     public Result insertVideo(@RequestPart VideoDTO videoDTO){
         return videoService.insertVideo(videoDTO);
     }
@@ -41,6 +50,11 @@ public class VideoController {
      */
     @DeleteMapping("/deleteVideo")
     @ApiOperation("删除视频")
+    @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                    required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+    })
     public Result deleteVideo(PostId id){
         return videoService.deleteVideo(id);
     }
@@ -65,6 +79,4 @@ public class VideoController {
     public Result selectVideoById(@PathVariable String id,@PathVariable String userId){
        return videoService.selectVideoById(id,userId);
     }
-
-
 }

@@ -28,6 +28,12 @@
         where `id` = #{id};
     </update>
 
+    <update id="updateBeLikedById">
+        update `t_count`
+        set `be_liked`=`be_liked` + 1
+        where `id` = #{id};
+    </update>
+
     <delete id="deleteByIds">
         delete
         from `t_count`
@@ -56,7 +62,7 @@
     </select>
 
     <select id="selectArticleIdsByNoExamined" resultType="java.lang.String">
-        select `id`
+        select `c`.`id`
         from `t_count` as `c`
                  inner join `t_article` as `art`
                             on `c`.`id` = `art`.`id`
@@ -92,6 +98,14 @@
         from `t_count` as `c`
                  inner join `t_video` as `video`
                             on `video`.`id` = `c`.`id`
+        where `is_examined` = 0;
+    </select>
+
+    <select id="selectVideoIdByNoExamined" resultType="java.lang.String">
+        select `c`.`id`
+        from `t_count` as `c`
+                 inner join `t_video` as `video`
+                            on `c`.`id` = `video`.`id`
         where `is_examined` = 0;
     </select>
 </mapper>

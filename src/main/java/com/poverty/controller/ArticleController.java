@@ -18,12 +18,7 @@ import javax.annotation.Resource;
  * @date Created in 2021/7/1 8:28
  */
 @RestController
-@RequiresRoles(value = {"user"}, logical = Logical.OR)
 @RequestMapping("/article")
-@ApiImplicitParams(value = {
-        @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
-                required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
-})
 public class ArticleController {
 
     @Resource
@@ -59,6 +54,11 @@ public class ArticleController {
      * @param articleDTO JSON{"title":"文章标题","articleUrl":"文章html的url","text":"文章部分内容","account":"账号"}
      * @return Result
      */
+    @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                    required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+    })
     @PostMapping("/insertArticle")
     private Result insertArticle(@RequestBody ArticleDTO articleDTO) {
         try {
@@ -75,6 +75,11 @@ public class ArticleController {
      * @param id JSON{"id":"文章id"}
      * @return Result
      */
+    @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                    required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+    })
     @DeleteMapping("/deleteArticle")
     private Result deleteArticleById(PostId id) {
         try {
