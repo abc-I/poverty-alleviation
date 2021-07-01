@@ -21,7 +21,11 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
+/**
+ * @author Zhu
+ * @version 1.0
+ * @date Created in 2021/6/29 17:37
+ */
 @Service
 public class VideoServiceImpl implements VideoService {
 
@@ -33,6 +37,12 @@ public class VideoServiceImpl implements VideoService {
     private CountMapper countMapper;
     @Resource
     private BrowsingHistoryMapper browsingHistoryMapper;
+    /**
+     * 添加视频
+     *
+     * @param videoDTO
+     * @return Result
+     */
     @Override
     public Result insertVideo(VideoDTO videoDTO) {
        String id= UUID.randomUUID().toString().replace("-","");
@@ -58,7 +68,12 @@ public class VideoServiceImpl implements VideoService {
        }
 
     }
-
+    /**
+     * 删除视频
+     *
+     * @param id 视频id
+     * @return Result
+     */
     @Override
     public Result deleteVideo(PostId id) {
         int deleteVideo = videoMapper.deleteVideo(id);
@@ -73,7 +88,12 @@ public class VideoServiceImpl implements VideoService {
         }
 
     }
-
+    /**
+     * 查询视频
+     *
+     * @param current,size
+     * @return Result
+     */
     @Override
     public Result selectAllVideo(int current, int size) {
         int start = PageUtil.getStart(current, size);
@@ -86,7 +106,12 @@ public class VideoServiceImpl implements VideoService {
     }
 
 
-
+    /**
+     * 用id查询视频
+     *
+     * @param id,userid
+     * @return Result
+     */
     @Override
     public Result selectVideoById(String id,String userId) {
         VideoVO selectVideoById = videoMapper.selectVideoById(id);

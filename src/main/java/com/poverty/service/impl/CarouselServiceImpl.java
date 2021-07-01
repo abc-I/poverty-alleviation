@@ -11,13 +11,20 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 /**
- * @author chocolili
+ * @author Zhu
+ * @version 1.0
+ * @date Created in 2021/6/28 10:38
  */
 @Service
 public class CarouselServiceImpl implements CarouselService {
     @Resource
     private CarouselMapper carouselMapper;
-
+    /**
+     * 添加轮播图
+     *
+     * @param carouselDTO
+     * @return Result
+     */
     @Override
     public Result insertCarousel(CarouselDTO carouselDTO) {
         String carouselId= UUID.randomUUID().toString().replace("-","");
@@ -30,7 +37,12 @@ public class CarouselServiceImpl implements CarouselService {
         }
 
     }
-
+    /**
+     * 删除轮播图
+     *
+     * @param carouselID 轮播图id
+     * @return Result
+     */
     @Override
     public Result deleteCarousel(String carouselID) {
         int deleteCarousel = carouselMapper.deleteCarousel(carouselID);
@@ -41,7 +53,12 @@ public class CarouselServiceImpl implements CarouselService {
         }
 
     }
-
+    /**
+     * 修改轮播图
+     *
+     * @param carouselDTO
+     * @return Result
+     */
     @Override
     public Result updateCarousel(CarouselDTO carouselDTO) {
         int updateCarousel = carouselMapper.updateCarousel(carouselDTO);
@@ -52,7 +69,11 @@ public class CarouselServiceImpl implements CarouselService {
         }
 
     }
-
+    /**
+     * 查找所有轮播图
+     *
+     * @return Result
+     */
     @Override
     public Result selectCarousel() {
         List<CarouselVO> carouselVOS = carouselMapper.selectCarousel();

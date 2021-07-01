@@ -1,6 +1,7 @@
 package com.poverty.mapper;
 
 import com.poverty.entity.dto.CollectionDTO;
+import com.poverty.entity.po.Collection;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,4 +14,6 @@ public interface CollectionMapper {
     boolean insertCollection(CollectionDTO collectionDTO);
 
     boolean deleteCollection(CollectionDTO collectionDTO);
+
+    boolean selectCollection(Collection userId);
 }

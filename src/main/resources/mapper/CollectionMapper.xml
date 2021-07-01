@@ -7,9 +7,14 @@
         insert into t_collection (user_id,article_id,video_id)
         values (#{userId},#{articleId},#{userId})
     </insert>
+
     <delete id="deleteCollection" parameterType="com.poverty.entity.dto.CollectionDTO">
         delete user_id,article_id,video_id from t_collection
-        where user_id=#{userId},acticle_id=#{acticleId},video_id=#{videoId}
+        where user_id=#{userId} and acticle_id=#{acticleId} and video_id=#{videoId}
     </delete>
+    <select id="selectCollection" resultType="java.lang.Boolean"
+            parameterType="com.poverty.entity.po.Collection">
+        select user_id,article_id,video_id,create_time,modify_time from t_collection where user_id=#{userId}
+    </select>
 
 </mapper>

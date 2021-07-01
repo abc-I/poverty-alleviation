@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.dto.UserInformationDTO;
 import com.poverty.entity.po.UserInformation;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -19,4 +20,6 @@ public interface UserInformationMapper {
      * @return int
      */
     int insertOne(UserInformation userInformation);
+
+    boolean updateUserInformation(UserInformationDTO userInformationDTO);
 }

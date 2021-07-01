@@ -6,7 +6,11 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
-
+/**
+ * @author Zhu
+ * @version 1.0
+ * @date Created in 2021/6/29 17:38
+ */
 @Data
 public class VideoDTO implements Serializable {
 

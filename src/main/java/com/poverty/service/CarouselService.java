@@ -5,7 +5,9 @@ import com.poverty.entity.dto.CarouselDTO;
 
 import java.util.List;
 /**
- * @author  Zhu
+ * @author Zhu
+ * @version 1.0
+ * @date Created in 2021/6/28 10:38
  */
 public interface CarouselService {
     /**

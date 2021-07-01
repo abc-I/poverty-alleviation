@@ -39,7 +39,7 @@ public class VideoController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    public Result insertVideo(@RequestPart VideoDTO videoDTO){
+    public Result insertVideo(@RequestBody VideoDTO videoDTO){
         return videoService.insertVideo(videoDTO);
     }
     /**

@@ -36,14 +36,14 @@ public class CarouselController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    public Result insertCarousel(CarouselDTO carouselDTO) {
+    public Result insertCarousel(@RequestBody CarouselDTO carouselDTO) {
         return carouselService.insertCarousel(carouselDTO);
     }
 
     /**
      * 删除轮播图
      *
-     * @param  carouselID
+     * @param  carouselID 轮播图id
      * @return Result
      */
     @ApiOperation("删除轮播图")
@@ -53,7 +53,7 @@ public class CarouselController {
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
     @DeleteMapping("/Carousel/deleteCarousel")
-    public Result deleteCarousel(String carouselID) {
+    public Result deleteCarousel(@RequestBody String carouselID) {
         return carouselService.deleteCarousel(carouselID);
     }
 
@@ -70,7 +70,7 @@ public class CarouselController {
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
     @PostMapping("/Carousel/updateCarousel")
-    public Result updateCarousel(CarouselDTO carouselDTO) {
+    public Result updateCarousel(@RequestBody CarouselDTO carouselDTO) {
         return carouselService.updateCarousel(carouselDTO);
     }
 
