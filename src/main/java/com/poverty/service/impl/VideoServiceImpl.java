@@ -59,6 +59,9 @@ public class VideoServiceImpl implements VideoService {
 
        Count count =new Count();
        count.setId(id);
+       count.setBeLiked(0);
+       count.setRecommend(0);
+       count.setIsExamined(-1);
 
        countMapper.insertCount(count);
        if(insertVideo>0){
