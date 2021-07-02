@@ -32,7 +32,8 @@ public class ArticleController {
      * @return Result
      */
     @GetMapping("/getArticleList/{current}/{size}")
-    private Result getArticleList(@PathVariable int current, @PathVariable int size) {
+    public Result getArticleList(@PathVariable int current, @PathVariable int size) {
+        System.out.println(articleService);
         return articleService.getArticleList(current, size);
     }
 
@@ -44,7 +45,7 @@ public class ArticleController {
      * @return Result
      */
     @GetMapping("/getArticle/{id}/{userId}")
-    private Result getArticleById(@PathVariable String id, @PathVariable String userId) {
+    public Result getArticleById(@PathVariable String id, @PathVariable String userId) {
         return articleService.getArticleById(id, userId);
     }
 
@@ -54,13 +55,13 @@ public class ArticleController {
      * @param articleDTO JSON{"title":"文章标题","articleUrl":"文章html的url","text":"文章部分内容","account":"账号"}
      * @return Result
      */
+    @PostMapping("/insertArticle")
     @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    @PostMapping("/insertArticle")
-    private Result insertArticle(@RequestBody ArticleDTO articleDTO) {
+    public Result insertArticle(@RequestBody ArticleDTO articleDTO) {
         try {
             return articleService.insertArticle(articleDTO);
         } catch (Exception e) {
@@ -81,7 +82,7 @@ public class ArticleController {
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
     @DeleteMapping("/deleteArticle")
-    private Result deleteArticleById(PostId id) {
+    public Result deleteArticleById(@RequestBody PostId id) {
         try {
             return articleService.deleteArticleById(id);
         } catch (Exception e) {

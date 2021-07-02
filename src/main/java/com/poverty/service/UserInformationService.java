@@ -14,10 +14,6 @@ public interface UserInformationService {
      * 修改用户信息
      */
     Result updateUserInformation(UserInformationDTO userInformationDTO);
-    /**
-     * 删除用户信息
-     */
-    Result deleteUserInformation(UserInformation id);
 
     Result selectUserInformation(UserInformation id);
 }

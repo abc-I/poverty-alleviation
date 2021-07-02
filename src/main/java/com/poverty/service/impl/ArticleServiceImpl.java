@@ -67,11 +67,13 @@ public class ArticleServiceImpl implements ArticleService {
         ArticleVO article = articleMapper.getArticleById(id);
         countMapper.updateRecommendById(id);
 
-        BrowsingHistory browsingHistory = new BrowsingHistory();
-        browsingHistory.setUserId(userId);
-        browsingHistory.setArticleId(id);
+        if (userId != null) {
+            BrowsingHistory browsingHistory = new BrowsingHistory();
+            browsingHistory.setUserId(userId);
+            browsingHistory.setArticleId(id);
 
-        browsingHistoryMapper.insertOne(browsingHistory);
+            browsingHistoryMapper.insertOne(browsingHistory);
+        }
 
         return Result.result200(article);
     }
@@ -95,7 +97,7 @@ public class ArticleServiceImpl implements ArticleService {
 
         String userId = userMapper.selectIdByAccount(articleDTO.getAccount());
         article.setAuthorId(userId);
-        String prefix = url.substring(url.indexOf("/") + 1, url.indexOf(".html"));
+        String prefix = url.substring(url.lastIndexOf("/") + 1, url.indexOf(".html"));
         String pictureUrl = prefix + "/" + prefix + "_img1.jpeg";
         if (new File(pathUtil.getImagePath() + pictureUrl).exists()) {
             article.setPictureUrl("/static/image/" + pictureUrl);
@@ -103,6 +105,9 @@ public class ArticleServiceImpl implements ArticleService {
 
         Count count = new Count();
         count.setId(id);
+        count.setRecommend(0);
+        count.setBeLiked(0);
+        count.setIsExamined(-1);
 
         if (articleMapper.insertOne(article) && countMapper.insertCount(count)) {
             return Result.result200("上传成功！");

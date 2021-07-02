@@ -37,7 +37,7 @@ public class CountController {
      * @param id 文章id
      * @return Result
      */
-    @PostMapping("/noExaminedArticle")
+    @PostMapping("/noExamined")
     public Result noExamineArticle(@RequestBody PostId id) {
         return countService.noExaminedArticle(id);
     }
@@ -48,7 +48,7 @@ public class CountController {
      * @param id 文章id
      * @return Result
      */
-    @PostMapping("/isExaminedArticle")
+    @PostMapping("/isExamined")
     public Result isExamineArticle(@RequestBody PostId id) {
         return countService.isExaminedArticle(id);
     }

@@ -1,6 +1,5 @@
 package com.poverty.mapper;
 
-import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.entity.po.Count;
 import org.apache.ibatis.annotations.Mapper;
@@ -104,7 +103,7 @@ public interface CountMapper {
     boolean updateRecommendById(String id);
 
     /**
-     * 根据id添加点击数
+     * 根据id添加点赞数
      *
      * @param id id
      * @return boolean

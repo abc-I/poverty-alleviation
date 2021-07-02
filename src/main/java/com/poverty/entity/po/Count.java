@@ -28,7 +28,7 @@ public class Count implements Serializable {
      * 被点击数
      */
     @TableField(value = "recommend")
-    private String recommend;
+    private Integer recommend;
 
     /**
      * 是否审核
@@ -40,7 +40,7 @@ public class Count implements Serializable {
      * 被点赞数
      */
     @TableField(value = "be_liked")
-    private String beLiked;
+    private Integer beLiked;
 
     /**
      * 创建时间

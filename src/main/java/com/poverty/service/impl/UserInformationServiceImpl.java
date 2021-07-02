@@ -33,21 +33,7 @@ public class UserInformationServiceImpl implements UserInformationService {
             return Result.result500("修改失败");
         }
     }
-    /**
-     * 删除用户
-     *
-     * @param id    用户id
-     * @return Result
-     */
-    @Override
-    public Result deleteUserInformation(UserInformation id) {
-        boolean deleteUserInformation = userInformationMapper.deleteUserInformation(id);
-        if(deleteUserInformation){
-            return Result.result200("删除成功");
-        }else {
-            return Result.result500("删除失败");
-        }
-    }
+
     /**
      * 查询用户
      *

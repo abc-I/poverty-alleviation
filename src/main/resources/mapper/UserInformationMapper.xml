@@ -14,9 +14,7 @@
             birthday=#{birthday},idCard=#{id_card},address=#{address}
         where  id =#{id}
     </update>
-    <delete id="deleteUserInformation" parameterType="com.poverty.entity.po.UserInformation">
-        delete  from `t_user_information` where id = #{Id}
-    </delete>
+
     <select id="selectUserInformation" resultType="com.poverty.entity.po.UserInformation"
             parameterType="com.poverty.entity.po.UserInformation">
         select id,username,email,birthday,real_name,phone,id_card,address,create_time,modify_time

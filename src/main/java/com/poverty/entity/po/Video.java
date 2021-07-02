@@ -28,7 +28,7 @@ public class Video implements Serializable {
      * 标题
      */
     @TableField(value = "title")
-    private String titel;
+    private String title;
 
     /**
      * 视频url

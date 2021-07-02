@@ -17,7 +17,7 @@
     </insert>
 
     <delete id="deleteVideo" parameterType="java.lang.String">
-        delete  from t_video where id = #{Id}
+        delete  from t_video where id = #{id}
     </delete>
 
     <select id="selectVideoById" resultType="com.poverty.entity.vo.VideoVO" parameterType="java.lang.String">

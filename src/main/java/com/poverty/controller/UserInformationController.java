@@ -32,17 +32,7 @@ public class UserInformationController {
     public Result updateUserInformation(@RequestBody UserInformationDTO userInformationDTO){
         return userInformationService.updateUserInformation(userInformationDTO);
     }
-    /**
-     * 删除用户信息
-     *
-     * @param id 用户id
-     * @return Result
-     */
-    @PostMapping("/deleteUserInformation")
-    @ApiOperation("/删除用户信息")
-    public Result deleteUserInformation(@RequestBody UserInformation id){
-        return userInformationService.deleteUserInformation(id);
-    }
+
     /**
      * 查询用户信息
      *

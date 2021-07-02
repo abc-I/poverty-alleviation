@@ -66,6 +66,11 @@ public class ShiroConfig extends ShiroConfiguration {
         urls.put("/signUpUser", "anon");
         urls.put("/getCode/**", "anon");
         urls.put("/static/**", "anon");
+        urls.put("/article/getArticleList/**", "anon");
+        urls.put("/article/getArticle/**", "anon");
+        urls.put("/Carousel/selectCarousel", "anon");
+        urls.put("/Video/selectAllVideo/**", "anon");
+        urls.put("/Video/selectVideoById/**", "anon");
 
         urls.put("/logout", "jwtFilter");
         urls.put("/**", "jwtFilter,authc");
