@@ -42,6 +42,9 @@
         <include refid="select"/>
         WHERE is_examined=-1 LIMIT #{start},#{end}
     </select>
+    <select id="selectVideoUrlById" resultType="java.lang.String">
+        select video_url, picture_url where id=#{id}
+    </select>
 
 
 </mapper>

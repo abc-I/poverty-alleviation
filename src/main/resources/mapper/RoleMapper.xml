@@ -12,4 +12,14 @@
                             on `u`.`id` = `ur`.`user_id`
         where `u`.`account` = #{account};
     </select>
+
+    <select id="selectRolesByUserId" resultType="java.lang.String">
+        select `role`
+        from `t_role` as `r`
+                 inner join `t_user_role` as `ur`
+                            on `r`.`id` = `ur`.`role_id`
+                 inner join `t_user` as `u`
+                            on `u`.`id` = `ur`.`user_id`
+        where `u`.`account` = #{account};
+    </select>
 </mapper>

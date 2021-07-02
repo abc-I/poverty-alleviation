@@ -62,7 +62,7 @@ public class CollectionServiceImpl implements CollectionService {
      * @return Result
      */
     @Override
-    public Result selectCollection(Collection userId) {
+    public Result selectCollection(String userId) {
         boolean selectCollection = collectionMapper.selectCollection(userId);
         if(selectCollection){
             return Result.result200("查询成功");

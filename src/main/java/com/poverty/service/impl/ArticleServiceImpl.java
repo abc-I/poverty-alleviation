@@ -64,7 +64,7 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public Result getArticleById(String id, String userId) {
-        ArticleVO article = articleMapper.getArticleById(id);
+        ArticleVO article = articleMapper.selectArticleById(id);
         countMapper.updateRecommendById(id);
 
         if (userId != null) {
@@ -81,7 +81,7 @@ public class ArticleServiceImpl implements ArticleService {
     /**
      * 保存文章
      *
-     * @param articleDTO JSON{"title":"标题","articleUrl":"文章html的url","text":"文章部分内容","account":"账号"}
+     * @param articleDTO JSON{"title":"标题","articleUrl":"文章html的url","text":"文章部分内容","userId":"用户id"}
      * @return Result
      */
     @Override
@@ -94,9 +94,8 @@ public class ArticleServiceImpl implements ArticleService {
         article.setText(articleDTO.getText());
         String url = articleDTO.getArticleUrl();
         article.setArticleUrl(url);
+        article.setAuthorId(articleDTO.getUserId());
 
-        String userId = userMapper.selectIdByAccount(articleDTO.getAccount());
-        article.setAuthorId(userId);
         String prefix = url.substring(url.lastIndexOf("/") + 1, url.indexOf(".html"));
         String pictureUrl = prefix + "/" + prefix + "_img1.jpeg";
         if (new File(pathUtil.getImagePath() + pictureUrl).exists()) {
@@ -127,7 +126,17 @@ public class ArticleServiceImpl implements ArticleService {
     public Result deleteArticleById(PostId id) throws Exception {
         List<String> list = new ArrayList<>();
         list.add(id.getId());
-        if (articleMapper.deleteArticleByIds(list) && countMapper.deleteByIds(list)) {
+
+        String url = articleMapper.selectArticleUrlById(id.getId());
+        if (articleMapper.deleteArticleByIds(list) && countMapper.deleteByIds(list) && url != null) {
+            String prefix = url.substring(url.lastIndexOf("/") + 1, url.indexOf("."));
+
+            Runtime runtime = Runtime.getRuntime();
+            runtime.exec("rm -rf /home/static/html/" + prefix + "_styles.css");
+            runtime.exec("rm -rf /home" + url);
+            runtime.exec("rm -rf /home/static/docx/" + prefix + "docx");
+            runtime.exec("rm -rf /home/static/image/" + prefix);
+
             return Result.result200("删除成功");
         } else {
             throw new Exception();

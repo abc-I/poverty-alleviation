@@ -55,7 +55,7 @@ public interface ArticleMapper {
      * @param id 文章id
      * @return ArticleVO
      */
-    ArticleVO getArticleById(String id);
+    ArticleVO selectArticleById(String id);
 
     /**
      * 保存文章信息
@@ -65,4 +65,12 @@ public interface ArticleMapper {
      * @return
      */
     boolean insertOne(Article article);
+
+    /**
+     * 通过id获取文章html的url
+     *
+     * @param id 文章id
+     * @return String
+     */
+    String selectArticleUrlById(String id);
 }

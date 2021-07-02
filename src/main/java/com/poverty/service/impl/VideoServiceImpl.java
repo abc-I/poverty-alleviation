@@ -15,7 +15,9 @@ import com.poverty.mapper.UserMapper;
 import com.poverty.mapper.VideoMapper;
 import com.poverty.service.VideoService;
 import com.poverty.util.PageUtil;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import java.util.UUID;
  * @date Created in 2021/6/29 17:37
  */
 @Service
+@Transactional(rollbackFor = {Exception.class})
 public class VideoServiceImpl implements VideoService {
 
     @Resource
@@ -45,30 +48,29 @@ public class VideoServiceImpl implements VideoService {
      */
     @Override
     public Result insertVideo(VideoDTO videoDTO) {
-       String id= UUID.randomUUID().toString().replace("-","");
-       String userId = userMapper.selectIdByAccount(videoDTO.getAccount());
+        String id = UUID.randomUUID().toString().replace("-", "");
 
-       Video video = new Video();
-       video.setId(id);
-       video.setVideoUrl(videoDTO.getVideoUrl());
-       video.setPictureUrl(videoDTO.getPictureUrl());
-       video.setAuthorId(userId);
-       video.setTitle(videoDTO.getTitel());
+        Video video = new Video();
+        video.setId(id);
+        video.setVideoUrl(videoDTO.getVideoUrl());
+        video.setPictureUrl(videoDTO.getPictureUrl());
+        video.setAuthorId(videoDTO.getUserId());
+        video.setTitle(videoDTO.getTitle());
 
-       int insertVideo = videoMapper.insertVideo(video);
+        int insertVideo = videoMapper.insertVideo(video);
 
-       Count count =new Count();
-       count.setId(id);
-       count.setBeLiked(0);
-       count.setRecommend(0);
-       count.setIsExamined(-1);
+        Count count = new Count();
+        count.setId(id);
+        count.setBeLiked(0);
+        count.setRecommend(0);
+        count.setIsExamined(-1);
 
-       countMapper.insertCount(count);
-       if(insertVideo>0){
-           return Result.result200("添加成功");
-       }else{
-           return Result.result500("添加失败");
-       }
+        countMapper.insertCount(count);
+        if(insertVideo>0){
+            return Result.result200("添加成功");
+        }else{
+            return Result.result500("添加失败");
+        }
 
     }
     /**
@@ -77,16 +79,23 @@ public class VideoServiceImpl implements VideoService {
      * @param id 视频id
      * @return Result
      */
+    @SneakyThrows
     @Override
     public Result deleteVideo(PostId id) {
+        String url = videoMapper.selectVideoUrlById(id.getId());
         int deleteVideo = videoMapper.deleteVideo(id);
         List<String> ids = new ArrayList<>();
         ids.add(id.getId());
         countMapper.deleteByIds(ids);
 
-        if(deleteVideo>0){
+        if (deleteVideo > 0 && url != null) {
+
+            Runtime runtime = Runtime.getRuntime();
+            runtime.exec("rm -rf /home" + url);
+            runtime.exec("rm -rf /home" + url);
+
             return Result.result200("删除成功");
-        }else{
+        } else {
             return Result.result500("删除失败");
         }
 

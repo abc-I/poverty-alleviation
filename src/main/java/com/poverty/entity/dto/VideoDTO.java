@@ -21,7 +21,7 @@ public class VideoDTO implements Serializable {
      * 标题
      */
     @TableField(value = "title")
-    private String titel;
+    private String title;
 
     /**
      * 视频url
@@ -38,6 +38,6 @@ public class VideoDTO implements Serializable {
     /**
      *
      */
-    @TableField(value = "account")
-    private String account;
+    @TableField(value = "author_id")
+    private String userId;
 }

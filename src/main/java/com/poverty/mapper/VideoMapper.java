@@ -28,4 +28,6 @@ public interface VideoMapper {
     List<VideosVO> selectNoExaminedVideoList(int start, int end);
 
     List<VideosVO> selectNotExaminedVideoList(int start, int end);
+
+    String selectVideoUrlById(String id);
 }

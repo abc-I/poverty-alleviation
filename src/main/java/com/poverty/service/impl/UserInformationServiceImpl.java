@@ -41,11 +41,12 @@ public class UserInformationServiceImpl implements UserInformationService {
      * @return Result
      */
     @Override
-    public Result selectUserInformation(UserInformation id) {
+    public Result selectUserInformation(String id) {
         UserInformation selectUserInformation = userInformationMapper.selectUserInformation(id);
         if (selectUserInformation!=null){
             return Result.result200(selectUserInformation);
-        }else
+        }else{
             return Result.result500(null);
+        }
     }
 }

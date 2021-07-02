@@ -18,8 +18,9 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/6/28 10:35
  */
-@RestController("/Carousel")
+@RestController
 @Api(tags = "轮播图接口")
+@RequestMapping("/carousel")
 public class CarouselController {
     @Resource
     private CarouselService carouselService;
@@ -43,7 +44,7 @@ public class CarouselController {
     /**
      * 删除轮播图
      *
-     * @param  carouselID 轮播图id
+     * @param  carouselId 轮播图id
      * @return Result
      */
     @ApiOperation("删除轮播图")
@@ -52,9 +53,9 @@ public class CarouselController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    @DeleteMapping("/Carousel/deleteCarousel")
-    public Result deleteCarousel(@RequestBody String carouselID) {
-        return carouselService.deleteCarousel(carouselID);
+    @DeleteMapping("/Carousel/deleteCarousel/{carouselId}")
+    public Result deleteCarousel(@PathVariable String carouselId) {
+        return carouselService.deleteCarousel(carouselId);
     }
 
     /**

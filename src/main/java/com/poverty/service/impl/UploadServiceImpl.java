@@ -146,11 +146,10 @@ public class UploadServiceImpl implements UploadService {
             file1.delete();
         }
 
-//        String shPath = "/home/static/html/delete_img.sh";
-//        if (new File(shPath).exists()) {
-//            Runtime.getRuntime().exec(shPath);
-//            System.out.println("删除！");
-//        }
+        String shPath = "/home/static/html/delete_img.sh";
+        if (new File(shPath).exists()) {
+            Runtime.getRuntime().exec(shPath);
+        }
 
         return "/static/html/" + prefix + ".html";
     }

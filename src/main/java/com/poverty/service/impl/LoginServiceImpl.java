@@ -74,10 +74,12 @@ public class LoginServiceImpl implements LoginService {
             return Result.result401("Fail: Authentication Failed!");
         }
 
+        String userId = userMapper.selectIdByAccount(account);
+
         // 获取jwtToken
-        String jwtToken = JwtUtil.createJwtToken(account);
+        String jwtToken = JwtUtil.createJwtToken(userId);
         // 保存token
-        boolean bool = JedisUtil.set(account, jwtToken, 60 * 60 * 24);
+        boolean bool = JedisUtil.set(userId, jwtToken, 60 * 60 * 24);
         // 判读是否登录成功
         if (bool) {
             return Result.result200(new JwtToken(jwtToken));

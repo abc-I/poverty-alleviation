@@ -52,7 +52,7 @@ public class ArticleController {
     /**
      * 保存文章信息
      *
-     * @param articleDTO JSON{"title":"文章标题","articleUrl":"文章html的url","text":"文章部分内容","account":"账号"}
+     * @param articleDTO JSON{"title":"文章标题","articleUrl":"文章html的url","text":"文章部分内容","userId":"用户id"}
      * @return Result
      */
     @PostMapping("/insertArticle")

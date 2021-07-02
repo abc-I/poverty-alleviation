@@ -15,5 +15,5 @@ public interface UserInformationService {
      */
     Result updateUserInformation(UserInformationDTO userInformationDTO);
 
-    Result selectUserInformation(UserInformation id);
+    Result selectUserInformation(String id);
 }

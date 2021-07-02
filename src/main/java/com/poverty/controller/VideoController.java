@@ -20,9 +20,9 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/6/29 17:35
  */
-@RestController("/Video")
+@RestController
 @Api(tags = "视频接口")
-@CrossOrigin
+@RequestMapping("/video")
 public class VideoController {
     @Resource
     private VideoService videoService;

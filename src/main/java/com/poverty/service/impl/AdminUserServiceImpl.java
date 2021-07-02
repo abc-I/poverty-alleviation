@@ -59,18 +59,6 @@ public class AdminUserServiceImpl implements AdminUserService {
     }
 
     /**
-     * 通过用户id获取用户
-     *
-     * @param id 用户id
-     * @return Result
-     */
-    @Override
-    public Result getUserById(String id) {
-        UsersVO userVO = userMapper.selectById(id);
-        return Result.result200(userVO);
-    }
-
-    /**
      * 通过用户名查询用户
      *
      * @param username 用户名

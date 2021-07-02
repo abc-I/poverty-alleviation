@@ -17,3 +17,4 @@
 - 7.01 09:20 abc-I Add Article's controller,service,Add BeLikeMapper;Update Article 
 - 7.01 15:07 abc-I Add authority controller
 - 7.01 16:42 chocolili Add UserInformationController;UserInformationService;UserInformationMapper;BeLikeDTO;UserInformationDTO
+- 7.02 14:55 abc-I update param of userId,annotation,shiro config,RoleMapper,Video's controller and service and mapper,Collection's collection and service and mapper,carousel's controller,Article

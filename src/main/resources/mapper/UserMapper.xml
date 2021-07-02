@@ -72,8 +72,13 @@
         where `is_locked` = 1;
     </select>
 
-    <select id="selectById" resultType="com.poverty.entity.vo.UsersVO">
-        <include refid="select"/>
+    <select id="selectById" resultType="com.poverty.entity.po.User">
+        select `user`.`id`, `user`.`account`, `user`.`is_locked`, `info`.`username`, `info`.`email`
+        from `t_user` as `user`
+                 inner join `t_user_information` as `info`
+                            on `user`.`id` = `info`.`id`
+                 inner join `t_user_role` as `ur`
+                            on `ur`.`user_id`=`info`.`id`
         where `user`.`id` = #{id};
     </select>
 

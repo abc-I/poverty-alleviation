@@ -53,17 +53,6 @@ public class AdminUserController {
     }
 
     /**
-     * 通过id获取用户
-     *
-     * @param id 用户id
-     * @return Result
-     */
-    @GetMapping("/getUserById/{id}")
-    public Result getUserById(@PathVariable String id) {
-        return adminUserService.getUserById(id);
-    }
-
-    /**
      * 通过用户名查询用户
      *
      * @param username 用户名

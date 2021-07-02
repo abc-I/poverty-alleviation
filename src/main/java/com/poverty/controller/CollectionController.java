@@ -19,8 +19,9 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/6/30 11:05
  */
-@RestController("/Collection")
+@RestController
 @Api(tags = "收藏接口")
+@RequestMapping("/collection")
 @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
 @ApiImplicitParams(value = {
         @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
@@ -59,7 +60,7 @@ public class CollectionController {
      */
     @GetMapping("/selectCollection/{userId}")
     @ApiOperation("查询收藏")
-    public Result selectCollection(@PathVariable Collection userId){
+    public Result selectCollection(@PathVariable String userId){
         return collectionService.selectCollection(userId);
     }
     /**

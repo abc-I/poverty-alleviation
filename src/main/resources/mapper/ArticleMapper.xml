@@ -46,7 +46,7 @@
         LIMIT #{start},#{end};
     </select>
 
-    <select id="getArticleById" resultType="com.poverty.entity.vo.ArticleVO">
+    <select id="selectArticleById" resultType="com.poverty.entity.vo.ArticleVO">
         select `art`.`id`,
                `art`.`title`,
                `art`.`article_url`,
@@ -59,6 +59,12 @@
                             on `art`.`author_id` = `info`.`id`
                  inner join `t_count` as `c`
                             on `c`.`id` = `art`.`id`
+        where `art`.`id` = #{id};
+    </select>
+
+    <select id="selectArticleUrlById" resultType="java.lang.String">
+        select `art`.`article_url`
+        from `t_article` as `art`
         where `art`.`id` = #{id};
     </select>
 </mapper>

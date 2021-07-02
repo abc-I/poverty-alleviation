@@ -21,7 +21,7 @@ public interface CollectionService {
     /**
      * 查看收藏
      */
-    Result selectCollection(Collection userId);
+    Result selectCollection(String userId);
     /**
      * 点赞
      */

@@ -13,9 +13,17 @@ import java.util.Set;
 public interface RoleMapper {
 
     /**
+     * 通过用户id获取权限
+     *
+     * @param id 用户id
+     * @return Set<String>
+     */
+    Set<String> selectRolesByUserId(String id);
+
+    /**
      * 通过用户账号获取权限
      *
-     * @param account 用户id
+     * @param account 用户账号
      * @return Set<String>
      */
     Set<String> selectRolesByUserAccount(String account);

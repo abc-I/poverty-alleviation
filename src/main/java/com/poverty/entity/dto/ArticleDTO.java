@@ -29,7 +29,7 @@ public class ArticleDTO implements Serializable {
     private String text;
 
     /**
-     * 账号
+     * 用户id
      */
-    private String account;
+    private String userId;
 }

@@ -28,14 +28,6 @@ public interface AdminUserService {
     Result getLockedUserList(int current, int size);
 
     /**
-     * 通过用户id获取用户
-     *
-     * @param id 用户id
-     * @return Result
-     */
-    Result getUserById(String id);
-
-    /**
      * 通过用户名查询用户
      *
      * @param username 用户名

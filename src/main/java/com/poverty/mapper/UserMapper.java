@@ -77,7 +77,7 @@ public interface UserMapper {
      * @param id 用户id
      * @return UsersVO
      */
-    UsersVO selectById(String id);
+    User selectById(String id);
 
     /**
      * 通过用户名查询用户

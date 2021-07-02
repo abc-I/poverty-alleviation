@@ -15,5 +15,5 @@ public interface CollectionMapper {
 
     boolean deleteCollection(CollectionDTO collectionDTO);
 
-    boolean selectCollection(Collection userId);
+    boolean selectCollection(String userId);
 }
