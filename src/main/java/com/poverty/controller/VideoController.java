@@ -55,7 +55,7 @@ public class VideoController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    public Result deleteVideo(PostId id){
+    public Result deleteVideo(@RequestBody PostId id){
         return videoService.deleteVideo(id);
     }
     /**

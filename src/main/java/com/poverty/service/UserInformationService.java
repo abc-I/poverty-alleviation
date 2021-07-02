@@ -2,6 +2,8 @@ package com.poverty.service;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.UserInformationDTO;
+import com.poverty.entity.po.UserInformation;
+
 /**
  * @author Zhu
  * @version 1.0
@@ -12,4 +14,10 @@ public interface UserInformationService {
      * 修改用户信息
      */
     Result updateUserInformation(UserInformationDTO userInformationDTO);
+    /**
+     * 删除用户信息
+     */
+    Result deleteUserInformation(UserInformation id);
+
+    Result selectUserInformation(UserInformation id);
 }

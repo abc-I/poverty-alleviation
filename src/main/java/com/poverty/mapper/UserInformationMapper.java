@@ -22,4 +22,8 @@ public interface UserInformationMapper {
     int insertOne(UserInformation userInformation);
 
     boolean updateUserInformation(UserInformationDTO userInformationDTO);
+
+    boolean deleteUserInformation(UserInformation id);
+
+    UserInformation selectUserInformation(UserInformation id);
 }

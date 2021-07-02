@@ -2,12 +2,11 @@ package com.poverty.controller;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.UserInformationDTO;
+import com.poverty.entity.po.UserInformation;
 import com.poverty.service.UserInformationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -32,5 +31,27 @@ public class UserInformationController {
     @ApiOperation("/修改用户信息")
     public Result updateUserInformation(@RequestBody UserInformationDTO userInformationDTO){
         return userInformationService.updateUserInformation(userInformationDTO);
+    }
+    /**
+     * 删除用户信息
+     *
+     * @param id 用户id
+     * @return Result
+     */
+    @PostMapping("/deleteUserInformation")
+    @ApiOperation("/删除用户信息")
+    public Result deleteUserInformation(@RequestBody UserInformation id){
+        return userInformationService.deleteUserInformation(id);
+    }
+    /**
+     * 查询用户信息
+     *
+     * @param id 用户id
+     * @return Result
+     */
+    @GetMapping("/selectUserInformation/{id}")
+    @ApiOperation("/查询用户信息")
+    public Result selectUserInformation(@PathVariable UserInformation id){
+        return userInformationService.selectUserInformation(id);
     }
 }
