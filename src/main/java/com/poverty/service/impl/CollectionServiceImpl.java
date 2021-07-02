@@ -7,6 +7,7 @@ import com.poverty.entity.po.BeLike;
 import com.poverty.entity.po.Collection;
 import com.poverty.mapper.BeLikeMapper;
 import com.poverty.mapper.CollectionMapper;
+import com.poverty.mapper.CountMapper;
 import com.poverty.service.CollectionService;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,8 @@ public class CollectionServiceImpl implements CollectionService {
     private CollectionMapper collectionMapper;
     @Resource
     private BeLikeMapper beLikeMapper;
+    @Resource
+    private CountMapper countMapper;
     /**
      * 收藏
      *
@@ -78,7 +81,7 @@ public class CollectionServiceImpl implements CollectionService {
         BeLike beLike=new BeLike();
         beLike.setId(beLikeDTO.getId());
         beLike.setUserId(beLikeDTO.getUserId());
-
+        countMapper.updateBeLikedById(beLikeDTO.getId());
         if (beLikeMapper.count(beLike)>0) {
             return Result.result200("点赞成功");
         }
