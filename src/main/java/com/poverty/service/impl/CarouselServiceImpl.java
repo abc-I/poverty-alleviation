@@ -70,8 +70,13 @@ public class CarouselServiceImpl implements CarouselService {
      * @param carouselDTO
      * @return Result
      */
+    @SneakyThrows
     @Override
     public Result updateCarousel(CarouselDTO carouselDTO) {
+        String url = carouselMapper.selectUrlById(carouselDTO.getId());
+        Runtime runtime = Runtime.getRuntime();
+        runtime.exec("rm -rf /home" + url);
+
         int updateCarousel = carouselMapper.updateCarousel(carouselDTO);
         if(updateCarousel>0){
             return Result.result200("修改成功");
@@ -80,14 +85,15 @@ public class CarouselServiceImpl implements CarouselService {
         }
 
     }
+
     /**
      * 查找所有轮播图
      *
      * @return Result
      */
     @Override
-    public Result selectCarousel(int start,int end) {
-        List<CarouselVO> carouselVOS = carouselMapper.selectCarousel(start,end);
+    public Result selectCarousel(int start, int end) {
+        List<CarouselVO> carouselVOS = carouselMapper.selectCarousel(start, end);
         return Result.result200(carouselVOS);
-}
+    }
 }

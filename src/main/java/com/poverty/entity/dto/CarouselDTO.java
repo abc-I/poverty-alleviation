@@ -14,6 +14,11 @@ public class CarouselDTO implements Serializable {
     private static final long serialVersionUID = 6109327220467456719L;
 
     /**
+     * 轮播图id
+     */
+    private String id;
+
+    /**
      * 轮播图url
      */
     private String carouselUrl;

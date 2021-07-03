@@ -8,7 +8,7 @@
     </insert>
 
     <update id="updateCarousel" parameterType="com.poverty.entity.dto.CarouselDTO">
-        update  t_carousel set carousel_url=#{carouselUrl},modify_time=CURRENT_TIMESTAMP()  where  id =#{carouselId}
+        update  t_carousel set carousel_url=#{carouselUrl},modify_time=CURRENT_TIMESTAMP()  where  id =#{id}
     </update>
 
     <delete id="deleteCarousel" parameterType="java.lang.String">
