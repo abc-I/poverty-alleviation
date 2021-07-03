@@ -4,7 +4,7 @@
 <mapper namespace="com.poverty.mapper.CarouselMapper">
 
     <insert id="insertCarousel" parameterType="com.poverty.entity.dto.CarouselDTO">
-        insert into t_carousel (id,carousel_url,create_time)values (#{carouselId},#{carouselUrl},now())
+        insert into t_carousel (id,carousel_url)values (#{id},#{carouselUrl})
     </insert>
 
     <update id="updateCarousel" parameterType="com.poverty.entity.dto.CarouselDTO">
@@ -12,11 +12,14 @@
     </update>
 
     <delete id="deleteCarousel" parameterType="java.lang.String">
-        delete  from t_carousel where carousel_id = #{carouselId}
+        delete  from t_carousel where carousel_id = #{id}
     </delete>
 
     <select id="selectCarousel" resultType="com.poverty.entity.vo.CarouselVO">
         select * from t_carousel limit #{start},#{end}
+    </select>
+    <select id="selectUrlById" resultType="java.lang.String">
+        select carousel_url from t_carousel where id=#{id}
     </select>
 
 </mapper>

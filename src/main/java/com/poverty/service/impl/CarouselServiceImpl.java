@@ -2,6 +2,7 @@ package com.poverty.service.impl;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.CarouselDTO;
+import com.poverty.entity.po.Carousel;
 import com.poverty.entity.vo.CarouselVO;
 import com.poverty.mapper.CarouselMapper;
 import com.poverty.service.CarouselService;
@@ -28,8 +29,11 @@ public class CarouselServiceImpl implements CarouselService {
     @Override
     public Result insertCarousel(CarouselDTO carouselDTO) {
         String carouselId= UUID.randomUUID().toString().replace("-","");
-        carouselDTO.setCarouselId(carouselId);
-        int insertCarousel = carouselMapper.insertCarousel(carouselDTO);
+        Carousel carousel=new Carousel();
+        carousel.setId(carouselId);
+        carousel.setCarouselUrl(carouselDTO.getCarouselUrl());
+
+        int insertCarousel = carouselMapper.insertCarousel(carousel);
         if(insertCarousel>0){
             return Result.result200("添加成功");
         }else {
@@ -40,12 +44,13 @@ public class CarouselServiceImpl implements CarouselService {
     /**
      * 删除轮播图
      *
-     * @param carouselID 轮播图id
+     * @param id 轮播图id
      * @return Result
      */
     @Override
-    public Result deleteCarousel(String carouselID) {
-        int deleteCarousel = carouselMapper.deleteCarousel(carouselID);
+    public Result deleteCarousel(String id) {
+        int deleteCarousel = carouselMapper.deleteCarousel(id);
+        String url = carouselMapper.selectUrlById(id);
         if (deleteCarousel>0){
             return Result.result200("删除成功");
         }else{
