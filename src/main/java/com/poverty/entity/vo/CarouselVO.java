@@ -8,6 +8,6 @@ import java.io.Serializable;
 public class CarouselVO implements Serializable {
 
     private static final long serialVersionUID = 8024920499240438994L;
-    private String carouselId;
+    private String id;
     private String carouselUrl;
 }

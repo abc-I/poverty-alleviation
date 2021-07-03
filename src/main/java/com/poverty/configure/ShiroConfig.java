@@ -68,7 +68,7 @@ public class ShiroConfig extends ShiroConfiguration {
         urls.put("/static/**", "anon");
         urls.put("/article/getArticleList/**", "anon");
         urls.put("/article/getArticle/**", "anon");
-        urls.put("/carousel/selectCarousel", "anon");
+        urls.put("/carousel/Carousel/selectCarousel/**", "anon");
         urls.put("/video/selectAllVideo/**", "anon");
         urls.put("/video/selectVideoById/**", "anon");
 

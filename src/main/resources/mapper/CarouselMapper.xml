@@ -12,7 +12,7 @@
     </update>
 
     <delete id="deleteCarousel" parameterType="java.lang.String">
-        delete  from t_carousel where carousel_id = #{id}
+        delete  from t_carousel where id = #{id}
     </delete>
 
     <select id="selectCarousel" resultType="com.poverty.entity.vo.CarouselVO">

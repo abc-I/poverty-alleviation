@@ -2,6 +2,7 @@ package com.poverty.service.impl;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.CarouselDTO;
+import com.poverty.entity.dto.PostId;
 import com.poverty.entity.po.Carousel;
 import com.poverty.entity.vo.CarouselVO;
 import com.poverty.mapper.CarouselMapper;
@@ -50,12 +51,12 @@ public class CarouselServiceImpl implements CarouselService {
      */
     @SneakyThrows
     @Override
-    public Result deleteCarousel(String id) {
-        String url = carouselMapper.selectUrlById(id);
+    public Result deleteCarousel(PostId id) {
+        String url = carouselMapper.selectUrlById(id.getId());
         Runtime runtime = Runtime.getRuntime();
         runtime.exec("rm -rf /home" + url);
 
-        int deleteCarousel = carouselMapper.deleteCarousel(id);
+        int deleteCarousel = carouselMapper.deleteCarousel(id.getId());
         if (deleteCarousel>0){
             return Result.result200("删除成功");
         }else{

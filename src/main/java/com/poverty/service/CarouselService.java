@@ -2,6 +2,7 @@ package com.poverty.service;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.CarouselDTO;
+import com.poverty.entity.dto.PostId;
 
 import java.util.List;
 /**
@@ -17,7 +18,7 @@ public interface CarouselService {
     /**
      * 删除轮播图
      */
-    Result deleteCarousel(String carouselID);
+    Result deleteCarousel(PostId id);
 
     /**
      * 修改轮播图

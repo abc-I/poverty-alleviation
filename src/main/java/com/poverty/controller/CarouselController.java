@@ -2,6 +2,7 @@ package com.poverty.controller;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.CarouselDTO;
+import com.poverty.entity.dto.PostId;
 import com.poverty.service.CarouselService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -12,6 +13,8 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Zhu
@@ -44,7 +47,7 @@ public class CarouselController {
     /**
      * 删除轮播图
      *
-     * @param  carouselId 轮播图id
+     * @param  id JSON{"id":"轮播图id"}
      * @return Result
      */
     @ApiOperation("删除轮播图")
@@ -53,9 +56,9 @@ public class CarouselController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    @DeleteMapping("/Carousel/deleteCarousel/{carouselId}")
-    public Result deleteCarousel(@PathVariable String carouselId) {
-        return carouselService.deleteCarousel(carouselId);
+    @DeleteMapping("/Carousel/deleteCarousel")
+    public Result deleteCarousel(@RequestBody PostId id) {
+        return carouselService.deleteCarousel(id);
     }
 
     /**
