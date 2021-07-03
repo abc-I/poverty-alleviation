@@ -6,6 +6,7 @@ import com.poverty.entity.po.Carousel;
 import com.poverty.entity.vo.CarouselVO;
 import com.poverty.mapper.CarouselMapper;
 import com.poverty.service.CarouselService;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -47,10 +48,14 @@ public class CarouselServiceImpl implements CarouselService {
      * @param id 轮播图id
      * @return Result
      */
+    @SneakyThrows
     @Override
     public Result deleteCarousel(String id) {
-        int deleteCarousel = carouselMapper.deleteCarousel(id);
         String url = carouselMapper.selectUrlById(id);
+        Runtime runtime = Runtime.getRuntime();
+        runtime.exec("rm -rf /home" + url);
+
+        int deleteCarousel = carouselMapper.deleteCarousel(id);
         if (deleteCarousel>0){
             return Result.result200("删除成功");
         }else{

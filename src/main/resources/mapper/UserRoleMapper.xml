@@ -12,13 +12,13 @@
 
     <update id="updateAdminRoleById">
         update `t_user_role`
-        set `ur`.`role_id`='79d689bcdda4422981b29b8e3cc8ec46'
+        set `ur`.`role_id`='79d689bcdda4422981b29b8e3cc8ec46',`modify_time`=CURRENT_TIMESTAMP()
         where `user_id` = #{id};
     </update>
 
     <update id="updateUserRoleById">
         update `t_user_role`
-        set `ur`.`role_id`='cb5f11d5c13e47c38d211e0e3b8806fb'
+        set `ur`.`role_id`='cb5f11d5c13e47c38d211e0e3b8806fb',`modify_time`=CURRENT_TIMESTAMP()
         where `user_id` = #{id};
     </update>
 

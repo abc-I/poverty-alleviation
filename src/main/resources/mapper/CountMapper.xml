@@ -12,25 +12,25 @@
 
     <update id="updateIsExaminedById">
         update `t_count`
-        set `is_examined` = 1
+        set `is_examined` = 1,`modify_time`=CURRENT_TIMESTAMP()
         where `id` = #{id};
     </update>
 
     <update id="updateNoExaminedById">
         update `t_count`
-        set `is_examined` = 0
+        set `is_examined` = 0,`modify_time`=CURRENT_TIMESTAMP()
         where `id` = #{id};
     </update>
 
     <update id="updateRecommendById">
         update `t_count`
-        set `recommend` = `recommend` + 1
+        set `recommend` = `recommend` + 1,`modify_time`=CURRENT_TIMESTAMP()
         where `id` = #{id};
     </update>
 
     <update id="updateBeLikedById">
         update `t_count`
-        set `be_liked`=`be_liked` + 1
+        set `be_liked`=`be_liked` + 1,`modify_time`=CURRENT_TIMESTAMP()
         where `id` = #{id};
     </update>
 

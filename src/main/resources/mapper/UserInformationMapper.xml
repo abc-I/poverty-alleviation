@@ -11,7 +11,7 @@
     </insert>
     <update id="updateUserInformation" parameterType="com.poverty.entity.dto.UserInformationDTO">
         update  `t_user_information` set username=#{username},realName=#{real_name},phone=#{phone},email=#{email},
-            birthday=#{birthday},idCard=#{id_card},address=#{address}
+            birthday=#{birthday},idCard=#{id_card},address=#{address},`modify_time`=CURRENT_TIMESTAMP()
         where  id =#{id}
     </update>
 

@@ -30,13 +30,13 @@
 
     <update id="updateNotLockedById">
         update `t_user`
-        set `is_locked` = 0
+        set `is_locked` = 0,`modify_time`=CURRENT_TIMESTAMP()
         where `id` = #{id};
     </update>
 
     <update id="updateLockedById">
         update `t_user`
-        set `is_locked`=1
+        set `is_locked`=1,`modify_time`=CURRENT_TIMESTAMP()
         where `id` = #{id};
     </update>
 
