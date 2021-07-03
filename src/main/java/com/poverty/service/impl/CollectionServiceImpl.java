@@ -4,20 +4,22 @@ import com.poverty.entity.Result;
 import com.poverty.entity.dto.BeLikeDTO;
 import com.poverty.entity.dto.CollectionDTO;
 import com.poverty.entity.po.BeLike;
-import com.poverty.entity.po.Collection;
 import com.poverty.mapper.BeLikeMapper;
 import com.poverty.mapper.CollectionMapper;
 import com.poverty.mapper.CountMapper;
 import com.poverty.service.CollectionService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+
 /**
  * @author Zhu
  * @version 1.0
  * @date Created in 2021/6/30 11:05
  */
 @Service
+@Transactional(rollbackFor = {Exception.class})
 public class CollectionServiceImpl implements CollectionService {
     @Resource
     private CollectionMapper collectionMapper;
@@ -25,6 +27,7 @@ public class CollectionServiceImpl implements CollectionService {
     private BeLikeMapper beLikeMapper;
     @Resource
     private CountMapper countMapper;
+
     /**
      * 收藏
      *
@@ -34,12 +37,13 @@ public class CollectionServiceImpl implements CollectionService {
     @Override
     public Result insertCollection(CollectionDTO collectionDTO) {
         boolean insertCollection = collectionMapper.insertCollection(collectionDTO);
-        if(insertCollection){
+        if (insertCollection) {
             return Result.result200("收藏成功");
-        }else {
+        } else {
             return Result.result500("收藏失败");
         }
     }
+
     /**
      * 取消收藏
      *
@@ -49,12 +53,13 @@ public class CollectionServiceImpl implements CollectionService {
     @Override
     public Result deleteCollection(CollectionDTO collectionDTO) {
         boolean deleteCollection = collectionMapper.deleteCollection(collectionDTO);
-        if(deleteCollection){
+        if (deleteCollection) {
             return Result.result200("取消收藏成功");
-        }else {
+        } else {
             return Result.result500("取消收藏失败");
         }
     }
+
     /**
      * 查询收藏
      *
@@ -64,12 +69,13 @@ public class CollectionServiceImpl implements CollectionService {
     @Override
     public Result selectCollection(String userId) {
         boolean selectCollection = collectionMapper.selectCollection(userId);
-        if(selectCollection){
+        if (selectCollection) {
             return Result.result200("查询成功");
-        }else {
+        } else {
             return Result.result500("查询失败");
         }
     }
+
     /**
      * 点赞
      *
@@ -78,21 +84,22 @@ public class CollectionServiceImpl implements CollectionService {
      */
     @Override
     public Result beLike(BeLikeDTO beLikeDTO) {
-        BeLike beLike=new BeLike();
+        BeLike beLike = new BeLike();
         beLike.setId(beLikeDTO.getId());
         beLike.setUserId(beLikeDTO.getUserId());
-        countMapper.updateBeLikedById(beLikeDTO.getId());
-        if (beLikeMapper.count(beLike)>0) {
+        if (beLikeMapper.count(beLike) > 0) {
             return Result.result200("点赞成功");
         }
+        countMapper.updateBeLikedById(beLikeDTO.getId());
 
         boolean insertOne = beLikeMapper.insertOne(beLike);
-        if(insertOne){
+        if (insertOne) {
             return Result.result200("点赞成功");
-        }else {
+        } else {
             return Result.result500("点赞失败");
         }
     }
+
     /**
      * 查询点赞
      *
@@ -101,7 +108,7 @@ public class CollectionServiceImpl implements CollectionService {
      */
     @Override
     public Result selectBeLike(String id, String userId) {
-        BeLike beLike=new BeLike();
+        BeLike beLike = new BeLike();
         beLike.setId(id);
         beLike.setUserId(userId);
         return Result.result200(beLikeMapper.count(beLike));

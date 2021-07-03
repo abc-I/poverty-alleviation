@@ -4,13 +4,13 @@
 <mapper namespace="com.poverty.mapper.BeLikeMapper">
 
     <insert id="insertOne">
-        insert into `t_be_like`(`id`, `user_id`)
+        insert into `t_be_liked`(`id`, `user_id`)
         values (#{id}, #{userId});
     </insert>
 
     <select id="count" resultType="java.lang.Integer">
         select count(*)
-        from `t_be_like`
+        from `t_be_liked`
         where `id` = #{id}
           and `user_id` = #{userId};
     </select>

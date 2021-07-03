@@ -5,12 +5,12 @@
 
     <insert id="insertCollection" parameterType="com.poverty.entity.dto.CollectionDTO">
         insert into t_collection (user_id,article_id,video_id)
-        values (#{userId},#{articleId},#{userId})
+        values (#{userId},#{articleId},#{videoId})
     </insert>
 
     <delete id="deleteCollection" parameterType="com.poverty.entity.dto.CollectionDTO">
         delete user_id,article_id,video_id from t_collection
-        where user_id=#{userId} and acticle_id=#{acticleId} and video_id=#{videoId}
+        where user_id=#{userId} and acticle_id=#{articleId} and video_id=#{videoId}
     </delete>
     <select id="selectCollection" resultType="java.lang.Boolean"
             parameterType="com.poverty.entity.po.Collection">

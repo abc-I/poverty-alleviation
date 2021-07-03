@@ -20,6 +20,6 @@
                             on `r`.`id` = `ur`.`role_id`
                  inner join `t_user` as `u`
                             on `u`.`id` = `ur`.`user_id`
-        where `u`.`account` = #{account};
+        where `u`.`id` = #{id};
     </select>
 </mapper>
