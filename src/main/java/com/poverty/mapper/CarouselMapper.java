@@ -20,5 +20,5 @@ public interface CarouselMapper {
 
     int updateCarousel(CarouselDTO carouselDTO);
 
-    List<CarouselVO> selectCarousel();
+    List<CarouselVO> selectCarousel(int start,int end);
 }

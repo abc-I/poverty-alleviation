@@ -16,7 +16,7 @@
     </delete>
 
     <select id="selectCarousel" resultType="com.poverty.entity.vo.CarouselVO">
-        select * from t_carousel
+        select * from t_carousel limit #{start},#{end}
     </select>
 
 </mapper>

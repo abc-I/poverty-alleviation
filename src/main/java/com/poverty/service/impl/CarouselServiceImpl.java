@@ -75,8 +75,8 @@ public class CarouselServiceImpl implements CarouselService {
      * @return Result
      */
     @Override
-    public Result selectCarousel() {
-        List<CarouselVO> carouselVOS = carouselMapper.selectCarousel();
+    public Result selectCarousel(int start,int end) {
+        List<CarouselVO> carouselVOS = carouselMapper.selectCarousel(start,end);
         return Result.result200(carouselVOS);
 }
 }

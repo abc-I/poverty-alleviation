@@ -27,5 +27,5 @@ public interface CarouselService {
     /**
      * 查询轮播图
      */
-    Result selectCarousel();
+    Result selectCarousel(int start,int end);
 }

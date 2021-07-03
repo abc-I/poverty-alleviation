@@ -81,8 +81,8 @@ public class CarouselController {
      * @return Result
      */
     @ApiOperation("查询所有轮播图")
-    @GetMapping("/Carousel/selectCarousel")
-    public Result selectCarousel(){
-        return  carouselService.selectCarousel();
+    @GetMapping("/Carousel/selectCarousel/{start}/{end}")
+    public Result selectCarousel(@PathVariable int start,@PathVariable int end){
+        return  carouselService.selectCarousel(start,end);
     }
 }
