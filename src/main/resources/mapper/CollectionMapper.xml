@@ -9,7 +9,7 @@
     </insert>
 
     <delete id="deleteCollection" parameterType="com.poverty.entity.dto.CollectionDTO">
-        delete user_id,article_id,video_id from t_collection
+        delete from t_collection
         where user_id=#{userId} and id=#{id}
     </delete>
     <select id="selectArticleCollection" resultType="com.poverty.entity.vo.CollectionVO"
@@ -31,7 +31,7 @@
         where user_id=#{userId}
     </select>
     <select id="count" resultType="java.lang.Integer" parameterType="com.poverty.entity.dto.CollectionDTO">
-        select count(userId) from `t_collection` where user_id=#{userId} and id=#{id}
+        select count(user_id) from `t_collection` where user_id=#{userId} and id=#{id}
     </select>
 
 </mapper>
