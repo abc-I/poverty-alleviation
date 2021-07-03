@@ -19,15 +19,9 @@ public class CollectionDTO implements Serializable {
     private String userId;
 
     /**
-     * 文章id
+     * 文章或视频id
      */
-    @TableField(value = "article_id")
-    private String articleId;
-
-    /**
-     * 视频id
-     */
-    @TableField(value = "video_id")
-    private String videoId;
+    @TableField(value = "id")
+    private String id;
 
 }

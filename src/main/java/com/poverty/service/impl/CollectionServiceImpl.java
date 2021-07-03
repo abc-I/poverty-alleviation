@@ -4,6 +4,7 @@ import com.poverty.entity.Result;
 import com.poverty.entity.dto.BeLikeDTO;
 import com.poverty.entity.dto.CollectionDTO;
 import com.poverty.entity.po.BeLike;
+import com.poverty.entity.vo.CollectionVO;
 import com.poverty.mapper.BeLikeMapper;
 import com.poverty.mapper.CollectionMapper;
 import com.poverty.mapper.CountMapper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author Zhu
@@ -35,28 +37,21 @@ public class CollectionServiceImpl implements CollectionService {
      * @return Result
      */
     @Override
-    public Result insertCollection(CollectionDTO collectionDTO) {
+    public Result collection(CollectionDTO collectionDTO) {
+        int count = collectionMapper.count(collectionDTO);
+        if(count > 0){
+            boolean deleteCollection = collectionMapper.deleteCollection(collectionDTO);
+            if (deleteCollection) {
+                return Result.result200("取消收藏成功");
+            } else {
+                return Result.result500("取消收藏失败");
+            }
+        }
         boolean insertCollection = collectionMapper.insertCollection(collectionDTO);
         if (insertCollection) {
             return Result.result200("收藏成功");
         } else {
             return Result.result500("收藏失败");
-        }
-    }
-
-    /**
-     * 取消收藏
-     *
-     * @param collectionDTO
-     * @return Result
-     */
-    @Override
-    public Result deleteCollection(CollectionDTO collectionDTO) {
-        boolean deleteCollection = collectionMapper.deleteCollection(collectionDTO);
-        if (deleteCollection) {
-            return Result.result200("取消收藏成功");
-        } else {
-            return Result.result500("取消收藏失败");
         }
     }
 
@@ -67,14 +62,15 @@ public class CollectionServiceImpl implements CollectionService {
      * @return Result
      */
     @Override
-    public Result selectCollection(String userId) {
-        boolean selectCollection = collectionMapper.selectCollection(userId);
-        if (selectCollection) {
-            return Result.result200("查询成功");
+    public Result selectArticleCollection(String userId) {
+        List<CollectionVO> selectCollection = collectionMapper.selectArticleCollection(userId);
+        if (selectCollection.size() > 0) {
+            return Result.result200(selectCollection);
         } else {
             return Result.result500("查询失败");
         }
     }
+
 
     /**
      * 点赞
@@ -112,5 +108,20 @@ public class CollectionServiceImpl implements CollectionService {
         beLike.setId(id);
         beLike.setUserId(userId);
         return Result.result200(beLikeMapper.count(beLike));
+    }
+
+    /**
+     * 查看视频收藏
+     * @param userId
+     * @return Result
+     */
+    @Override
+    public Result selectVideoCollection(String userId) {
+        List<CollectionVO> selectCollection = collectionMapper.selectVideoCollection(userId);
+        if (selectCollection.size() > 0) {
+            return Result.result200(selectCollection);
+        } else {
+            return Result.result500("查询失败");
+        }
     }
 }

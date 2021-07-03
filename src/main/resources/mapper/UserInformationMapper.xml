@@ -15,6 +15,7 @@
         where  id =#{id}
     </update>
 
+
     <select id="selectUserInformation" resultType="com.poverty.entity.po.UserInformation"
             parameterType="com.poverty.entity.po.UserInformation">
         select id,username,email,birthday,real_name,phone,id_card,address,create_time,modify_time

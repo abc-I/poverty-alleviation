@@ -31,26 +31,15 @@ public class CollectionController {
     @Resource
     private CollectionService collectionService;
     /**
-     * 添加收藏
+     * 添加删除收藏
      *
      * @param collectionDTO
      * @return Result
      */
-    @PostMapping("/insertCollection")
-    @ApiOperation("添加收藏")
-    public Result insertCollection(@RequestBody CollectionDTO collectionDTO){
-        return collectionService.insertCollection(collectionDTO);
-    }
-    /**
-     * 取消收藏
-     *
-     * @param collectionDTO
-     * @return Result
-     */
-    @DeleteMapping("/deleteCollection")
-    @ApiOperation("取消收藏")
-    public Result deleteCollection(@RequestBody CollectionDTO collectionDTO){
-        return collectionService.deleteCollection(collectionDTO);
+    @PostMapping("/collection")
+    @ApiOperation("收藏")
+    public Result collection(@RequestBody CollectionDTO collectionDTO){
+        return collectionService.collection(collectionDTO);
     }
 
     /**
@@ -58,10 +47,20 @@ public class CollectionController {
      * @param userId
      * @return Result
      */
-    @GetMapping("/selectCollection/{userId}")
+    @GetMapping("/selectArticleCollection/{userId}")
     @ApiOperation("查询收藏")
-    public Result selectCollection(@PathVariable String userId){
-        return collectionService.selectCollection(userId);
+    public Result selectArticleCollection(@PathVariable String userId){
+        return collectionService.selectArticleCollection(userId);
+    }
+    /**
+     *  查询视频
+     * @param userId
+     * @return Result
+     */
+    @GetMapping("/selectVideoCollection/{userId}")
+    @ApiOperation("查询视频")
+    public Result selectVideoCollection(@PathVariable String userId){
+        return collectionService.selectVideoCollection(userId);
     }
     /**
      * 点赞

@@ -13,15 +13,11 @@ public interface CollectionService {
     /**
      * 收藏
      */
-    Result insertCollection(CollectionDTO collectionDTO);
+    Result collection(CollectionDTO collectionDTO);
     /**
-     * 取消收藏
+     * 查看文章收藏
      */
-    Result deleteCollection(CollectionDTO collectionDTO);
-    /**
-     * 查看收藏
-     */
-    Result selectCollection(String userId);
+    Result selectArticleCollection(String userId);
     /**
      * 点赞
      */
@@ -30,4 +26,8 @@ public interface CollectionService {
      * 查看点赞
      */
     Result selectBeLike(String id, String userId);
+    /**
+     *查看视频收藏
+     */
+    Result selectVideoCollection(String userId);
 }

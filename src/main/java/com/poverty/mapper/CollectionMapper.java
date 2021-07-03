@@ -1,8 +1,10 @@
 package com.poverty.mapper;
 
 import com.poverty.entity.dto.CollectionDTO;
-import com.poverty.entity.po.Collection;
+import com.poverty.entity.vo.CollectionVO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author Li
@@ -15,5 +17,9 @@ public interface CollectionMapper {
 
     boolean deleteCollection(CollectionDTO collectionDTO);
 
-    boolean selectCollection(String userId);
+    List<CollectionVO> selectVideoCollection(String userId);
+
+    List<CollectionVO> selectArticleCollection(String userId);
+
+    int count(CollectionDTO collectionDTO);
 }
