@@ -21,6 +21,12 @@ public interface CarouselMapper {
 
     int updateCarousel(CarouselDTO carouselDTO);
 
+    /**
+     * a
+     * @param start as
+     * @param end asa
+     * @return as
+     */
     List<CarouselVO> selectCarousel(int start,int end);
 
     String selectUrlById(String id);
