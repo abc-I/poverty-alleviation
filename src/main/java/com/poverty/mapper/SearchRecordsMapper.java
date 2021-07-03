@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.po.SearchRecords;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,4 +11,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SearchRecordsMapper {
     boolean selectSearchRecords();
+
+    void insertOne(SearchRecords searchRecords);
 }

@@ -67,4 +67,19 @@
         from `t_article` as `art`
         where `art`.`id` = #{id};
     </select>
+
+    <select id="selectArticleByTitle" resultType="com.poverty.entity.vo.ArticlesVO">
+        <include refid="selectArticleList"/>
+        where `art`.`title` like "%"#{title}"%"
+            and `c`.`is_examined` = 1 LIMIT #{start},#{end};
+    </select>
+
+    <select id="countByTitle" resultType="java.lang.Integer">
+        select count(id)
+        from `t_article` as `art`
+                 inner join `t_count` as `c`
+                            on `c`.`id` = `art`.`id`
+        where `c`.`is_examined` = 1
+          and `art`.`title` like "%"#{title}"%";
+    </select>
 </mapper>

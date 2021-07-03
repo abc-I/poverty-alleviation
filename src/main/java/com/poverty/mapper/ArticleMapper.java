@@ -73,4 +73,22 @@ public interface ArticleMapper {
      * @return String
      */
     String selectArticleUrlById(String id);
+
+    /**
+     * 通过title查询文章
+     *
+     * @param title title
+     * @param start 第一个index
+     * @param end 最后一个index
+     * @return List<ArticlesVO>
+     */
+    List<ArticlesVO> selectArticleByTitle(String title, int start, int end);
+
+    /**
+     * 统计符合title的数据
+     *
+     * @param title 文章标题
+     * @return int
+     */
+    int countByTitle(String title);
 }

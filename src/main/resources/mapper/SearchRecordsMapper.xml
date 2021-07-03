@@ -3,4 +3,10 @@
 
 <mapper namespace="com.poverty.mapper.SearchRecordsMapper">
 
+    <insert id="insertOne">
+        insert into `t_searchRecords`
+            (user_id, search_content)
+        values
+            (#{userId}, #{searchContent});
+    </insert>
 </mapper>
