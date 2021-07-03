@@ -29,6 +29,15 @@ public class SearchServiceImpl implements SearchService {
     @Resource
     private VideoMapper videoMapper;
 
+    /**
+     * 搜索title的文章
+     *
+     * @param userId 用户id
+     * @param title title的匹配
+     * @param current 当前页
+     * @param size 每页总数
+     * @return Result
+     */
     @Override
     public Result searchArticleByTitle(String userId,String title, int current, int size) {
         int start = PageUtil.getStart(current, size);
@@ -47,6 +56,15 @@ public class SearchServiceImpl implements SearchService {
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
     }
 
+    /**
+     * 搜索title的视频
+     *
+     * @param userId 用户id
+     * @param title title的匹配
+     * @param current 当前页
+     * @param size 每页总数
+     * @return Result
+     */
     @Override
     public Result searchVideoByTitle(String userId, String title, int current, int size) {
         int start = PageUtil.getStart(current, size);
@@ -63,5 +81,16 @@ public class SearchServiceImpl implements SearchService {
         }
 
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
+    }
+
+    /**
+     * 查询搜索记录
+     *
+     * @param userId 用户id
+     * @return Result
+     */
+    @Override
+    public Result searchRecords(String userId) {
+        return null;
     }
 }

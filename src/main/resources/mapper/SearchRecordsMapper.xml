@@ -9,4 +9,11 @@
         values
             (#{userId}, #{searchContent});
     </insert>
+
+    <select id="selectSearchRecords" resultType="java.lang.String">
+        select search_content
+        from `t_search_records`
+        where user_id = #{userId}
+        order by create_time LIMIT 0,10;
+    </select>
 </mapper>
