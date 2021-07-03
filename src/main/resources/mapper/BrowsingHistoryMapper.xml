@@ -4,6 +4,6 @@
 <mapper namespace="com.poverty.mapper.BrowsingHistoryMapper">
 
     <insert id="insertOne" parameterType="com.poverty.entity.po.BrowsingHistory">
-        insert into t_browsing_history (user_id,video_id)values (#{userId},#{videoId})
+        insert into t_browsing_history (user_id,id)values (#{userId},#{id})
     </insert>
 </mapper>

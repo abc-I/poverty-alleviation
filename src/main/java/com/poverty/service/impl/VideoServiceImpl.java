@@ -128,12 +128,14 @@ public class VideoServiceImpl implements VideoService {
     public Result selectVideoById(String id,String userId) {
         VideoVO selectVideoById = videoMapper.selectVideoById(id);
         countMapper.updateRecommendById(id);
+        if (userId != null) {
+            BrowsingHistory browsingHistory=new BrowsingHistory();
+            browsingHistory.setUserId(userId);
+            browsingHistory.setId(id);
 
-        BrowsingHistory browsingHistory=new BrowsingHistory();
-        browsingHistory.setUserId(userId);
-        browsingHistory.setVideoId(id);
+            browsingHistoryMapper.insertOne(browsingHistory);
+        }
 
-        browsingHistoryMapper.insertOne(browsingHistory);
         if(selectVideoById!=null){
             return Result.result200(selectVideoById);
         }else {

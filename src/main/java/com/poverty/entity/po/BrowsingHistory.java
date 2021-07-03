@@ -29,14 +29,8 @@ public class BrowsingHistory implements Serializable {
     /**
      * 视频id
      */
-    @TableField(value = "video_id")
-    private String videoId;
-
-    /**
-     * 文章id
-     */
-    @TableField(value = "article_id")
-    private String articleId;
+    @TableField(value = "id")
+    private String id;
 
     /**
      * 创建时间
