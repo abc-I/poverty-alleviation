@@ -17,7 +17,7 @@ public interface CollectionService {
     /**
      * 查看文章收藏
      */
-    Result selectArticleCollection(String userId);
+    Result selectArticleCollection(String userId,int current,int size);
     /**
      * 点赞
      */
@@ -29,5 +29,5 @@ public interface CollectionService {
     /**
      *查看视频收藏
      */
-    Result selectVideoCollection(String userId);
+    Result selectVideoCollection(String userId,int current,int size);
 }

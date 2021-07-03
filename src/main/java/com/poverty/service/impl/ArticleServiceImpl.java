@@ -70,7 +70,7 @@ public class ArticleServiceImpl implements ArticleService {
         if (userId != null) {
             BrowsingHistory browsingHistory = new BrowsingHistory();
             browsingHistory.setUserId(userId);
-            browsingHistory.setArticleId(id);
+            browsingHistory.setId(id);
 
             browsingHistoryMapper.insertOne(browsingHistory);
         }

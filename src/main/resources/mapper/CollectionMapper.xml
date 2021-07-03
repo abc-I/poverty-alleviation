@@ -12,26 +12,39 @@
         delete from t_collection
         where user_id=#{userId} and id=#{id}
     </delete>
-    <select id="selectArticleCollection" resultType="com.poverty.entity.vo.CollectionVO"
-            parameterType="java.lang.String">
+    <select id="selectArticleCollection" resultType="com.poverty.entity.vo.CollectionVO">
         select `art`.`id`,`art`.`title`,`art`.`picture_url`,`art`.`text`,`c`.`recommend`,`c`.`be_liked`
         from `t_article` as `art`
             inner join `t_count` as `c`
                 on `c`.`id`=`art`.`id`
             inner join `t_collection` as `co`
                 on `art`.`id`=`co`.`id`
-        where user_id=#{userId}
+        where user_id=#{userId} LIMIT #{start},#{end}
     </select>
-    <select id="selectVideoCollection" resultType="com.poverty.entity.vo.CollectionVO"
-            parameterType="java.lang.String">
+    <select id="selectVideoCollection" resultType="com.poverty.entity.vo.CollectionVO">
         select `v`.`id`, `v`.`title`, `v`.`picture_url`
         from `t_video` as `v`
             inner join t_collection as `c`
                 on `v`.id=`c`.id
-        where user_id=#{userId}
+        where user_id=#{userId} LIMIT #{start}, #{end}
     </select>
     <select id="count" resultType="java.lang.Integer" parameterType="com.poverty.entity.dto.CollectionDTO">
-        select count(user_id) from `t_collection` where user_id=#{userId} and id=#{id}
+        select count(*) from `t_collection` where user_id=#{userId} and id=#{id}
+    </select>
+
+    <select id="countArticleByUserId" resultType="java.lang.Integer">
+        select count(`art`.`id`)
+        from `t_article` as `art`
+                 inner join `t_collection` as `co`
+                            on `art`.`id`=`co`.`id`
+        where user_id=#{userId}
+    </select>
+    <select id="countVideoByUserId" resultType="java.lang.Integer">
+        select count(`v`.`id`)
+        from `t_video` as `v`
+                 inner join t_collection as `c`
+                            on `v`.id=`c`.id
+        where user_id=#{userId}
     </select>
 
 </mapper>

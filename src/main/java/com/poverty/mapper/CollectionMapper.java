@@ -17,9 +17,13 @@ public interface CollectionMapper {
 
     boolean deleteCollection(CollectionDTO collectionDTO);
 
-    List<CollectionVO> selectVideoCollection(String userId);
+    List<CollectionVO> selectVideoCollection(String userId,int start,int end);
 
-    List<CollectionVO> selectArticleCollection(String userId);
+    List<CollectionVO> selectArticleCollection(String userId,int start,int end);
 
     int count(CollectionDTO collectionDTO);
+
+    int countArticleByUserId(String userId);
+
+    int countVideoByUserId(String userId);
 }

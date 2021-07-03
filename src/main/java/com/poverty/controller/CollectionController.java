@@ -3,7 +3,6 @@ package com.poverty.controller;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.BeLikeDTO;
 import com.poverty.entity.dto.CollectionDTO;
-import com.poverty.entity.po.Collection;
 import com.poverty.service.CollectionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -32,7 +31,7 @@ public class CollectionController {
     private CollectionService collectionService;
     /**
      * 添加删除收藏
-     *
+     *ll
      * @param collectionDTO
      * @return Result
      */
@@ -43,24 +42,29 @@ public class CollectionController {
     }
 
     /**
-     *  查询收藏
+     * 查询收藏
+     *
      * @param userId
      * @return Result
      */
-    @GetMapping("/selectArticleCollection/{userId}")
+    @GetMapping("/selectArticleCollection/{userId}/{current}/{size}")
     @ApiOperation("查询收藏")
-    public Result selectArticleCollection(@PathVariable String userId){
-        return collectionService.selectArticleCollection(userId);
+    public Result selectArticleCollection(@PathVariable String userId, @PathVariable int current, @PathVariable int size) {
+        return collectionService.selectArticleCollection(userId, current, size);
     }
+
     /**
-     *  查询视频
+     * 查询视频
+     *
      * @param userId
      * @return Result
      */
-    @GetMapping("/selectVideoCollection/{userId}")
+    @GetMapping("/selectVideoCollection/{userId}/{current}/{size}")
     @ApiOperation("查询视频")
-    public Result selectVideoCollection(@PathVariable String userId){
-        return collectionService.selectVideoCollection(userId);
+    public Result selectVideoCollection(
+            @PathVariable String userId, @PathVariable int current, @PathVariable int size) {
+
+        return collectionService.selectVideoCollection(userId, current, size);
     }
     /**
      * 点赞

@@ -5,10 +5,12 @@ import com.poverty.entity.dto.BeLikeDTO;
 import com.poverty.entity.dto.CollectionDTO;
 import com.poverty.entity.po.BeLike;
 import com.poverty.entity.vo.CollectionVO;
+import com.poverty.entity.vo.Page;
 import com.poverty.mapper.BeLikeMapper;
 import com.poverty.mapper.CollectionMapper;
 import com.poverty.mapper.CountMapper;
 import com.poverty.service.CollectionService;
+import com.poverty.util.PageUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,10 +64,16 @@ public class CollectionServiceImpl implements CollectionService {
      * @return Result
      */
     @Override
-    public Result selectArticleCollection(String userId) {
-        List<CollectionVO> selectCollection = collectionMapper.selectArticleCollection(userId);
+    public Result selectArticleCollection(String userId,int current,int size) {
+        int start = PageUtil.getStart(current, size);
+        int end = PageUtil.getEnd(current, size);
+
+        List<CollectionVO> selectCollection =
+                collectionMapper.selectArticleCollection(userId, start, end);
+
+        int total = collectionMapper.countArticleByUserId(userId);
         if (selectCollection.size() > 0) {
-            return Result.result200(selectCollection);
+            return Result.result200(new Page(total, PageUtil.getPageCount(total, size), selectCollection));
         } else {
             return Result.result500("查询失败");
         }
@@ -116,10 +124,16 @@ public class CollectionServiceImpl implements CollectionService {
      * @return Result
      */
     @Override
-    public Result selectVideoCollection(String userId) {
-        List<CollectionVO> selectCollection = collectionMapper.selectVideoCollection(userId);
+    public Result selectVideoCollection(String userId,int current,int size) {
+        int start = PageUtil.getStart(current, size);
+        int end = PageUtil.getEnd(current, size);
+
+        List<CollectionVO> selectCollection =
+                collectionMapper.selectVideoCollection(userId, start, end);
+        int total = collectionMapper.countVideoByUserId(userId);
+
         if (selectCollection.size() > 0) {
-            return Result.result200(selectCollection);
+            return Result.result200(new Page(total, PageUtil.getPageCount(total, size), selectCollection));
         } else {
             return Result.result500("查询失败");
         }
