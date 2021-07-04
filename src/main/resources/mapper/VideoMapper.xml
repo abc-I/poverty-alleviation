@@ -45,6 +45,14 @@
     <select id="selectVideoUrlById" resultType="java.lang.String">
         select video_url, picture_url where id=#{id}
     </select>
-
-
+    <select id="selectVideoByTitle" resultType="com.poverty.entity.vo.VideosVO">
+        <include refid="select"/>
+         where `v`.`title` like "%"#{title}"%"
+        and `c`.`is_examined` = 1 LIMIT #{start},#{end};
+    </select>
+    <select id="countByTitle" resultType="java.lang.Integer">
+        select count(*) from t_video
+        where `v`.`title` like "%"#{title}"%"
+        and `c`.`is_examined` = 1
+    </select>
 </mapper>

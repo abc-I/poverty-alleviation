@@ -3,6 +3,7 @@ package com.poverty.mapper;
 import com.poverty.entity.dto.PostId;
 import com.poverty.entity.dto.VideoDTO;
 import com.poverty.entity.po.Video;
+import com.poverty.entity.vo.ArticlesVO;
 import com.poverty.entity.vo.CarouselVO;
 import com.poverty.entity.vo.VideoVO;
 import com.poverty.entity.vo.VideosVO;
@@ -30,4 +31,8 @@ public interface VideoMapper {
     List<VideosVO> selectNotExaminedVideoList(int start, int end);
 
     String selectVideoUrlById(String id);
+
+    List<VideosVO> selectVideoByTitle(String title, int start, int end);
+
+    int countByTitle(String title);
 }

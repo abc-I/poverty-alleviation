@@ -4,6 +4,7 @@ import com.poverty.entity.Result;
 import com.poverty.entity.po.SearchRecords;
 import com.poverty.entity.vo.ArticlesVO;
 import com.poverty.entity.vo.Page;
+import com.poverty.entity.vo.VideosVO;
 import com.poverty.mapper.ArticleMapper;
 import com.poverty.mapper.SearchRecordsMapper;
 import com.poverty.mapper.VideoMapper;
@@ -70,7 +71,7 @@ public class SearchServiceImpl implements SearchService {
         int start = PageUtil.getStart(current, size);
         int end = PageUtil.getEnd(current, size);
 
-        List<ArticlesVO> articles = videoMapper.selectvideoByTitle(title, start, end);
+        List<VideosVO> articles = videoMapper.selectVideoByTitle(title, start, end);
         int total = videoMapper.countByTitle(title);
         if (userId != null) {
             SearchRecords searchRecords = new SearchRecords();

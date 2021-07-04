@@ -2,8 +2,7 @@ package com.poverty.mapper;
 
 import com.poverty.entity.dto.PostId;
 import com.poverty.entity.po.BrowsingHistory;
-import com.poverty.entity.vo.ArticleBrowsingHistoryVO;
-import com.poverty.entity.vo.VideoBrowsingHistoryVO;
+import com.poverty.entity.vo.BrowsingHistoryVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.List;
 public interface BrowsingHistoryMapper {
     void insertOne(BrowsingHistory browsingHistory);
 
-    List<ArticleBrowsingHistoryVO> selectArticleBrowsingHistory(PostId userId);
+    List<BrowsingHistoryVO> selectArticleBrowsingHistory(PostId userId);
 
-    List<VideoBrowsingHistoryVO> selectVideoBrowsingHistory(PostId userId);
+    List<BrowsingHistoryVO> selectVideoBrowsingHistory(PostId userId);
 }

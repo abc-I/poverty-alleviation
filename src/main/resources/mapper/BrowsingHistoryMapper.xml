@@ -6,7 +6,7 @@
     <insert id="insertOne" parameterType="com.poverty.entity.po.BrowsingHistory">
         insert into t_browsing_history (user_id,id)values (#{userId},#{id})
     </insert>
-    <select id="selectArticleBrowsingHistory" resultType="com.poverty.entity.vo.ArticleBrowsingHistoryVO"
+    <select id="selectArticleBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO"
             parameterType="com.poverty.entity.dto.PostId">
         select `art`.`id`,`art`.`title`
         from `t_article` as `art`
@@ -14,7 +14,7 @@
                 on `art`.`id`=`bh`.`id`
         where user_id = #{userId}
     </select>
-    <select id="selectVideoBrowsingHistory" resultType="com.poverty.entity.vo.VideoBrowsingHistoryVO">
+    <select id="selectVideoBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO">
         select `v`.`id`,`v`.`title`
         from `t_video` as `v`
                  inner join `t_browsing_history` as `bh`

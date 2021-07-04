@@ -11,15 +11,15 @@ import java.util.Date;
  * @date Created in 2021/7/03 13:22
  */
 @Data
-public class ArticleBrowsingHistoryVO implements Serializable {
+public class BrowsingHistoryVO implements Serializable {
     private static final long serialVersionUID = -6669313465031023223L;
     /**
-     * 文章id
+     * 文章或视频id
      */
     private String id;
 
     /**
-     * 文章标题
+     * 文章或视频标题
      */
     private String title;
 
