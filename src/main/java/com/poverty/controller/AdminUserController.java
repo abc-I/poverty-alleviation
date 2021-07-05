@@ -3,8 +3,10 @@ package com.poverty.controller;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.AdminUserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/6/29 14:42
  */
+@Api(tags = "管理用户接口")
 @RestController
 @RequiresRoles(value = {"administrator", "admin"}, logical = Logical.OR)
 @RequestMapping("/admin")
@@ -35,6 +38,7 @@ public class AdminUserController {
      * @param size    每页数据数
      * @return Result
      */
+    @ApiOperation("获取未封号的用户")
     @GetMapping("/getUserList/{current}/{size}")
     public Result getUserList(@PathVariable int current, @PathVariable int size) {
         return adminUserService.getUserList(current, size);
@@ -47,6 +51,7 @@ public class AdminUserController {
      * @param size    每页数据数
      * @return Result
      */
+    @ApiOperation("获取被封号的用户")
     @GetMapping("/getLockedUserList/{current}/{size}")
     public Result getLockedUserList(@PathVariable int current, @PathVariable int size) {
         return adminUserService.getLockedUserList(current, size);
@@ -58,6 +63,7 @@ public class AdminUserController {
      * @param username 用户名
      * @return Result
      */
+    @ApiOperation("通过用户名查询用户")
     @GetMapping("/searchUserByName/{username}")
     public Result searchUser(@PathVariable String username) {
         return adminUserService.searchUserByName(username);
@@ -69,6 +75,7 @@ public class AdminUserController {
      * @param account 账号
      * @return Result
      */
+    @ApiOperation("通过用户账号查询用户")
     @GetMapping("/searchUserByAccount/{account}")
     public Result searchUserByAccount(@PathVariable String account) {
         return adminUserService.searchUserByAccount(account);
@@ -80,6 +87,7 @@ public class AdminUserController {
      * @param id JSON{"id":"用户id"}
      * @return Result
      */
+    @ApiOperation("封号或解封")
     @PostMapping("/locked")
     public Result locked(@RequestBody PostId id) {
         return adminUserService.locked(id);

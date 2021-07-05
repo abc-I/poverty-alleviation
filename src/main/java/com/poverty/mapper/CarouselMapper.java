@@ -14,20 +14,40 @@ import java.util.List;
  */
 @Mapper
 public interface CarouselMapper {
-
+    /**
+     * 添加轮播图
+     *
+     * @param carousel
+     * @return int
+     */
     int insertCarousel(Carousel carousel);
-
+    /**
+     * 删除轮播图
+     *
+     * @param id    轮播图id
+     * @return int
+     */
     int deleteCarousel(String id);
-
+    /**
+     * 修改轮播图
+     *
+     * @param carouselDTO
+     * @return int
+     */
     int updateCarousel(CarouselDTO carouselDTO);
 
     /**
-     * a
-     * @param start as
-     * @param end asa
-     * @return as
+     * 查询所有轮播图
+     * @param start  开始
+     * @param end    结束
+     * @return List<CarouselVO>
      */
     List<CarouselVO> selectCarousel(int start,int end);
 
+    /**
+     * 根据id查询轮播图
+     * @param id    轮播图id
+     * @return String
+     */
     String selectUrlById(String id);
 }

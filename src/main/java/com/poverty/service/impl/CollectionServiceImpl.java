@@ -58,7 +58,7 @@ public class CollectionServiceImpl implements CollectionService {
     }
 
     /**
-     * 查询收藏
+     * 查看文章收藏
      *
      * @param userId 用户id
      * @return Result

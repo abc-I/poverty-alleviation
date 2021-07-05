@@ -12,8 +12,15 @@ import com.poverty.entity.po.UserInformation;
 public interface UserInformationService {
     /**
      * 修改用户信息
+     * @param userInformationDTO
+     * @return  Result
      */
     Result updateUserInformation(UserInformationDTO userInformationDTO);
 
+    /**
+     * 查询用户信息
+     * @param id
+     * @return  Result
+     */
     Result selectUserInformation(String id);
 }

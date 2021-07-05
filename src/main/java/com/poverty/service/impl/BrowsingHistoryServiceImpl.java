@@ -20,6 +20,11 @@ public class BrowsingHistoryServiceImpl implements BrowsingHistoryService {
     @Resource
     private BrowsingHistoryMapper browsingHistoryMapper;
 
+    /**
+     * 查找文章历史记录
+     * @param userId
+     * @return Result
+     */
     @Override
     public Result selectArticleBrowsingHistory(PostId userId) {
         List<BrowsingHistoryVO> articleBrowsingHistoryVOS = browsingHistoryMapper.selectArticleBrowsingHistory(userId);
@@ -30,6 +35,11 @@ public class BrowsingHistoryServiceImpl implements BrowsingHistoryService {
         }
     }
 
+    /**
+     * 查找视频历史记录
+     * @param userId
+     * @return Result
+     */
     @Override
     public Result selectVideoBrowsingHistory(PostId userId) {
         List<BrowsingHistoryVO> videoBrowsingHistoryVOS = browsingHistoryMapper.selectVideoBrowsingHistory(userId);
@@ -37,6 +47,36 @@ public class BrowsingHistoryServiceImpl implements BrowsingHistoryService {
             return Result.result200(videoBrowsingHistoryVOS);
         }else {
             return Result.result500("查询失败");
+        }
+    }
+
+    /**
+     * 删除文章历史记录
+     * @param userId
+     * @return Result
+     */
+    @Override
+    public Result deleteArticleBrowsingHistory(PostId userId) {
+        boolean deleteArticleBrowsingHistory = browsingHistoryMapper.deleteArticleBrowsingHistory(userId);
+        if (deleteArticleBrowsingHistory){
+            return Result.result200("删除成功");
+        }else {
+            return Result.result500("删除失败");
+        }
+    }
+
+    /**
+     * 删除视频历史记录
+     * @param userId
+     * @return Result
+     */
+    @Override
+    public Result deleteVideoBrowsingHistory(PostId userId) {
+        boolean deleteVideoBrowsingHistory = browsingHistoryMapper.deleteVideoBrowsingHistory(userId);
+        if (deleteVideoBrowsingHistory){
+            return Result.result200("删除成功");
+        }else {
+            return Result.result500("删除失败");
         }
     }
 }

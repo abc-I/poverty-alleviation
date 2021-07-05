@@ -5,6 +5,7 @@ import com.poverty.service.AdminVideoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/6/29 11:16
  */
+@Api(tags = "管理视频接口")
 @RestController
 @RequiresRoles(value = {"administrator", "admin"}, logical = Logical.OR)
 @RequestMapping("/admin")
@@ -35,6 +37,7 @@ public class AdminVideoController {
      * @param size    每页数据数
      * @return Result
      */
+    @ApiOperation("获取未审核的视频")
     @GetMapping("/getNotVideoList/{current}/{size}")
     public Result getNotVideoList(@PathVariable int current, @PathVariable int size) {
         return adminVideoService.getNotVideoList(current, size);
@@ -47,6 +50,7 @@ public class AdminVideoController {
      * @param size    每页几条数据
      * @return Result
      */
+    @ApiOperation("获取未通过审核的视频")
     @GetMapping("/getNoVideoList/{current}/{size}")
     public Result getNoVideoList(@PathVariable int current, @PathVariable int size) {
         return adminVideoService.getNoVideoList(current, size);
@@ -57,6 +61,7 @@ public class AdminVideoController {
      *
      * @return Result
      */
+    @ApiOperation("删除未通过审核的视频")
     @DeleteMapping("/deleteNoExaminedVideo")
     public Result deleteNoExaminedVideo() {
         return adminVideoService.deleteNoExaminedVideo();

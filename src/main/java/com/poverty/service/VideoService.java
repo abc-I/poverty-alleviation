@@ -12,18 +12,31 @@ import com.poverty.entity.po.Video;
 public interface VideoService {
     /**
      * 添加视频
+     * @param videoDTO
+     * @return
      */
     Result insertVideo(VideoDTO videoDTO);
+
     /**
      * 删除视频
+     * @param id
+     * @return Result
      */
     Result deleteVideo(PostId id);
+
     /**
-     * 查询全部视频
+     * 查询所有视频
+     * @param current
+     * @param size
+     * @return Result
      */
     Result selectAllVideo(int current, int size);
+
     /**
-     * 用id查询视频
+     * 通过id查询视频
+     * @param id
+     * @param userId
+     * @return  Result
      */
     Result selectVideoById(String id,String userId);
 }

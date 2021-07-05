@@ -1,7 +1,9 @@
 package com.poverty.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import com.poverty.entity.Result;
@@ -19,6 +21,7 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/6/18 15:02
  */
+@Api(tags = "上传接口")
 @RestController
 @RequiresRoles(value = {"user", "admin","administrator"}, logical = Logical.OR)
 @RequestMapping("/upload")
@@ -37,6 +40,7 @@ public class UploadController {
      * @param file 文件保存对象
      * @return org.bearer.entity.Result
      */
+    @ApiOperation("上传图片")
     @PostMapping("/uploadPictureFile")
     public Result uploadPictureFile(@RequestPart MultipartFile file) {
         String url = uploadService.uploadPicture(file);
@@ -49,6 +53,7 @@ public class UploadController {
      * @param file 文件保存对象
      * @return org.bearer.entity.Result
      */
+    @ApiOperation("上传视频")
     @PostMapping("/uploadVideoFile")
     public Result uploadVideoFile(@RequestPart MultipartFile file) {
         String url = uploadService.uploadVideo(file);
@@ -61,6 +66,7 @@ public class UploadController {
      * @param file 文件保存对象
      * @return org.bearer.entity.Result
      */
+    @ApiOperation("上传docx")
     @PostMapping("/uploadDocx")
     public Result uploadDocx(@RequestPart MultipartFile file) {
         String url = uploadService.uploadDocx(file);
@@ -73,6 +79,7 @@ public class UploadController {
      * @param url url
      * @return org.bearer.entity.Result
      */
+    @ApiOperation("判读url")
     private Result result(String url) {
         if (url != null) {
             return Result.result200(url);

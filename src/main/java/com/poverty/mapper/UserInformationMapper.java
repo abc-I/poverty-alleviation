@@ -21,7 +21,17 @@ public interface UserInformationMapper {
      */
     int insertOne(UserInformation userInformation);
 
+    /**
+     * 修改用户信息
+     * @param userInformationDTO
+     * @return boolean
+     */
     boolean updateUserInformation(UserInformationDTO userInformationDTO);
 
+    /**
+     * 查找用户信息
+     * @param id
+     * @return UserInformation
+     */
     UserInformation selectUserInformation(String id);
 }

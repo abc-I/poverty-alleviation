@@ -3,8 +3,10 @@ package com.poverty.controller;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.CountService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +21,7 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/6/29 12:39
  */
+@Api(tags = "计算接口")
 @RestController
 @RequiresRoles(value = {"administrator", "admin"}, logical = Logical.OR)
 @RequestMapping("/admin")
@@ -37,6 +40,7 @@ public class CountController {
      * @param id 文章id
      * @return Result
      */
+    @ApiOperation("设置 文章、视频 审核未通过")
     @PostMapping("/noExamined")
     public Result noExamineArticle(@RequestBody PostId id) {
         return countService.noExaminedArticle(id);
@@ -48,6 +52,7 @@ public class CountController {
      * @param id 文章id
      * @return Result
      */
+    @ApiOperation("设置 文章、视频 审核通过")
     @PostMapping("/isExamined")
     public Result isExamineArticle(@RequestBody PostId id) {
         return countService.isExaminedArticle(id);

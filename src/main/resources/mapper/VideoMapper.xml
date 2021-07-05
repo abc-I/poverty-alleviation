@@ -51,7 +51,10 @@
         and `c`.`is_examined` = 1 LIMIT #{start},#{end};
     </select>
     <select id="countByTitle" resultType="java.lang.Integer">
-        select count(*) from t_video
+        select count(*)
+        from t_video as v
+            inner join t_count as c
+                on v.id = c.id
         where `v`.`title` like "%"#{title}"%"
         and `c`.`is_examined` = 1
     </select>

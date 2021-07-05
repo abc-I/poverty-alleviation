@@ -4,8 +4,10 @@ import com.poverty.entity.Result;
 import com.poverty.entity.dto.ArticleDTO;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.ArticleService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/7/1 8:28
  */
+@Api(tags = "文章接口")
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
@@ -31,6 +34,7 @@ public class ArticleController {
      * @param size    每页几条数据
      * @return Result
      */
+    @ApiOperation("获取文章列表")
     @GetMapping("/getArticleList/{current}/{size}")
     public Result getArticleList(@PathVariable int current, @PathVariable int size) {
         System.out.println(articleService);
@@ -44,6 +48,7 @@ public class ArticleController {
      * @param userId 用户id
      * @return Result
      */
+    @ApiOperation("获取文章")
     @GetMapping("/getArticle/{id}/{userId}")
     public Result getArticleById(@PathVariable String id, @PathVariable String userId) {
         return articleService.getArticleById(id, userId);
@@ -55,6 +60,7 @@ public class ArticleController {
      * @param articleDTO JSON{"title":"文章标题","articleUrl":"文章html的url","text":"文章部分内容","userId":"用户id"}
      * @return Result
      */
+    @ApiOperation("保存文章信息")
     @PostMapping("/insertArticle")
     @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
     @ApiImplicitParams(value = {
@@ -76,6 +82,7 @@ public class ArticleController {
      * @param id JSON{"id":"文章id"}
      * @return Result
      */
+    @ApiOperation("删除文章")
     @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",

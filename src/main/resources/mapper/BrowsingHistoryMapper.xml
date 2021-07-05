@@ -6,6 +6,12 @@
     <insert id="insertOne" parameterType="com.poverty.entity.po.BrowsingHistory">
         insert into t_browsing_history (user_id,id)values (#{userId},#{id})
     </insert>
+    <delete id="deleteArticleBrowsingHistory" parameterType="com.poverty.entity.dto.PostId">
+        delete from t_browsing_history where user_id=#{userId}
+    </delete>
+    <delete id="deleteVideoBrowsingHistory" parameterType="com.poverty.entity.dto.PostId">
+        delete from t_browsing_history where user_id=#{userId}
+    </delete>
     <select id="selectArticleBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO"
             parameterType="com.poverty.entity.dto.PostId">
         select `art`.`id`,`art`.`title`

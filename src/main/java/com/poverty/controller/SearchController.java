@@ -3,6 +3,8 @@ package com.poverty.controller;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.SearchService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/7/3 17:31
  */
+@Api(tags = "搜索接口")
 @RestController
 public class SearchController {
 
@@ -30,6 +33,7 @@ public class SearchController {
      * @param size    每页总数
      * @return Result
      */
+    @ApiOperation("搜索title文章")
     @GetMapping("/searchArticleByTitle/{userId}/{title}/{current}/{size}")
     public Result searchArticleByTitle(
             @PathVariable String userId, @PathVariable String title,
@@ -46,6 +50,7 @@ public class SearchController {
      * @param size    每页总数
      * @return Result
      */
+    @ApiOperation("搜索title的视频")
     @GetMapping("/searchVideoByTitle/{userId}/{title}/{current}/{size}")
     public Result searchVideoByTitle(
             @PathVariable String userId, @PathVariable String title,
@@ -59,6 +64,7 @@ public class SearchController {
      * @param userId 用户id
      * @return Result
      */
+    @ApiOperation("查询搜索记录")
     @GetMapping("/searchRecords/{userId}")
     public Result searchRecords(@PathVariable String userId) {
         return searchService.searchRecords(userId);
@@ -70,6 +76,7 @@ public class SearchController {
      * @param id JSON{"id":"用户id"}
      * @return Result
      */
+    @ApiOperation("删除搜索记录")
     @DeleteMapping("/deleteRecords")
     public Result deleteRecords(PostId id) {
         return searchService.deleteRecords(id);
