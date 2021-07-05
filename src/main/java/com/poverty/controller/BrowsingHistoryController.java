@@ -4,8 +4,12 @@ import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.BrowsingHistoryService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +23,11 @@ import javax.annotation.Resource;
  */
 @RestController("BrowsingHistory")
 @Api(tags = "查询历史记录接口")
+@RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
+@ApiImplicitParams(value = {
+        @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+})
 public class BrowsingHistoryController {
     @Resource
     private BrowsingHistoryService browsingHistoryService;

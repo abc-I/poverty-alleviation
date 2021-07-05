@@ -4,7 +4,11 @@ import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.SearchService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,6 +70,11 @@ public class SearchController {
      */
     @ApiOperation("查询搜索记录")
     @GetMapping("/searchRecords/{userId}")
+    @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                    required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+    })
     public Result searchRecords(@PathVariable String userId) {
         return searchService.searchRecords(userId);
     }
@@ -78,6 +87,11 @@ public class SearchController {
      */
     @ApiOperation("删除搜索记录")
     @DeleteMapping("/deleteRecords")
+    @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
+                    required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
+    })
     public Result deleteRecords(PostId id) {
         return searchService.deleteRecords(id);
     }
