@@ -1,6 +1,7 @@
 package com.poverty.service;
 
 import com.poverty.entity.Result;
+import com.poverty.entity.dto.PostId;
 
 /**
  * @author Li
@@ -37,4 +38,12 @@ public interface SearchService {
      * @return Result
      */
     Result searchRecords(String userId);
+
+    /**
+     * 删除搜索记录
+     *
+     * @param id JSON{"id":"用户id"}
+     * @return Result
+     */
+    Result deleteRecords(PostId id);
 }

@@ -4,16 +4,22 @@
 <mapper namespace="com.poverty.mapper.SearchRecordsMapper">
 
     <insert id="insertOne">
-        insert into `t_searchRecords`
+        insert into `t_search_records`
             (user_id, search_content)
         values
             (#{userId}, #{searchContent});
     </insert>
 
+    <delete id="deleteByUserId">
+        delete
+        from `t_search_records`
+        where `user_id` = #{id};
+    </delete>
+
     <select id="selectSearchRecords" resultType="java.lang.String">
         select search_content
         from `t_search_records`
         where user_id = #{userId}
-        order by create_time LIMIT 0,10;
+        order by create_time desc LIMIT 0,10;
     </select>
 </mapper>

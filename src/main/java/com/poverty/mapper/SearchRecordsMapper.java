@@ -1,5 +1,6 @@
 package com.poverty.mapper;
 
+import com.poverty.entity.dto.PostId;
 import com.poverty.entity.po.SearchRecords;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -26,4 +27,12 @@ public interface SearchRecordsMapper {
      * @param searchRecords JSON{"userId":"用户id","searchContent":"搜索内容"}
      */
     void insertOne(SearchRecords searchRecords);
+
+    /**
+     * 通过id删除搜索记录
+     *
+     * @param id JSON{"id":"用户id"}
+     * @return boolean
+     */
+    boolean deleteByUserId(PostId id);
 }

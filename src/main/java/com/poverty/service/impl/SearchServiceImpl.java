@@ -1,6 +1,7 @@
 package com.poverty.service.impl;
 
 import com.poverty.entity.Result;
+import com.poverty.entity.dto.PostId;
 import com.poverty.entity.po.SearchRecords;
 import com.poverty.entity.vo.ArticlesVO;
 import com.poverty.entity.vo.Page;
@@ -92,6 +93,22 @@ public class SearchServiceImpl implements SearchService {
      */
     @Override
     public Result searchRecords(String userId) {
-        return null;
+        List<String> records = searchRecordsMapper.selectSearchRecords(userId);
+        return Result.result200(records);
+    }
+
+    /**
+     * 删除搜索记录
+     *
+     * @param id JSON{"id":"用户id"}
+     * @return Result
+     */
+    @Override
+    public Result deleteRecords(PostId id) {
+        if (searchRecordsMapper.deleteByUserId(id)) {
+            return Result.result200("删除成功！");
+        } else {
+            return Result.result500("删除失败！");
+        }
     }
 }

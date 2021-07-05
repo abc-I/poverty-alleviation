@@ -1,7 +1,9 @@
 package com.poverty.controller;
 
 import com.poverty.entity.Result;
+import com.poverty.entity.dto.PostId;
 import com.poverty.service.SearchService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,10 +24,10 @@ public class SearchController {
     /**
      * 搜索title的文章
      *
-     * @param userId 用户id
-     * @param title title的匹配
+     * @param userId  用户id
+     * @param title   title的匹配
      * @param current 当前页
-     * @param size 每页总数
+     * @param size    每页总数
      * @return Result
      */
     @GetMapping("/searchArticleByTitle/{userId}/{title}/{current}/{size}")
@@ -38,10 +40,10 @@ public class SearchController {
     /**
      * 搜索title的视频
      *
-     * @param userId 用户id
-     * @param title title的匹配
+     * @param userId  用户id
+     * @param title   title的匹配
      * @param current 当前页
-     * @param size 每页总数
+     * @param size    每页总数
      * @return Result
      */
     @GetMapping("/searchVideoByTitle/{userId}/{title}/{current}/{size}")
@@ -60,5 +62,16 @@ public class SearchController {
     @GetMapping("/searchRecords/{userId}")
     public Result searchRecords(@PathVariable String userId) {
         return searchService.searchRecords(userId);
+    }
+
+    /**
+     * 删除搜索记录
+     *
+     * @param id JSON{"id":"用户id"}
+     * @return Result
+     */
+    @DeleteMapping("/deleteRecords")
+    public Result deleteRecords(PostId id) {
+        return searchService.deleteRecords(id);
     }
 }
