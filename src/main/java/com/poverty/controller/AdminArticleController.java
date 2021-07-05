@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * @date Created in 2021/6/28 9:07
  */
 @RestController
-@Api(tags = "管理文章接口")
+@Api(tags = "管理员接口")
 @RequiresRoles(value = {"administrator", "admin"}, logical = Logical.OR)
 @RequestMapping("/admin")
 @ApiImplicitParams(value = {

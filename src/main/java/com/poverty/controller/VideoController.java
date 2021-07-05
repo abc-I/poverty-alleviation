@@ -3,8 +3,6 @@ package com.poverty.controller;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.entity.dto.VideoDTO;
-import com.poverty.entity.po.Video;
-import com.poverty.entity.vo.VideoVO;
 import com.poverty.service.VideoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -24,8 +22,10 @@ import javax.annotation.Resource;
 @Api(tags = "视频接口")
 @RequestMapping("/video")
 public class VideoController {
+
     @Resource
     private VideoService videoService;
+
     /**
      * 添加视频
      *

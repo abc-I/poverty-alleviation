@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/6/29 16:30
  */
-@Api(tags = "管理员接口")
+@Api(tags = "超级管理员接口")
 @RestController
 @RequiresRoles(value = {"administrator"})
 @RequestMapping("/admin")

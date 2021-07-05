@@ -34,7 +34,7 @@ public class CarouselController {
      * @return Result
      */
     @ApiOperation("添加轮播图")
-    @PostMapping("/Carousel/insertCarousel")
+    @PostMapping("/insertCarousel")
     @RequiresRoles(value = {"administrator", "admin"}, logical = Logical.OR)
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
@@ -56,7 +56,7 @@ public class CarouselController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    @DeleteMapping("/Carousel/deleteCarousel")
+    @DeleteMapping("/deleteCarousel")
     public Result deleteCarousel(@RequestBody PostId id) {
         return carouselService.deleteCarousel(id);
     }
@@ -73,7 +73,7 @@ public class CarouselController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    @PostMapping("/Carousel/updateCarousel")
+    @PostMapping("/updateCarousel")
     public Result updateCarousel(@RequestBody CarouselDTO carouselDTO) {
         return carouselService.updateCarousel(carouselDTO);
     }
@@ -84,7 +84,7 @@ public class CarouselController {
      * @return Result
      */
     @ApiOperation("查询所有轮播图")
-    @GetMapping("/Carousel/selectCarousel/{start}/{end}")
+    @GetMapping("/selectCarousel/{start}/{end}")
     public Result selectCarousel(@PathVariable int start,@PathVariable int end){
         return  carouselService.selectCarousel(start,end);
     }
