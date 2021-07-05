@@ -37,7 +37,7 @@ public class AdminArticleController {
      * @param size 每页数据数
      * @return Result
      */
-    @PostMapping("获取所有没有审核的文章")
+    @ApiOperation("获取所有没有审核的文章")
     @GetMapping("/getNotArticleList/{current}/{size}")
     public Result getNotArticleList(@PathVariable int current,@PathVariable int size) {
         return administratorService.getNotArticleList(current, size);

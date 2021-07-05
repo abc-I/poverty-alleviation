@@ -7,10 +7,10 @@
         insert into t_browsing_history (user_id,id)values (#{userId},#{id})
     </insert>
     <delete id="deleteArticleBrowsingHistory" parameterType="com.poverty.entity.dto.PostId">
-        delete from t_browsing_history where user_id=#{userId}
+        delete from t_browsing_history as bh inner t_article as art on bh.id = art.id where user_id=#{userId}
     </delete>
     <delete id="deleteVideoBrowsingHistory" parameterType="com.poverty.entity.dto.PostId">
-        delete from t_browsing_history where user_id=#{userId}
+        delete from t_browsing_history as bh inner t_video as video on bh.id = video.id where user_id=#{userId}
     </delete>
     <select id="selectArticleBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO"
             parameterType="com.poverty.entity.dto.PostId">
@@ -27,5 +27,4 @@
                             on `v`.`id`=`bh`.`id`
         where user_id = #{userId}
     </select>
-
 </mapper>
