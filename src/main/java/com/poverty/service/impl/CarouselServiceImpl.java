@@ -25,15 +25,15 @@ public class CarouselServiceImpl implements CarouselService {
     /**
      * 添加轮播图
      *
-     * @param carouselDTO
+     * @param carouselUrl
      * @return Result
      */
     @Override
-    public Result insertCarousel(CarouselDTO carouselDTO) {
+    public Result insertCarousel(String carouselUrl) {
         String carouselId= UUID.randomUUID().toString().replace("-","");
         Carousel carousel=new Carousel();
         carousel.setId(carouselId);
-        carousel.setCarouselUrl(carouselDTO.getCarouselUrl());
+        carousel.setCarouselUrl(carouselUrl);
 
         int insertCarousel = carouselMapper.insertCarousel(carousel);
         if(insertCarousel>0){

@@ -30,7 +30,7 @@ public class CarouselController {
     /**
      * 添加轮播图
      *
-     * @param carouselDTO
+     * @param carouselUrl
      * @return Result
      */
     @ApiOperation("添加轮播图")
@@ -40,8 +40,8 @@ public class CarouselController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    public Result insertCarousel(@RequestBody CarouselDTO carouselDTO) {
-        return carouselService.insertCarousel(carouselDTO);
+    public Result insertCarousel(@RequestBody String carouselUrl) {
+        return carouselService.insertCarousel(carouselUrl);
     }
 
     /**

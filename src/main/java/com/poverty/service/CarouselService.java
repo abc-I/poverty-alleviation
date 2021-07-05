@@ -13,10 +13,10 @@ import java.util.List;
 public interface CarouselService {
     /**
      * 添加轮播图
-     * @param carouselDTO
+     * @param carouselUrl
      * @return Result
      */
-    Result insertCarousel(CarouselDTO carouselDTO);
+    Result insertCarousel(String carouselUrl);
 
     /**
      * 删除轮播图
