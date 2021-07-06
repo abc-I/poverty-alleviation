@@ -3,12 +3,13 @@ package com.poverty.service.impl;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.PostId;
 import com.poverty.entity.vo.BrowsingHistoryVO;
+import com.poverty.entity.vo.Page;
 import com.poverty.mapper.BrowsingHistoryMapper;
 import com.poverty.service.BrowsingHistoryService;
+import com.poverty.util.PageUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 /**
  * @author Zhu
@@ -22,30 +23,46 @@ public class BrowsingHistoryServiceImpl implements BrowsingHistoryService {
 
     /**
      * 查找文章历史记录
+     *
      * @param userId
      * @return Result
      */
     @Override
-    public Result selectArticleBrowsingHistory(String userId) {
-        List<BrowsingHistoryVO> articleBrowsingHistoryVOS = browsingHistoryMapper.selectArticleBrowsingHistory(userId);
-        if(articleBrowsingHistoryVOS.size()>0){
-            return Result.result200(articleBrowsingHistoryVOS);
-        }else {
+    public Result selectArticleBrowsingHistory(String userId, int current, int size) {
+        int start = PageUtil.getStart(current, size);
+        int end = PageUtil.getEnd(current, size);
+
+        List<BrowsingHistoryVO> articleBrowsingHistoryVOS =
+                browsingHistoryMapper.selectArticleBrowsingHistory(userId, start, end);
+        int total = browsingHistoryMapper.countArticle(userId);
+
+        if (articleBrowsingHistoryVOS.size() > 0) {
+            return Result.result200(
+                    new Page(total, PageUtil.getPageCount(total, size), articleBrowsingHistoryVOS));
+        } else {
             return Result.result500("查询失败");
         }
     }
 
     /**
      * 查找视频历史记录
+     *
      * @param userId
      * @return Result
      */
     @Override
-    public Result selectVideoBrowsingHistory(String userId) {
-        List<BrowsingHistoryVO> videoBrowsingHistoryVOS = browsingHistoryMapper.selectVideoBrowsingHistory(userId);
-        if(videoBrowsingHistoryVOS.size()>0){
-            return Result.result200(videoBrowsingHistoryVOS);
-        }else {
+    public Result selectVideoBrowsingHistory(String userId, int current, int size) {
+        int start = PageUtil.getStart(current, size);
+        int end = PageUtil.getEnd(current, size);
+
+        List<BrowsingHistoryVO> videoBrowsingHistoryVOS =
+                browsingHistoryMapper.selectVideoBrowsingHistory(userId, start, end);
+        int total = browsingHistoryMapper.countVideo(userId);
+
+        if (videoBrowsingHistoryVOS.size() > 0) {
+            return Result.result200(
+                    new Page(total, PageUtil.getPageCount(total, size), videoBrowsingHistoryVOS));
+        } else {
             return Result.result500("查询失败");
         }
     }
