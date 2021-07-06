@@ -27,14 +27,14 @@ public interface BrowsingHistoryMapper {
      * @param userId    用户id
      * @return List<BrowsingHistoryVO>
      */
-    List<BrowsingHistoryVO> selectArticleBrowsingHistory(PostId userId);
+    List<BrowsingHistoryVO> selectArticleBrowsingHistory(String userId);
     /**
      * 查询视频历史记录
      *
      * @param userId    用户id
      * @return List<BrowsingHistoryVO>
      */
-    List<BrowsingHistoryVO> selectVideoBrowsingHistory(PostId userId);
+    List<BrowsingHistoryVO> selectVideoBrowsingHistory(String userId);
     /**
      * 删除文章历史记录
      *

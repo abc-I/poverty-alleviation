@@ -26,7 +26,7 @@ public class BrowsingHistoryServiceImpl implements BrowsingHistoryService {
      * @return Result
      */
     @Override
-    public Result selectArticleBrowsingHistory(PostId userId) {
+    public Result selectArticleBrowsingHistory(String userId) {
         List<BrowsingHistoryVO> articleBrowsingHistoryVOS = browsingHistoryMapper.selectArticleBrowsingHistory(userId);
         if(articleBrowsingHistoryVOS.size()>0){
             return Result.result200(articleBrowsingHistoryVOS);
@@ -41,7 +41,7 @@ public class BrowsingHistoryServiceImpl implements BrowsingHistoryService {
      * @return Result
      */
     @Override
-    public Result selectVideoBrowsingHistory(PostId userId) {
+    public Result selectVideoBrowsingHistory(String userId) {
         List<BrowsingHistoryVO> videoBrowsingHistoryVOS = browsingHistoryMapper.selectVideoBrowsingHistory(userId);
         if(videoBrowsingHistoryVOS.size()>0){
             return Result.result200(videoBrowsingHistoryVOS);

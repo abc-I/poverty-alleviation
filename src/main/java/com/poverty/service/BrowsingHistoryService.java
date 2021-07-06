@@ -14,14 +14,14 @@ public interface BrowsingHistoryService {
      * @param userId
      * @return Result
      */
-    Result selectArticleBrowsingHistory(PostId userId);
+    Result selectArticleBrowsingHistory(String userId);
 
     /**
      * 查找视频历史记录
      * @param userId
      * @return Result
      */
-    Result selectVideoBrowsingHistory(PostId userId);
+    Result selectVideoBrowsingHistory(String userId);
 
     /**
      * 删除文章历史记录

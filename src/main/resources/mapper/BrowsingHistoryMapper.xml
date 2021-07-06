@@ -12,12 +12,12 @@
     <delete id="deleteVideoBrowsingHistory" parameterType="com.poverty.entity.dto.PostId">
         delete from t_browsing_history as bh inner t_video as video on bh.id = video.id where user_id=#{userId}
     </delete>
-    <select id="selectArticleBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO"
-            parameterType="com.poverty.entity.dto.PostId">
+
+    <select id="selectArticleBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO">
         select `art`.`id`,`art`.`title`
         from `t_article` as `art`
-            inner join `t_browsing_history` as `bh`
-                on `art`.`id`=`bh`.`id`
+                 inner join `t_browsing_history` as `bh`
+                            on `art`.`id`=`bh`.`id`
         where user_id = #{userId}
     </select>
     <select id="selectVideoBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO">

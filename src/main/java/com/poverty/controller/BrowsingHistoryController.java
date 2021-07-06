@@ -35,7 +35,7 @@ public class BrowsingHistoryController {
      */
     @GetMapping("/selectArticleBrowsingHistory/{userId}")
     @ApiOperation("查询文章历史记录")
-    public Result articleBrowsingHistory(@PathVariable PostId userId){
+    public Result articleBrowsingHistory(@PathVariable String userId){
         return browsingHistoryService.selectArticleBrowsingHistory(userId);
     }
     /**
@@ -45,7 +45,7 @@ public class BrowsingHistoryController {
      */
     @GetMapping("/selectVideoBrowsingHistory/{userId}")
     @ApiOperation("查询视频历史记录")
-    public Result videoBrowsingHistory(@PathVariable PostId userId){
+    public Result videoBrowsingHistory(@PathVariable String userId){
         return browsingHistoryService.selectVideoBrowsingHistory(userId);
     }
     /**
