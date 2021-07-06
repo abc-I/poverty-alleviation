@@ -86,7 +86,7 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public Result insertArticle(ArticleDTO articleDTO) throws Exception {
-        String id = UUID.randomUUID().toString().replace("-", "");
+        String id = UUID.randomUUID().toString().replaceAll("-", "");
 
         Article article = new Article();
         article.setId(id);

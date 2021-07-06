@@ -140,13 +140,13 @@ public class LoginServiceImpl implements LoginService {
         String message = mailUtil.readerHtml(pathUtil.getHtmlPath() + "code.html");
 
         String code = UUID.randomUUID().toString()
-                .replace("-", "").substring(0, 9);
+                .replaceAll("-", "").substring(0, 9);
 
         String[] to = new String[1];
         to[0] = email;
 
         mailUtil.sendFileAndImgMail("注册验证码", to, null, null,
-                new Date(), message.replace("code", code), null, null);
+                new Date(), message.replaceAll("code", code), null, null);
 
         long time = 60;
         if (JedisUtil.set(email, code, time)) {
@@ -173,7 +173,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // 随机参数用户id
-        String userId = UUID.randomUUID().toString().replace("-", "");
+        String userId = UUID.randomUUID().toString().replaceAll("-", "");
 
         // 随机产生账号
         long max = 9999999999999L;
@@ -185,7 +185,7 @@ public class LoginServiceImpl implements LoginService {
         } while (userMapper.selectIdByAccount(account) != null);
 
         // 产生加密盐
-        String salt = UUID.randomUUID().toString().replace("-", "");
+        String salt = UUID.randomUUID().toString().replaceAll("-", "");
         // 加密密码
         String pass = MD5Util.parse10(signUp.getPassword(), salt);
         // 封装账号信息

@@ -48,7 +48,7 @@ public class VideoServiceImpl implements VideoService {
      */
     @Override
     public Result insertVideo(VideoDTO videoDTO) {
-        String id = UUID.randomUUID().toString().replace("-", "");
+        String id = UUID.randomUUID().toString().replaceAll("-", "");
 
         Video video = new Video();
         video.setId(id);

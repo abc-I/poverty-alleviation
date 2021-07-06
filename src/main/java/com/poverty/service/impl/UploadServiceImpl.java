@@ -132,7 +132,7 @@ public class UploadServiceImpl implements UploadService {
             String line;
             while ((line = reader.readLine()) != null) {
                 // 修改图片路径后写出
-                writer.write(line.replace("src=\"" + prefix + "_images",
+                writer.write(line.replaceAll("src=\"" + prefix + "_images",
                         "src=\"" + pathUtil.getBaseUrl() + "static/image/" + prefix));
             }
         } catch (IOException e) {
@@ -173,7 +173,7 @@ public class UploadServiceImpl implements UploadService {
             suffix = name.substring(name.lastIndexOf("."));
         }
 
-        String fileName = UUID.randomUUID().toString().replace("-", "") + suffix;
+        String fileName = UUID.randomUUID().toString().replaceAll("-", "") + suffix;
 
         File placeFile = new File(path);
         if (!placeFile.exists()) {
