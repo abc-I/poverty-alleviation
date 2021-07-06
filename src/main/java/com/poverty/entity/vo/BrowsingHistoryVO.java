@@ -22,9 +22,4 @@ public class BrowsingHistoryVO implements Serializable {
      * 文章或视频标题
      */
     private String title;
-
-    /**
-     * 时间
-     */
-    private Date createTime;
 }

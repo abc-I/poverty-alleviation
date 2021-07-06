@@ -35,9 +35,12 @@ public class SearchController {
      * @return Result
      */
     @ApiOperation("搜索title文章")
-    @GetMapping("/searchArticleByTitle/{userId}/{title}/{current}/{size}")
+    @GetMapping(value={
+            "/searchArticleByTitle/{title}/{current}/{size}/{userId}",
+            "/searchArticleByTitle/{title}/{current}/{size}"
+    })
     public Result searchArticleByTitle(
-            @PathVariable String userId, @PathVariable String title,
+            @PathVariable(required = false) String userId, @PathVariable String title,
             @PathVariable int current, @PathVariable int size) {
         return searchService.searchArticleByTitle(userId, title, current, size);
     }
@@ -52,9 +55,12 @@ public class SearchController {
      * @return Result
      */
     @ApiOperation("搜索title的视频")
-    @GetMapping("/searchVideoByTitle/{userId}/{title}/{current}/{size}")
+    @GetMapping(value = {
+            "/searchVideoByTitle/{title}/{current}/{size}/{userId}",
+            "/searchVideoByTitle/{title}/{current}/{size}"
+    })
     public Result searchVideoByTitle(
-            @PathVariable String userId, @PathVariable String title,
+            @PathVariable(required = false) String userId, @PathVariable String title,
             @PathVariable int current, @PathVariable int size) {
         return searchService.searchVideoByTitle(userId, title, current, size);
     }

@@ -74,9 +74,9 @@ public class VideoController {
      * @param id 轮播图id
      * @return Result
      */
-    @GetMapping("/selectVideoById/{id}/{userId}")
+    @GetMapping(value = {"/selectVideoById/{id}/{userId}","/selectVideoById/{id}"})
     @ApiOperation("查询视频")
-    public Result selectVideoById(@PathVariable String id,@PathVariable String userId){
+    public Result selectVideoById(@PathVariable String id,@PathVariable(required = false) String userId){
        return videoService.selectVideoById(id,userId);
     }
 }

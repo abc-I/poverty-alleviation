@@ -21,20 +21,22 @@ public interface BrowsingHistoryMapper {
      * @return void
      */
     void insertOne(BrowsingHistory browsingHistory);
+
     /**
      * 查询文章历史记录
      *
-     * @param userId    用户id
+     * @param userId 用户id
      * @return List<BrowsingHistoryVO>
      */
-    List<BrowsingHistoryVO> selectArticleBrowsingHistory(String userId);
+    List<BrowsingHistoryVO> selectArticleBrowsingHistory(String userId, int start, int end);
+
     /**
      * 查询视频历史记录
      *
-     * @param userId    用户id
+     * @param userId 用户id
      * @return List<BrowsingHistoryVO>
      */
-    List<BrowsingHistoryVO> selectVideoBrowsingHistory(String userId);
+    List<BrowsingHistoryVO> selectVideoBrowsingHistory(String userId, int start, int end);
     /**
      * 删除文章历史记录
      *
@@ -49,4 +51,20 @@ public interface BrowsingHistoryMapper {
      * @return boolean
      */
     boolean deleteVideoBrowsingHistory(PostId userId);
+
+    /**
+     * 统计收藏的文章
+     *
+     * @param userId 用户id
+     * @return int
+     */
+    int countArticle(String userId);
+
+    /**
+     * 统计收藏的视频
+     *
+     * @param userId 用户id
+     * @return int
+     */
+    int countVideo(String userId);
 }

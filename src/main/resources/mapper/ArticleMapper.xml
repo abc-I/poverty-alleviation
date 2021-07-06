@@ -75,7 +75,7 @@
     </select>
 
     <select id="countByTitle" resultType="java.lang.Integer">
-        select count(id)
+        select count(`art`.`id`)
         from `t_article` as `art`
                  inner join `t_count` as `c`
                             on `c`.`id` = `art`.`id`

@@ -33,20 +33,22 @@ public class BrowsingHistoryController {
      * @param userId 用户id
      * @return Result
      */
-    @GetMapping("/selectArticleBrowsingHistory/{userId}")
+    @GetMapping("/selectArticleBrowsingHistory/{userId}/{current}/{size}")
     @ApiOperation("查询文章历史记录")
-    public Result articleBrowsingHistory(@PathVariable String userId){
-        return browsingHistoryService.selectArticleBrowsingHistory(userId);
+    public Result articleBrowsingHistory(@PathVariable String userId,
+                                         @PathVariable int current,@PathVariable int size){
+        return browsingHistoryService.selectArticleBrowsingHistory(userId, current, size);
     }
     /**
      * 查询视频历史记录
      * @param userId 用户id
      * @return Result
      */
-    @GetMapping("/selectVideoBrowsingHistory/{userId}")
+    @GetMapping("/selectVideoBrowsingHistory/{userId}/{current}/{size}")
     @ApiOperation("查询视频历史记录")
-    public Result videoBrowsingHistory(@PathVariable String userId){
-        return browsingHistoryService.selectVideoBrowsingHistory(userId);
+    public Result videoBrowsingHistory(@PathVariable String userId,
+                                       @PathVariable int current, @PathVariable int size) {
+        return browsingHistoryService.selectVideoBrowsingHistory(userId, current, size);
     }
     /**
      * 删除文章历史记录

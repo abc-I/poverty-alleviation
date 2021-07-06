@@ -49,8 +49,8 @@ public class ArticleController {
      * @return Result
      */
     @ApiOperation("获取文章")
-    @GetMapping("/getArticle/{id}/{userId}")
-    public Result getArticleById(@PathVariable String id, @PathVariable String userId) {
+    @GetMapping(value = {"/getArticle/{id}/{userId}","/getArticle/{id}"})
+    public Result getArticleById(@PathVariable String id, @PathVariable(required = false) String userId) {
         return articleService.getArticleById(id, userId);
     }
 

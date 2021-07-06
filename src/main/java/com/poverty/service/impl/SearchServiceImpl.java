@@ -51,8 +51,11 @@ public class SearchServiceImpl implements SearchService {
             SearchRecords searchRecords = new SearchRecords();
             searchRecords.setSearchContent(title);
             searchRecords.setUserId(userId);
-
-            searchRecordsMapper.insertOne(searchRecords);
+            try {
+                searchRecordsMapper.insertOne(searchRecords);
+            } catch (Exception e) {
+                searchRecordsMapper.updateCreateTime(searchRecords);
+            }
         }
 
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));
@@ -78,8 +81,11 @@ public class SearchServiceImpl implements SearchService {
             SearchRecords searchRecords = new SearchRecords();
             searchRecords.setSearchContent(title);
             searchRecords.setUserId(userId);
-
-            searchRecordsMapper.insertOne(searchRecords);
+            try {
+                searchRecordsMapper.insertOne(searchRecords);
+            } catch (Exception e) {
+                searchRecordsMapper.updateCreateTime(searchRecords);
+            }
         }
 
         return Result.result200(new Page(total, PageUtil.getPageCount(total, size), articles));

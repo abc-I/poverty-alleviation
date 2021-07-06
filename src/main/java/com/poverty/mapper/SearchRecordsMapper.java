@@ -35,4 +35,11 @@ public interface SearchRecordsMapper {
      * @return boolean
      */
     boolean deleteByUserId(PostId id);
+
+    /**
+     * 更新创建时间
+     *
+     * @param searchRecords JSON{"userId":"用户id","searchContent":"搜索内容"}
+     */
+    void updateCreateTime(SearchRecords searchRecords);
 }

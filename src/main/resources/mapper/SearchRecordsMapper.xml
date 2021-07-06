@@ -9,6 +9,12 @@
         values
             (#{userId}, #{searchContent});
     </insert>
+    <update id="updateCreateTime">
+        update `t_search_records`
+        set create_time=CURRENT_TIMESTAMP
+        where user_id=#{userId}
+          and search_content=#{searchContent};
+    </update>
 
     <delete id="deleteByUserId">
         delete

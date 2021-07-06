@@ -7,21 +7,46 @@
         insert into t_browsing_history (user_id,id)values (#{userId},#{id})
     </insert>
     <delete id="deleteArticleBrowsingHistory" parameterType="com.poverty.entity.dto.PostId">
-        delete from t_browsing_history as bh inner t_article as art on bh.id = art.id where user_id=#{userId}
+        delete
+        from t_browsing_history as bh
+        where user_id=#{id} and id in (
+            select id from t_article
+            );
     </delete>
     <delete id="deleteVideoBrowsingHistory" parameterType="com.poverty.entity.dto.PostId">
-        delete from t_browsing_history as bh inner t_video as video on bh.id = video.id where user_id=#{userId}
+        delete
+        from t_browsing_history as bh
+        where user_id=#{id} and id in (
+            select id from t_video
+            );
     </delete>
-
     <select id="selectArticleBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO">
-        select `art`.`id`,`art`.`title`
+        select `art`.`id`, `art`.`title`
         from `t_article` as `art`
                  inner join `t_browsing_history` as `bh`
-                            on `art`.`id`=`bh`.`id`
+                            on `art`.`id` = `bh`.`id`
         where user_id = #{userId}
+        order by `bh`.`create_time`
+        LIMIT #{start}, #{end};
     </select>
     <select id="selectVideoBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO">
         select `v`.`id`,`v`.`title`
+        from `t_video` as `v`
+                 inner join `t_browsing_history` as `bh`
+                            on `v`.`id`=`bh`.`id`
+        where user_id = #{userId}
+        order by `bh`.`create_time`
+        LIMIT #{start},#{end}
+    </select>
+    <select id="countArticle" resultType="java.lang.Integer">
+        select count(`art`.`id`)
+        from `t_article` as `art`
+                 inner join `t_browsing_history` as `bh`
+                            on `art`.`id` = `bh`.`id`
+        where user_id = #{userId};
+    </select>
+    <select id="countVideo" resultType="java.lang.Integer">
+        select count(`v`.`id`)
         from `t_video` as `v`
                  inner join `t_browsing_history` as `bh`
                             on `v`.`id`=`bh`.`id`
