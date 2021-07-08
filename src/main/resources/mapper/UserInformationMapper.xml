@@ -11,13 +11,28 @@
     </insert>
     <update id="updateUserInformation">
         update `t_user_information`
-        set username=#{username},
-            real_name=#{realName},
-            phone=#{phone},
-            email=#{email},
-            birthday=#{birthday},
-            id_card=#{idCard},
-            address=#{address},
+        set
+            <if test="username != null and username != ''">
+                username=#{username},
+            </if>
+            <if test="realName != null and realName != ''">
+                real_name=#{realName},
+            </if>
+            <if test="phone != null and phone !=''">
+                phone=#{phone},
+            </if>
+            <if test="email != null and email != ''">
+                email=#{email},
+            </if>
+            <if test="birthday != null and birthday != ''">
+                birthday=#{birthday},
+            </if>
+            <if test="idCard != null and idCard != ''">
+                id_card=#{idCard},
+            </if>
+            <if test="address != null and address != ''">
+                address=#{address},
+            </if>
             `modify_time`=CURRENT_TIMESTAMP()
         where id = #{id};
     </update>
