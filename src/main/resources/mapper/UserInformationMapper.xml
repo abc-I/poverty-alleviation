@@ -9,16 +9,31 @@
         values
             (#{id}, #{username}, #{realName}, #{phone}, #{email}, #{idCard}, #{address},#{birthday});
     </insert>
-    <update id="updateUserInformation" parameterType="com.poverty.entity.dto.UserInformationDTO">
-        update  `t_user_information` set username=#{username},realName=#{real_name},phone=#{phone},email=#{email},
-            birthday=#{birthday},idCard=#{id_card},address=#{address},`modify_time`=CURRENT_TIMESTAMP()
-        where  id =#{id}
+    <update id="updateUserInformation">
+        update `t_user_information`
+        set username=#{username},
+            real_name=#{realName},
+            phone=#{phone},
+            email=#{email},
+            birthday=#{birthday},
+            id_card=#{idCard},
+            address=#{address},
+            `modify_time`=CURRENT_TIMESTAMP()
+        where id = #{id};
     </update>
 
-
-    <select id="selectUserInformation" resultType="com.poverty.entity.po.UserInformation"
-            parameterType="com.poverty.entity.po.UserInformation">
-        select id,username,email,birthday,real_name,phone,id_card,address,create_time,modify_time
-        from `t_user_information` where id=#{id}
+    <select id="selectUserInformation" resultType="com.poverty.entity.vo.UserInformationVO">
+        select `ui`.`id`,
+               `ui`.`username`,
+               `ui`.`email`,
+               `ui`.`birthday`,
+               `ui`.`real_name`,
+               `ui`.`phone`,
+               `ui`.`id_card`,
+               `ui`.`address`,
+               `user`.`account`
+        from `t_user_information` as `ui`
+                 inner join `t_user` as `user` on `ui`.`id` = `user`.`id`
+        where `ui`.`id` = #{id};
     </select>
 </mapper>

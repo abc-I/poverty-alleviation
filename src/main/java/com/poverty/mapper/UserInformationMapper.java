@@ -1,7 +1,7 @@
 package com.poverty.mapper;
 
-import com.poverty.entity.dto.UserInformationDTO;
 import com.poverty.entity.po.UserInformation;
+import com.poverty.entity.vo.UserInformationVO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -23,15 +23,15 @@ public interface UserInformationMapper {
 
     /**
      * 修改用户信息
-     * @param userInformationDTO
+     * @param userInformation
      * @return boolean
      */
-    boolean updateUserInformation(UserInformationDTO userInformationDTO);
+    boolean updateUserInformation(UserInformation userInformation);
 
     /**
      * 查找用户信息
      * @param id
-     * @return UserInformation
+     * @return UserInformationVO
      */
-    UserInformation selectUserInformation(String id);
+    UserInformationVO selectUserInformation(String id);
 }

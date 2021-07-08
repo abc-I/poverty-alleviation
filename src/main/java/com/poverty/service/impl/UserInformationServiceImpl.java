@@ -3,6 +3,7 @@ package com.poverty.service.impl;
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.UserInformationDTO;
 import com.poverty.entity.po.UserInformation;
+import com.poverty.entity.vo.UserInformationVO;
 import com.poverty.mapper.UserInformationMapper;
 import com.poverty.service.UserInformationService;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,14 @@ public class UserInformationServiceImpl implements UserInformationService {
      */
     @Override
     public Result updateUserInformation(UserInformationDTO userInformationDTO) {
-        boolean updateUserInformation = userInformationMapper.updateUserInformation(userInformationDTO);
+        UserInformation userInformation = new UserInformation(
+                userInformationDTO.getId(), userInformationDTO.getUsername(),
+                userInformationDTO.getRealName(), userInformationDTO.getPhone(),
+                userInformationDTO.getEmail(), userInformationDTO.getIdCard(),
+                userInformationDTO.getAddress(), userInformationDTO.getBirthday()
+        );
+
+        boolean updateUserInformation = userInformationMapper.updateUserInformation(userInformation);
         if(updateUserInformation){
             return Result.result200("修改成功");
         }else {
@@ -42,11 +50,12 @@ public class UserInformationServiceImpl implements UserInformationService {
      */
     @Override
     public Result selectUserInformation(String id) {
-        UserInformation selectUserInformation = userInformationMapper.selectUserInformation(id);
-        if (selectUserInformation!=null){
-            return Result.result200(selectUserInformation);
+        UserInformationVO userInformation = userInformationMapper.selectUserInformation(id);
+
+        if (userInformation!=null){
+            return Result.result200(userInformation);
         }else{
-            return Result.result500(null);
+            return Result.result500("null");
         }
     }
 }
