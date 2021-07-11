@@ -29,7 +29,7 @@ import javax.annotation.Resource;
         @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                 required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
 })
-public class AdminArticleController {
+public class AdminController {
 
     @Resource
     private AdminArticleService administratorService;
