@@ -31,6 +31,9 @@ import javax.annotation.Resource;
 })
 public class AdminController {
 
+    /**
+     * 文章管理
+     */
     @Resource
     private AdminArticleService administratorService;
 
@@ -152,7 +155,6 @@ public class AdminController {
     /**
      * 用户管理
      */
-
     @Resource
     private AdminUserService adminUserService;
 
