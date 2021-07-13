@@ -2,6 +2,7 @@ package com.poverty.controller;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.CarouselDTO;
+import com.poverty.entity.dto.CarouselUrl;
 import com.poverty.entity.dto.PostId;
 import com.poverty.service.CarouselService;
 import io.swagger.annotations.Api;
@@ -30,7 +31,7 @@ public class CarouselController {
     /**
      * 添加轮播图
      *
-     * @param carouselDTO
+     * @param carouselUrl
      * @return Result
      */
     @ApiOperation("添加轮播图")
@@ -40,8 +41,8 @@ public class CarouselController {
             @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
                     required = true, paramType = "header", dataType = "String", dataTypeClass = String.class)
     })
-    public Result insertCarousel(@RequestBody CarouselDTO carouselDTO) {
-        return carouselService.insertCarousel(carouselDTO);
+    public Result insertCarousel(@RequestBody CarouselUrl carouselUrl) {
+        return carouselService.insertCarousel(carouselUrl);
     }
 
     /**

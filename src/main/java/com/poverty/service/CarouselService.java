@@ -2,6 +2,7 @@ package com.poverty.service;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.CarouselDTO;
+import com.poverty.entity.dto.CarouselUrl;
 import com.poverty.entity.dto.PostId;
 
 import java.util.List;
@@ -13,10 +14,10 @@ import java.util.List;
 public interface CarouselService {
     /**
      * 添加轮播图
-     * @param carouselDTO
+     * @param carouselUrl
      * @return Result
      */
-    Result insertCarousel(CarouselDTO carouselDTO);
+    Result insertCarousel(CarouselUrl carouselUrl);
 
     /**
      * 删除轮播图

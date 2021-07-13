@@ -2,6 +2,7 @@ package com.poverty.service.impl;
 
 import com.poverty.entity.Result;
 import com.poverty.entity.dto.CarouselDTO;
+import com.poverty.entity.dto.CarouselUrl;
 import com.poverty.entity.dto.PostId;
 import com.poverty.entity.po.Carousel;
 import com.poverty.entity.vo.CarouselVO;
@@ -25,15 +26,15 @@ public class CarouselServiceImpl implements CarouselService {
     /**
      * 添加轮播图
      *
-     * @param carouselDTO
+     * @param carouselUrl
      * @return Result
      */
     @Override
-    public Result insertCarousel(CarouselDTO carouselDTO) {
+    public Result insertCarousel(CarouselUrl carouselUrl) {
         String carouselId= UUID.randomUUID().toString().replace("-","");
         Carousel carousel=new Carousel();
         carousel.setId(carouselId);
-        carousel.setCarouselUrl(carouselDTO.getCarouselUrl());
+        carousel.setCarouselUrl(carouselUrl.getCarouselUrl());
 
         int insertCarousel = carouselMapper.insertCarousel(carousel);
         if(insertCarousel>0){

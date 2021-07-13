@@ -32,7 +32,7 @@ public class VideoController {
      * @param videoDTO
      * @return Result
      */
-    @PostMapping("/insetVideo")
+    @PostMapping("/insertVideo")
     @ApiOperation("添加视频")
     @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
     @ApiImplicitParams(value = {

@@ -22,12 +22,15 @@
         where user_id=#{userId} LIMIT #{start},#{end}
     </select>
     <select id="selectVideoCollection" resultType="com.poverty.entity.vo.CollectionVO">
-        select `v`.`id`, `v`.`title`, `v`.`picture_url`
+        select `v`.`id`, `v`.`title`, `v`.`picture_url`,`c`.`recommend`,`c`.`be_liked`
         from `t_video` as `v`
-            inner join t_collection as `c`
-                on `v`.id=`c`.id
+            inner join `t_count` as `c`
+                on `c`.`id`=`v`.id
+            inner join t_collection as `co`
+                on `v`.id=`co`.id
         where user_id=#{userId} LIMIT #{start}, #{end}
     </select>
+
     <select id="count" resultType="java.lang.Integer" parameterType="com.poverty.entity.dto.CollectionDTO">
         select count(*) from `t_collection` where user_id=#{userId} and id=#{id}
     </select>

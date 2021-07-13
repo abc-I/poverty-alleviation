@@ -3,7 +3,7 @@
 
 <mapper namespace="com.poverty.mapper.CarouselMapper">
 
-    <insert id="insertCarousel" parameterType="com.poverty.entity.dto.CarouselDTO">
+    <insert id="insertCarousel">
         insert into t_carousel (id,carousel_url)values (#{id},#{carouselUrl})
     </insert>
 
