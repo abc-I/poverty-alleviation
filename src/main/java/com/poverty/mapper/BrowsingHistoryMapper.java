@@ -40,14 +40,14 @@ public interface BrowsingHistoryMapper {
     /**
      * 删除文章历史记录
      *
-     * @param userId    用户id
+     * @param userId   用户id
      * @return boolean
      */
     boolean deleteArticleBrowsingHistory(PostId userId);
     /**
      * 删除视频历史记录
      *
-     * @param userId    用户id
+     * @param userId   用户id
      * @return boolean
      */
     boolean deleteVideoBrowsingHistory(PostId userId);

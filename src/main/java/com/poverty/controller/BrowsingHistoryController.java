@@ -19,7 +19,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/browsingHistory")
-@Api(tags = "查询历史记录接口")
+@Api(tags = "历史记录接口")
 @RequiresRoles(value = {"user","admin","administrator"}, logical = Logical.OR)
 @ApiImplicitParams(value = {
         @ApiImplicitParam(name = "JwtToken", value = "JwtToken",
