@@ -114,7 +114,7 @@ public class SearchServiceImpl implements SearchService {
         if (searchRecordsMapper.deleteByUserId(id)) {
             return Result.result200("删除成功！");
         } else {
-            return Result.result500("删除失败！");
+            return Result.result500("找不到该项！");
         }
     }
 }

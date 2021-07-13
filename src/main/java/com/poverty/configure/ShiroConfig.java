@@ -66,6 +66,7 @@ public class ShiroConfig extends ShiroConfiguration {
         urls.put("/signUpUser", "anon");
         urls.put("/getCode/**", "anon");
         urls.put("/static/**", "anon");
+        urls.put("/favicon.ico", "anon");
         urls.put("/article/getArticleList/**", "anon");
         urls.put("/article/getArticle/**", "anon");
         urls.put("/carousel/selectCarousel/**", "anon");

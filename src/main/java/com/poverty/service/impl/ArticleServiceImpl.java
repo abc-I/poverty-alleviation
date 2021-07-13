@@ -12,7 +12,6 @@ import com.poverty.entity.vo.Page;
 import com.poverty.mapper.ArticleMapper;
 import com.poverty.mapper.BrowsingHistoryMapper;
 import com.poverty.mapper.CountMapper;
-import com.poverty.mapper.UserMapper;
 import com.poverty.service.ArticleService;
 import com.poverty.util.PageUtil;
 import com.poverty.util.PathUtil;
@@ -40,8 +39,6 @@ public class ArticleServiceImpl implements ArticleService {
     private CountMapper countMapper;
     @Resource
     private BrowsingHistoryMapper browsingHistoryMapper;
-    @Resource
-    private UserMapper userMapper;
     @Resource
     private PathUtil pathUtil;
 
@@ -134,7 +131,7 @@ public class ArticleServiceImpl implements ArticleService {
             Runtime runtime = Runtime.getRuntime();
             runtime.exec("rm -rf /home/static/html/" + prefix + "_styles.css");
             runtime.exec("rm -rf /home" + url);
-            runtime.exec("rm -rf /home/static/docx/" + prefix + "docx");
+            runtime.exec("rm -rf /home/static/docx/" + prefix + ".docx");
             runtime.exec("rm -rf /home/static/image/" + prefix);
 
             return Result.result200("删除成功");
