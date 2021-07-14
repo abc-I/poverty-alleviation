@@ -19,7 +19,6 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date Created in 2021/7/1 10:40
  */
-
 @RestController
 @Api(tags = "用户信息接口")
 @RequestMapping("/userInformation")

@@ -37,7 +37,6 @@ public class ArticleController {
     @ApiOperation("获取文章列表")
     @GetMapping("/getArticleList/{current}/{size}")
     public Result getArticleList(@PathVariable int current, @PathVariable int size) {
-        System.out.println(articleService);
         return articleService.getArticleList(current, size);
     }
 

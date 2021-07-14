@@ -65,7 +65,7 @@ public class LoginController {
      *               "idCard":"身份证号","address":"地址","password":"密码","code":"验证码","birthday":"生日"}
      * @return JSON{"status":"状态码","message":"状态信息","object":"返回数据"}
      */
-    @ApiOperation("注销用户")
+    @ApiOperation("注册用户")
     @PostMapping("/signUpUser")
     public Result signUpUser(@RequestBody SignUp signUp) {
         try {
