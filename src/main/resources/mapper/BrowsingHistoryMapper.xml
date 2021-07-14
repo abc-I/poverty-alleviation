@@ -21,7 +21,7 @@
             );
     </delete>
     <select id="selectArticleBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO">
-        select `art`.`id`, `art`.`title`
+        select `art`.`id`, `art`.`title`,`bh`.`create_time`
         from `t_article` as `art`
                  inner join `t_browsing_history` as `bh`
                             on `art`.`id` = `bh`.`id`
@@ -30,7 +30,7 @@
         LIMIT #{start}, #{end};
     </select>
     <select id="selectVideoBrowsingHistory" resultType="com.poverty.entity.vo.BrowsingHistoryVO">
-        select `v`.`id`,`v`.`title`
+        select `v`.`id`,`v`.`title`,`bh`.`create_time`
         from `t_video` as `v`
                  inner join `t_browsing_history` as `bh`
                             on `v`.`id`=`bh`.`id`

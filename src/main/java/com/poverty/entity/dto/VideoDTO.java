@@ -1,8 +1,6 @@
 package com.poverty.entity.dto;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,7 +13,6 @@ import java.io.Serializable;
 public class VideoDTO implements Serializable {
 
     private static final long serialVersionUID = 1492063000742158669L;
-
 
     /**
      * 标题
