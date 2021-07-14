@@ -35,7 +35,7 @@ public class ArticleVO implements Serializable {
     private String username;
 
     /**
-     * 收藏数
+     * 浏览数
      */
     private Integer recommend;
 

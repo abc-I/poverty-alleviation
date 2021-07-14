@@ -11,7 +11,6 @@ import com.poverty.entity.vo.Page;
 import com.poverty.entity.vo.VideosVO;
 import com.poverty.mapper.BrowsingHistoryMapper;
 import com.poverty.mapper.CountMapper;
-import com.poverty.mapper.UserMapper;
 import com.poverty.mapper.VideoMapper;
 import com.poverty.service.VideoService;
 import com.poverty.util.PageUtil;
@@ -35,8 +34,6 @@ public class VideoServiceImpl implements VideoService {
     @Resource
     private VideoMapper videoMapper;
     @Resource
-    private UserMapper userMapper;
-    @Resource
     private CountMapper countMapper;
     @Resource
     private BrowsingHistoryMapper browsingHistoryMapper;
@@ -53,7 +50,6 @@ public class VideoServiceImpl implements VideoService {
         Video video = new Video();
         video.setId(id);
         video.setVideoUrl(videoDTO.getVideoUrl());
-        video.setPictureUrl(videoDTO.getPictureUrl());
         video.setAuthorId(videoDTO.getUserId());
         video.setTitle(videoDTO.getTitle());
 

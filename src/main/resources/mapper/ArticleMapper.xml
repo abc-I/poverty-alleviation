@@ -4,17 +4,19 @@
 <mapper namespace="com.poverty.mapper.ArticleMapper">
 
     <sql id="selectArticleList">
-        select `art`.`id`, `art`.`title`, `art`.`text`, `art`.`picture_url`, `c`.`recommend`, `c`.`be_liked`
+        select `art`.`id`, `art`.`title`, `c`.`recommend`, `c`.`be_liked`, `info`.`username`, `art`.`create_time`
         from `t_article` as `art`
                  inner join `t_count` as `c`
                             on `c`.`id` = `art`.`id`
+                inner join `t_user_information` as `info`
+                    on `info`.`id`=`art`.`author_id`
     </sql>
 
     <insert id="insertOne">
         insert into `t_article`
-            (`id`, `title`, `article_url`, `text`, `picture_url`, `author_id`)
+            (`id`, `title`, `article_url`, `author_id`)
         values
-            (#{id}, #{title}, #{articleUrl}, #{text}, #{pictureUrl}, #{authorId});
+            (#{id}, #{title}, #{articleUrl}, #{authorId});
     </insert>
 
     <delete id="deleteArticleByIds" parameterType="list">

@@ -14,12 +14,10 @@ import com.poverty.mapper.BrowsingHistoryMapper;
 import com.poverty.mapper.CountMapper;
 import com.poverty.service.ArticleService;
 import com.poverty.util.PageUtil;
-import com.poverty.util.PathUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -39,8 +37,6 @@ public class ArticleServiceImpl implements ArticleService {
     private CountMapper countMapper;
     @Resource
     private BrowsingHistoryMapper browsingHistoryMapper;
-    @Resource
-    private PathUtil pathUtil;
 
     @Override
     public Result getArticleList(int current, int size) {
@@ -78,7 +74,7 @@ public class ArticleServiceImpl implements ArticleService {
     /**
      * 保存文章
      *
-     * @param articleDTO JSON{"title":"标题","articleUrl":"文章html的url","text":"文章部分内容","userId":"用户id"}
+     * @param articleDTO JSON{"title":"标题","articleUrl":"文章html的url","userId":"用户id"}
      * @return Result
      */
     @Override
@@ -88,16 +84,9 @@ public class ArticleServiceImpl implements ArticleService {
         Article article = new Article();
         article.setId(id);
         article.setTitle(articleDTO.getTitle());
-        article.setText(articleDTO.getText());
         String url = articleDTO.getArticleUrl();
         article.setArticleUrl(url);
         article.setAuthorId(articleDTO.getUserId());
-
-        String prefix = url.substring(url.lastIndexOf("/") + 1, url.indexOf(".html"));
-        String pictureUrl = prefix + "/" + prefix + "_img1.jpeg";
-        if (new File(pathUtil.getImagePath() + pictureUrl).exists()) {
-            article.setPictureUrl("/static/image/" + pictureUrl);
-        }
 
         Count count = new Count();
         count.setId(id);

@@ -10,8 +10,5 @@ public class CollectionVO implements Serializable {
 
     private String id;
     private String title;
-    private String pictureUrl;
-    private String text;
-    private Integer recommend;
-    private Integer beLiked;
+    private String createTime;
 }

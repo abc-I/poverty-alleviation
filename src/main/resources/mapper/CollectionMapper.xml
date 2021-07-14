@@ -13,7 +13,7 @@
         where user_id=#{userId} and id=#{id}
     </delete>
     <select id="selectArticleCollection" resultType="com.poverty.entity.vo.CollectionVO">
-        select `art`.`id`,`art`.`title`,`art`.`picture_url`,`art`.`text`,`c`.`recommend`,`c`.`be_liked`
+        select `art`.`id`,`art`.`title`,`co`.`create_time`
         from `t_article` as `art`
             inner join `t_count` as `c`
                 on `c`.`id`=`art`.`id`
@@ -22,7 +22,7 @@
         where user_id=#{userId} LIMIT #{start},#{end}
     </select>
     <select id="selectVideoCollection" resultType="com.poverty.entity.vo.CollectionVO">
-        select `v`.`id`, `v`.`title`, `v`.`picture_url`,`c`.`recommend`,`c`.`be_liked`
+        select `v`.`id`, `v`.`title`, `co`.`create_time`
         from `t_video` as `v`
             inner join `t_count` as `c`
                 on `c`.`id`=`v`.id

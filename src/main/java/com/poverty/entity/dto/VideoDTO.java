@@ -30,12 +30,6 @@ public class VideoDTO implements Serializable {
     private String videoUrl;
 
     /**
-     * 图片url
-     */
-    @TableField(value = "picture_url")
-    private String pictureUrl;
-
-    /**
      *
      */
     @TableField(value = "author_id")

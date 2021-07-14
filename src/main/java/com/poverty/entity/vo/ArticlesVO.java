@@ -3,6 +3,7 @@ package com.poverty.entity.vo;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Li
@@ -24,17 +25,12 @@ public class ArticlesVO implements Serializable {
     private String title;
 
     /**
-     * 文章部分内容
+     * 作者
      */
-    private String text;
+    private String username;
 
     /**
-     * 图片url
-     */
-    private String pictureUrl;
-
-    /**
-     * 收藏数
+     * 浏览数
      */
     private Integer recommend;
 
@@ -42,4 +38,9 @@ public class ArticlesVO implements Serializable {
      * 点赞数
      */
     private Integer beLiked;
+
+    /**
+     * 发布时间
+     */
+    private Date createTime;
 }

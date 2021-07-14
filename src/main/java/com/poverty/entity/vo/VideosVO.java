@@ -3,6 +3,7 @@ package com.poverty.entity.vo;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Li
@@ -19,13 +20,28 @@ public class VideosVO implements Serializable {
     private String id;
 
     /**
-     * 视频截图
-     */
-    private String pictureUrl;
-
-    /**
      * 视频标题
      */
     private String title;
+
+    /**
+     * 作者名
+     */
+    private String username;
+
+    /**
+     * 点赞数
+     */
+    private Integer beLiked;
+
+    /**
+     * 浏览数
+     */
+    private Integer recommend;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
 
 }
