@@ -22,7 +22,7 @@
         delete  from t_video where id = #{id}
     </delete>
 
-    <select id="selectVideoById" resultType="com.poverty.entity.vo.VideoVO" parameterType="java.lang.String">
+    <select id="selectVideoById" resultType="com.poverty.entity.vo.VideoVO">
         select `v`.`id`, `v`.`title`, `v`.`video_url`, `in`.`username`, `v`.`create_time`, `c`.`be_liked`,`c`.`recommend`
         from `t_video` as `v`
                  inner join `t_count` as `c`
@@ -45,7 +45,7 @@
         WHERE is_examined=-1 LIMIT #{start},#{end}
     </select>
     <select id="selectVideoUrlById" resultType="java.lang.String">
-        select video_url, picture_url where id=#{id}
+        select video_url from t_video where id=#{id}
     </select>
     <select id="selectVideoByTitle" resultType="com.poverty.entity.vo.VideosVO">
         <include refid="select"/>

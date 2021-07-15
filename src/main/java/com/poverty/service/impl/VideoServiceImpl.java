@@ -88,7 +88,6 @@ public class VideoServiceImpl implements VideoService {
 
             Runtime runtime = Runtime.getRuntime();
             runtime.exec("rm -rf /home" + url);
-            runtime.exec("rm -rf /home" + url);
 
             return Result.result200("删除成功");
         } else {

@@ -52,10 +52,10 @@ public class SearchServiceImpl implements SearchService {
             SearchRecords searchRecords = new SearchRecords();
             searchRecords.setSearchContent(title);
             searchRecords.setUserId(userId);
-            try {
-                searchRecordsMapper.insertOne(searchRecords);
-            } catch (Exception e) {
+            if (searchRecordsMapper.count(userId, title) > 0) {
                 searchRecordsMapper.updateCreateTime(searchRecords);
+            } else {
+                searchRecordsMapper.insertOne(searchRecords);
             }
         }
 

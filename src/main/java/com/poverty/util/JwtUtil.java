@@ -39,8 +39,6 @@ public class JwtUtil {
         claims.setId(UUID.randomUUID().toString());
         // token的使用者
         claims.setAudience(id);
-        // 失效时间
-        claims.setExpiration(new Date(System.currentTimeMillis() + (60 * 60 * 24 * 1000)));
         // token的发行者
         claims.setIssuer("Li");
         // 发布时间

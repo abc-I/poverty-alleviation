@@ -42,4 +42,13 @@ public interface SearchRecordsMapper {
      * @param searchRecords JSON{"userId":"用户id","searchContent":"搜索内容"}
      */
     void updateCreateTime(SearchRecords searchRecords);
+
+    /**
+     * 判断是否搜索记录已经存在
+     *
+     * @param userId 用户id
+     * @param title 搜索内容
+     * @return boolean
+     */
+    int count(String userId, String title);
 }

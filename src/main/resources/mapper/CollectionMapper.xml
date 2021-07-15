@@ -15,8 +15,6 @@
     <select id="selectArticleCollection" resultType="com.poverty.entity.vo.CollectionVO">
         select `art`.`id`,`art`.`title`,`co`.`create_time`
         from `t_article` as `art`
-            inner join `t_count` as `c`
-                on `c`.`id`=`art`.`id`
             inner join `t_collection` as `co`
                 on `art`.`id`=`co`.`id`
         where user_id=#{userId} LIMIT #{start},#{end}

@@ -29,7 +29,7 @@ public class JwtCredentialsMatcher implements CredentialsMatcher {
         // 匹配token
         if (clientToken.equals(redisToken)) {
             // 刷新token过期时间
-            return JedisUtil.refresh(account, 1000 * 60 * 60 * 24);
+            return JedisUtil.refresh(account, 60 * 60 * 24);
         } else {
             return false;
         }
