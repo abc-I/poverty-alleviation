@@ -167,9 +167,13 @@ public class LoginServiceImpl implements LoginService {
      */
     private Result setInformation(SignUp signUp,String s) throws Exception {
         String email = signUp.getEmail();
-        String code = signUp.getCode();
-        if (email == null || code == null || !code.equals(JedisUtil.get(email))) {
-            return Result.result500("注册失败！请检查邮箱或验证码是否正确！");
+//        String code = signUp.getCode();
+//        if (email == null || code == null || !code.equals(JedisUtil.get(email))) {
+//            return Result.result403("注册失败！请检查邮箱或验证码是否正确！");
+//        }
+        if (signUp.getPassword() == null && signUp.getVerification() == null
+                && !signUp.getPassword().equals(signUp.getVerification())) {
+            return Result.result403("请检查两次密码是否一致！");
         }
 
         // 随机参数用户id

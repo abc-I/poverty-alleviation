@@ -19,6 +19,11 @@ public class SignUp implements Serializable {
     private String username;
 
     /**
+     * 验证密码
+     */
+    private String verification;
+
+    /**
      * 真名
      */
     private String realName;
