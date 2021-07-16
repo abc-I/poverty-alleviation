@@ -3,6 +3,8 @@ package com.poverty;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class PovertyApplicationTests {
 
@@ -18,11 +20,11 @@ class PovertyApplicationTests {
 //        System.out.println(MD5Util.parse("user", "user", 10));
 
 
-        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
-        int left;
-        int right;
-        int temp;
-        int t;
+//        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
+//        int left;
+//        int right;
+//        int temp;
+//        int t;
 
 
 

@@ -4,7 +4,8 @@
 <mapper namespace="com.poverty.mapper.UserMapper">
 
     <sql id="select">
-        select `user`.`id`, `user`.`account`, `user`.`is_locked`, `info`.`username`, `info`.`email`
+        select `user`.`id`, `user`.`account`, `user`.`is_locked`, `info`.`username`, `info`.`email`,
+               `info`.`real_name`,`info`.`phone`
         from `t_user` as `user`
                  inner join `t_user_information` as `info`
                             on `user`.`id` = `info`.`id`
@@ -94,7 +95,8 @@
     </select>
 
     <select id="selectAdminList" resultType="com.poverty.entity.vo.UsersVO">
-        select `user`.`id`, `user`.`account`, `user`.`is_locked`, `info`.`username`, `info`.`email`
+        select `user`.`id`, `user`.`account`, `user`.`is_locked`, `info`.`username`, `info`.`email`,
+               `info`.`real_name`,`info`.`phone`
         from `t_user` as `user`
                  inner join `t_user_information` as `info`
                             on `user`.`id` = `info`.`id`

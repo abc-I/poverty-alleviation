@@ -34,6 +34,16 @@ public class UsersVO implements Serializable {
     private String email;
 
     /**
+     * 真名
+     */
+    private String realName;
+
+    /**
+     * 电话
+     */
+    private String phone;
+
+    /**
      * 是否封号
      */
     private Boolean isLocked;
