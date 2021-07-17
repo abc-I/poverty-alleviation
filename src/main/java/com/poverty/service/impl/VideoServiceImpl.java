@@ -52,6 +52,7 @@ public class VideoServiceImpl implements VideoService {
         video.setVideoUrl(videoDTO.getVideoUrl());
         video.setAuthorId(videoDTO.getUserId());
         video.setTitle(videoDTO.getTitle());
+        video.setPictureUrl(videoDTO.getPictureUrl());
 
         int insertVideo = videoMapper.insertVideo(video);
 

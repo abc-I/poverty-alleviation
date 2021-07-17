@@ -60,8 +60,8 @@ public interface ArticleMapper {
     /**
      * 保存文章信息
      *
-     * @param article JSON{"id":"文章id","title":"文章标题","articleUrl":"文章url",
-     *                ,"authorId":"作者id"}
+     * @param article JSON{"id":"文章id","title":"文章标题","articleUrl":"文章url","text":"文章部分内容"
+     *                ,"pictureUrl":"图片链接","authorId":"作者id"}
      * @return
      */
     boolean insertOne(Article article);

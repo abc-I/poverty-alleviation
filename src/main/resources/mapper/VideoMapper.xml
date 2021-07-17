@@ -3,7 +3,7 @@
 
 <mapper namespace="com.poverty.mapper.VideoMapper">
     <sql id="select">
-        select `v`.`id`, `v`.`title`, `v`.`create_time`,`info`.`username`,`c`.`be_liked`,`c`.`recommend`
+        select `v`.`id`, `v`.`title`, `v`.`create_time`,`info`.`username`,`c`.`be_liked`,`c`.`recommend`,`v`.`video_url`
         from `t_video` as `v`
                  inner join `t_count` as `c`
                             on `c`.`id` = `v`.`id`
@@ -13,9 +13,9 @@
 
     <insert id="insertVideo" parameterType="com.poverty.entity.dto.VideoDTO">
         insert into t_video
-            (id,title,video_url,author_id)
+            (id,title,video_url,author_id,picture_url)
         values
-            (#{id},#{title},#{videoUrl},#{authorId})
+            (#{id},#{title},#{videoUrl},#{authorId},#{pictureUrl})
     </insert>
 
     <delete id="deleteVideo" parameterType="java.lang.String">

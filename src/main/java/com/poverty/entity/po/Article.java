@@ -43,6 +43,17 @@ public class Article implements Serializable {
     private String authorId;
 
     /**
+     * text
+     */
+    @TableField(value = "text")
+    private String text;
+
+    /**
+     * 图片
+     */
+    private String pictureUrl;
+
+    /**
      * 创建时间
      */
     @TableField(value = "create_time", fill = FieldFill.INSERT)

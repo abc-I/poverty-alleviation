@@ -14,9 +14,8 @@
 
     <insert id="insertOne">
         insert into `t_article`
-            (`id`, `title`, `article_url`, `author_id`)
-        values
-            (#{id}, #{title}, #{articleUrl}, #{authorId});
+            (`id`, `title`, `article_url`, `text`, `picture_url`, `author_id`)
+        values (#{id}, #{title}, #{articleUrl}, #{text}, #{pictureUrl}, #{authorId});
     </insert>
 
     <delete id="deleteArticleByIds" parameterType="list">

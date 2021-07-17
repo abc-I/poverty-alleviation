@@ -24,6 +24,11 @@ public class ArticleDTO implements Serializable {
     private String articleUrl;
 
     /**
+     * text
+     */
+    private String text;
+
+    /**
      * 用户id
      */
     private String userId;

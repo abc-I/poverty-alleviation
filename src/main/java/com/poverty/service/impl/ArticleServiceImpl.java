@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -86,7 +87,15 @@ public class ArticleServiceImpl implements ArticleService {
         article.setTitle(articleDTO.getTitle());
         String url = articleDTO.getArticleUrl();
         article.setArticleUrl(url);
+        article.setText(articleDTO.getText());
         article.setAuthorId(articleDTO.getUserId());
+
+        String prefix = url.substring(url.lastIndexOf("/") + 1,
+                url.indexOf("."));
+        String path = "/static/image/" + prefix + "/" + prefix + "_img1.jpeg";
+        if (new File("/home/" + path).exists()) {
+            article.setPictureUrl(path);
+        }
 
         Count count = new Count();
         count.setId(id);

@@ -31,4 +31,9 @@ public class VideoDTO implements Serializable {
      */
     @TableField(value = "author_id")
     private String userId;
+
+    /**
+     * 视频截图
+     */
+    private String pictureUrl;
 }

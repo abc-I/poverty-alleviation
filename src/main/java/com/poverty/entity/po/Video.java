@@ -37,6 +37,12 @@ public class Video implements Serializable {
     private String videoUrl;
 
     /**
+     * 图片url
+     */
+    @TableField(value = "picture_url")
+    private String pictureUrl;
+
+    /**
      * 作者id
      */
     @TableField(value = "author_id")

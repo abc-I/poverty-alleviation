@@ -44,4 +44,9 @@ public class VideosVO implements Serializable {
      */
     private Date createTime;
 
+    /**
+     * 视频url
+     */
+    private String videoUrl;
+
 }
